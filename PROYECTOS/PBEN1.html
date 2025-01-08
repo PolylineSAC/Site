@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Constructora</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <header>
+        <div id="loading-screen" class="loading-screen">
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+            
+        </div>
+        
+        
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan">CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="active">INICIO</a></li>
+                <li><a href="#para-ti">PARA TI</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+        <!-- Sección de Proyectos -->
+        <section id="departamentos" class="departamentos-section">
+            <h2 class="section-title">Proyecto Benavides 1</h2>
+            <div class="departamentos-grid">
+
+
+                <!-- Departamento 1 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA101/presentacion.png" alt="Departamento 101" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 101</h3>
+                        <p>2 Dormitorios, 2 Baños, 80 m²</p>
+                        <a href="#" class="btn-details" data-department="101">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-101" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(101)">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA101/101.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/101.mp4', true)">
+                                    <img src="/Resource/PBEN1/DEPA101/presentacion.png" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/1.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/2.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/3.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/4.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/4.jpeg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/5.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/5.jpeg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/6.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/6.jpeg" alt="Vista 6">
+                                </div>
+                                <!-- Ítem 7 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/7.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/7.jpeg" alt="Vista 7">
+                                </div>
+                                <!-- Ítem 8 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN1/DEPA101/8.jpeg', false)">
+                                    <img src="/Resource/PBEN1/DEPA101/8.jpeg" alt="Vista 8">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+                
+                <!-- Departamento 2 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA201/presentacion.png" alt="Departamento 201" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 201</h3>
+                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="201">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-201" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(201)">&times;</span>
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA201/201.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+
+
+
+                <!-- Departamento 3 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA202/presentacion.png" alt="Departamento 202" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 202</h3>
+                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="202">Ver detalles</a>
+                    </div>
+                </div>
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-202" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(202)">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA202/202.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+
+
+                <!-- Departamento 4 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA301/presentacion.png" alt="Departamento 301" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 301</h3>
+                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="301">Ver detalles</a>
+                    </div>
+                </div>
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-301" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(301)">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA301/301.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+
+
+                <!-- Departamento 4 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA601/presentacion.png" alt="Departamento 601" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 601</h3>
+                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="601">Ver detalles</a>
+                    </div>
+                </div>
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-601" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(601)">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA601/601.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+
+
+                <!-- Departamento 5 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN1/DEPA602/presentacion.png " alt="Departamento 601" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 602</h3>
+                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="602">Ver detalles</a>
+                    </div>
+                </div>
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-602" class="modal hidden">
+                    <div class="modal-content">
+                        
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal(602)">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN1/DEPA602/602.mp4" type="video/mp4">
+                            </video>     
+                    </div>
+                </div>
+            </div>
+            <!-- Departamento 6 -->
+            <div class="departamento-card">
+                <img src="/Resource/PBEN1/DEPA603/presentacion.png" alt="Departamento 603" class="departamento-img">
+                <div class="card-details">
+                    <h3>Departamento 603</h3>
+                    <p>3 Dormitorios, 2 Baños, 100 m²</p>
+                    <a href="#" class="btn-details" data-department="603">Ver detalles</a>
+                </div>
+            </div>
+            <!-- Layout emergente para detalles -->
+            <div id="detail-modal-603" class="modal hidden">
+                <div class="modal-content">
+                    
+                    <!-- Botón para cerrar el modal -->
+                    <span class="close-btn" onclick="closeModal(603)">&times;</span>
+                    
+                    <!-- Contenedor principal del contenido (video o imagen) -->
+                    <div id="main-content-container" class="video-container">
+                        <video id="main-content" controls autoplay>
+                            <source src="/Resource/PBEN1/DEPA603/603.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    
+                    
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+
+    <!-- Botón de Contacto -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+    
+
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+    <script src="/scripts.js"></script>
+
+
+
+    <script>
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
+        <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
+        <p>Construyendo sueños con pasión y calidad.</p>
+    </div>
+    
+    
+    <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+</footer>
+    
+    </body>
+    
+</html>

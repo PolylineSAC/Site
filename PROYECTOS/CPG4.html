@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>POLYLINE - Constructora</title>
+        <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/index.html" class="active">INICIO</a></li>
+                    <li><a href="/index.html">PARA TI</a></li>
+                    <li class="dropdown">
+                        <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                            <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                            <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                            <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Contact/Información.html">Información</a></li>
+                            <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+    <section id="inicio" style="position: relative; height: 80vh; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Contenedor de las imágenes (a la izquierda) -->
+        <div id="image-container" style="position: relative; width: 50%; height: 80%; overflow: hidden; margin-left: 40px;">
+            <!-- Imágenes del proyecto con borde redondeado -->
+            <img src="/Resource/CPG4/proyecto4.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; z-index: -1;">
+            <!-- Flechas para controlar las imágenes -->
+            <div class="arrow left" onclick="changeImage('prev')" style="position: absolute; top: 50%; left: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10094;</div>
+            <div class="arrow right" onclick="changeImage('next')" style="position: absolute; top: 50%; right: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10095;</div>
+        </div>
+    
+        <!-- Contenido de la sección (a la derecha) -->
+        <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; text-align: left; height: 100%; color: #000000; padding: 20px; z-index: 1; width: 55%; margin-left: 20px;">
+            <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; background-color: rgba(255, 255, 255, 0.6); padding: 10px 20px; border-radius: 8px;">
+                Casa de Playa del Golf 4
+            </h2>
+        </div>
+        
+    </section>
+    
+
+<script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.project-image');
+    const totalImages = images.length;
+
+    // Cambiar la imagen automáticamente cada 1 segundo
+    setInterval(() => {
+        changeImage('next');
+    }, 2000);
+
+    // Función para cambiar la imagen
+    function changeImage(direction) {
+        // Ocultar la imagen actual con la transición suave
+        images[currentImageIndex].style.left = `${currentImageIndex * 100}%`;
+        
+        // Actualizar el índice de la imagen
+        if (direction === 'next') {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+        } else {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+        }
+
+        // Mostrar la nueva imagen con transición suave
+        images[currentImageIndex].style.left = '0';
+    }
+</script>
+
+<!-- BOTON DE CONTACTO ----------------->
+</section>
+<button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+<!-- Opciones de contacto desplegables -->
+<div class="contact-options" id="contact-options">
+    <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+    <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+</div>
+
+<script src="scripts.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Constructora</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <header>
+        <div id="loading-screen" class="loading-screen">
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+            
+        </div>
+        
+        
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan"> CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="#para-ti">Para Tí</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link">Contacto</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--audio de ambiente-->
+    <audio id="ambient-sound" autoplay loop volume="0.0">
+        <source src="/Resource/sounds/ambiente-sound.mp3" type="audio/mp3">
+        
+    </audio>
+    
+    <section id="inicio" style="position: relative; height: 80vh; overflow: hidden;">
+        <!-- Video de fondo -->
+        <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
+            <source src="Resource/background1.mp4" type="video/mp4">
+        </video>
+        <!-- Contenido de la sección -->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
+            <h2 class="hero-title">BIENVENIDO A POLYLINE</h2>
+            <p class="hero-subtitle">Proyectos inmobiliarios creados para ti.</p>
+        </div>
+    </section>
+    
+    <script>
+        // Aseguramos que el video se reinicie de manera suave sin interrupciones
+        const video = document.getElementById('background-video');
+        video.addEventListener('play', () => {
+            video.style.opacity = 1; // Hacemos visible el video
+        });
+    
+        video.addEventListener('ended', () => {
+            video.style.opacity = 0; // Ocultamos el video al final del ciclo
+            setTimeout(() => {
+                video.currentTime = 0; // Reiniciamos el video
+                video.play(); // Lo volvemos a reproducir
+            }, 1000); // Esperamos 1 segundo para un fade-out suave
+        });
+    </script>
+
+    <div class="separator"></div>
+
+    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed; color: #fff; padding: 50px 20px; text-align: center;">
+        <section id="para-ti" style="height: auto; background: #f9f9f900; padding: 50px 20px;">
+
+            
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; color: #ffffff; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);">
+                    Servicios Personalizados para Ti
+                </h2>
+                <p style="text-align: center; font-size: 1.2rem; color: #ffffff; margin-bottom: 40px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.);">
+                    En POLYLINE, transformamos tus sueños en realidad. Ofrecemos soluciones a medida para cada proyecto, con la calidad y el profesionalismo que nos caracteriza.
+                </p>
+
+                <div class="services-grid">
+    
+                <div class="service-item">
+                    
+                    <h3>Remodelación Completa</h3>
+                    <p>Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.</p>
+                </div>
+                <div class="service-item">
+                    
+                    <h3>Remodelación de Cocinas</h3>
+                    <p>Transforma tu cocina en un espacio moderno y funcional.</p>
+                </div>
+                <div class="service-item">
+                    
+                    <h3>Remodelación de Baños</h3>
+                    <p>Crea un ambiente relajante y elegante con nuestros diseños personalizados.</p>
+                </div>
+                <div class="service-item">
+                    
+                    <h3>Diseño de Interiores</h3>
+                    <p>Optimiza tus espacios con soluciones creativas y modernas.</p>
+                </div>
+                <div class="service-item">
+                    
+                    <h3>Pisos</h3>
+                    <p>Elige entre una amplia gama de materiales de alta calidad para renovar tus suelos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="separator"></div>
+    
+    <section id="nosotros">
+        <div class="content">
+            <h2>Nosotros</h2>
+            <p>
+                Polyline SAC es una empresa constructora que inició actividades en marzo del 2002.  
+                Con 21 años de experiencia, ha desarrollado proyectos y construcciones como:
+            </p>
+            <ul>
+                <li>Habilitaciones Urbanas</li>
+                <li>Demolición de edificaciones de hasta 3,500m² techados</li>
+                <li>Edificaciones unifamiliares y multifamiliares</li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="/Resource/background-nosotros.png" alt="Equipo de trabajo de Polyline" class="nosotros-image">
+        </div>
+    </section>
+    
+    
+
+    
+        <title>Botón Animado para Redes Sociales</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .buttons {
+      display: flex;
+      justify-content: left;
+      gap: 10px; 
+      margin-top: 25px;
+    }
+    .buttons a {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+    .buttons a.fa-facebook:hover{
+      background: #007bff; 
+      transform: scale(1.5); 
+    }
+    .buttons a.fa-whatsapp:hover{
+      background: #25D366ff; 
+      transform: scale(1.5); 
+    }
+    .buttons a.fa-instagram:hover{
+      background: #E1306CFf; 
+      transform: scale(1.5); 
+    }
+    .buttons a.fa-linkedin:hover{
+      background: #617286; 
+      transform: scale(1.5); 
+    }
+    .buttons a.fa-youtube:hover{
+      background: #FF0000; 
+      transform: scale(1.5); 
+    }
+  </style>
+</head>
+    <body>
+    <section class="buttons">
+        <a href="https://www.facebook.com/PolylineSalas" target="_blank" class="fa fa-facebook"></a>
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp"></a>
+        <a href="https://www.instagram.com/arquitectosalasperu/" target="_blank" class="fa fa-instagram"></a>
+        <a href="https://www.linkedin.com/in/arquitectosalas" target="_blank" class="fa fa-linkedin"></a>
+        <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw" target="_blank" class="fa fa-youtube"></a>
+    </section>
+        
+    
+
+
+
+    <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+
+    <!-- Botón de Contacto -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+    
+
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+
+
+    <script src="scripts.js"></script>
+
+
+    <script>
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
+
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
+        <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
+        <p>Construyendo sueños con pasión y calidad.</p>
+    </div>
+    
+    
+    <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+</footer>
+
+    </body>
+
+</html>

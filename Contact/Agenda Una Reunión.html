@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Constructora</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilos para el contenedor del Calendly */
+        .calendly-container {
+            background-color: #f1f1f1; /* Color de fondo suave */
+            border-radius: 15px; /* Bordes redondeados */
+            padding: 20px; /* Espaciado interno */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            max-width: 900px; /* Tamaño máximo */
+            margin: 0 auto; /* Centrado en la página */
+            overflow: hidden; /* Asegura que el contenido no se desborde */
+        }
+
+        /* Opcional: Ajustar el iframe para que ocupe todo el espacio disponible dentro del contenedor */
+        .calendly-container iframe {
+            width: 100%;
+            height: 800px; /* Ajustar el tamaño del calendario */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan">CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="active">INICIO</a></li>
+                <li><a href="/index.html">PARA TI</a></li>
+                <li class="dropdown">
+                    <a href="proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="Información.html" id="proyectos-link">CONTACTO</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Información.html">Información</a></li>
+                        <li><a href="Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de Agendar Reuniones con Botones -->
+        <section id="contacto" style="position: relative; height: 80vh; overflow: hidden;">
+            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="/Resource/Equipo/background_Agendar.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="contenido-agenda">
+                <h2 class="hero-title">Agenda una reunión con nosotros</h2>
+                <p class="hero-subtitle">Queremos ayudarte a construir tus sueños.</p>
+                <div class="botones-agenda">
+                    <a href="#" onclick="mostrarCalendly('remoto')" class="boton-agenda">Agendar Reunión Remota</a>
+                    <a href="#" onclick="mostrarCalendly('presencial')" class="boton-agenda">Agendar Reunión Presencial</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendly-remoto" class="calendly-container">
+            <iframe src="https://calendly.com/jhostingrivas100?locale=es" frameborder="0"></iframe>
+            <div class="overlay-cover"></div> 
+        </section>
+
+        <section id="calendly-presencial" class="calendly-container">
+            <iframe src="https://calendly.com/jhostingrivas100?locale=es&presencial=true" frameborder="0"></iframe>
+            <div class="overlay-cover"></div> 
+        </section>
+
+        <script>
+            function mostrarCalendly(tipo) {
+                document.getElementById('calendly-remoto').style.display = 'none';
+                document.getElementById('calendly-presencial').style.display = 'none';
+                document.getElementById(`calendly-${tipo}`).style.display = 'block';
+                window.scrollTo(0, document.getElementById(`calendly-${tipo}`).offsetTop);
+            }
+        </script>
+
+
+
+
+        
+        
+
+    </main>
+
+    <footer>
+        <p>© 2024 POLYLINE una CONSTRUCTORA. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

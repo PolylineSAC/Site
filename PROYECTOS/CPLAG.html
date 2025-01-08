@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>POLYLINE - Constructora</title>
+        <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/index.html" class="active">INICIO</a></li>
+                    <li><a href="/index.html">PARA TI</a></li>
+                    <li class="dropdown">
+                        <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                            <li><a href="#proyecto2">Proyecto Benavides 1</a></li>
+                            <li><a href="#proyecto3">Proyecto Benavides 2</a></li>
+                            <li><a href="#proyecto4">Proyecto Pueblo Libre 1</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Contact/Información.html">Información</a></li>
+                            <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+    <section id="inicio" style="position: relative; height: 80vh; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Contenedor de las imágenes (a la izquierda) -->
+        <div id="image-container" style="position: relative; width: 50%; height: 80%; overflow: hidden; margin-left: 40px;">
+            <!-- Imágenes del proyecto con borde redondeado -->
+            <img src="/Resource/CPLAG/proyectoLa.png" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; z-index: -1;">
+            <img src="/Resource/CPLAG/1.jpeg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
+            <img src="/Resource/CPLAG/2.jpeg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 200%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
+            <img src="/Resource/CPLAG/3.jpeg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 300%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
+            
+            <!-- Flechas para controlar las imágenes -->
+            <div class="arrow left" onclick="changeImage('prev')" style="position: absolute; top: 50%; left: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10094;</div>
+            <div class="arrow right" onclick="changeImage('next')" style="position: absolute; top: 50%; right: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10095;</div>
+        </div>
+    
+        <!-- Contenido de la sección (a la derecha) -->
+        <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; text-align: left; height: 100%; color: #000000; padding: 20px; z-index: 1; width: 55%; margin-left: 23px;">
+            <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; background-color: rgba(255, 255, 255, 0.6); padding: 10px 20px; border-radius: 8px;">
+                <i class="fas fa-home" style="margin-right: 10px; font-size: 2.5rem;"></i> Casa en Playa Lagunas
+            </h2>
+            <ul style="font-size: 1.3rem;">
+                <li><i class="fas fa-bed" style="margin-right: 10px; font-size: 1.8rem;"></i> 4 dormitorios</li>
+                <li><i class="fas fa-bath" style="margin-right: 10px; font-size: 1.8rem;"></i> 4 baños</li>
+                <li><i class="fas fa-circle" style="margin-right: 10px; font-size: 1.8rem;"></i> Dormitorio principal CIRCULAR (vista a la Laguna y cúpula en el techo)</li>
+                <li><i class="fas fa-hot-tub" style="margin-right: 10px; font-size: 1.8rem;"></i> Baño completo con jacuzzi</li>
+                <li><i class="fas fa-couch" style="margin-right: 10px; font-size: 1.8rem;"></i> Sala</li>
+                <li><i class="fas fa-utensils" style="margin-right: 10px; font-size: 1.8rem;"></i> Comedor</li>
+                <li><i class="fas fa-umbrella-beach" style="margin-right: 10px; font-size: 1.8rem;"></i> Terraza delantera</li>
+                <li><i class="fas fa-fire" style="margin-right: 10px; font-size: 1.8rem;"></i> Área de parrilla</li>
+                <li><i class="fas fa-swimming-pool" style="margin-right: 10px; font-size: 1.8rem;"></i> Piscina</li>
+                <li><i class="fas fa-hot-tub" style="margin-right: 10px; font-size: 1.8rem;"></i> Jacuzzi</li>
+            </ul>
+            <h3 style="font-size: 2rem; margin-top: 23px; ; margin-left: 18px;">
+                <i class="fas fa-star" style="margin-right: 10px; font-size: 2rem;"></i> Acabados de lujo
+            </h3>
+            <ul style="font-size: 1.5rem;">
+                <li><i class="fas fa-border-style" style="margin-right: 10px; font-size: 1.8rem;"></i> </i> Mármol</li>
+                <li><i class="fas fa-th" style="margin-right: 10px; font-size: 1.8rem;"></i> Porcellanato importado</li>
+                <li><i class="fas fa-faucet" style="margin-right: 10px; font-size: 1.8rem;"></i> Grifería importada</li>
+            </ul>
+        </div>
+        
+        
+    </section>
+    
+
+<script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.project-image');
+    const totalImages = images.length;
+
+    // Cambiar la imagen automáticamente cada 1 segundo
+    setInterval(() => {
+        changeImage('next');
+    }, 2000);
+
+    // Función para cambiar la imagen
+    function changeImage(direction) {
+        // Ocultar la imagen actual con la transición suave
+        images[currentImageIndex].style.left = `${currentImageIndex * 100}%`;
+        
+        // Actualizar el índice de la imagen
+        if (direction === 'next') {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+        } else {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+        }
+
+        // Mostrar la nueva imagen con transición suave
+        images[currentImageIndex].style.left = '0';
+    }
+</script>
+
+<!-- BOTON DE CONTACTO ----------------->
+</section>
+<button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+<!-- Opciones de contacto desplegables -->
+<div class="contact-options" id="contact-options">
+    <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+    <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
