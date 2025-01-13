@@ -19,6 +19,10 @@
 </head>
 <body>
     <header>
+        <!-- Botón de menú móvil -->
+        <button class="mobile-menu-button" aria-label="Menú">
+            <div class="hamburger"></div>
+        </button>
         <div id="loading-screen" class="loading-screen">
             <div class="logo-container">
                 <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
@@ -57,6 +61,9 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Overlay para el menú móvil -->
+    <div class="menu-overlay"></div>
 
     <!--audio de ambiente-->
     <audio id="ambient-sound" autoplay loop volume="0.0">
@@ -477,6 +484,50 @@ document.addEventListener('DOMContentLoaded', () => {
     <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
 </footer>
 
-    </body>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
+    // Toggle menú móvil
+    mobileMenuButton.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Cerrar menú al hacer click en el overlay
+    menuOverlay.addEventListener('click', function() {
+        mobileMenuButton.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Manejar dropdowns en móvil
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Cerrar menú al cambiar el tamaño de la ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            mobileMenuButton.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+</script>
+</body>
 </html>

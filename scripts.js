@@ -23,18 +23,12 @@ closeButtons.forEach(button => {
 // Función para mostrar u ocultar las opciones de contacto
 function toggleContactOptions() {
     const options = document.getElementById('contact-options');
-    const button = document.querySelector('.contact-button');
-
-    // Verificar si las opciones ya están visibles
-    if (options.classList.contains('show')) {
-        // Ocultar opciones y cambiar el botón de estado
-        options.classList.remove('show');
-        button.classList.remove('open');
-    } else {
-        // Mostrar opciones y cambiar el botón de estado
-        options.classList.add('show');
-        button.classList.add('open');
+    if (options) {
+        options.classList.toggle('show');
     }
+    
+    const button = document.querySelector('.contact-button');
+    button.classList.toggle('open');
 }
 
 
@@ -70,13 +64,14 @@ toggleButton.addEventListener('click', () => {
 
 
 
-// Función para cambiar entre video o imagen en el contenedor principal
-function changeContent(src, isVideo) {
-    const mainContentContainer = document.getElementById('main-content-container');
-    mainContentContainer.innerHTML = ''; // Limpia el contenido actual
+// Función modificada para cambiar contenido según el departamento
+function changeContent(src, isVideo, departmentNumber) {
+    const mainContentContainer = document.querySelector(`#detail-modal-${departmentNumber} #main-content-container`);
+    if (!mainContentContainer) return;
+    
+    mainContentContainer.innerHTML = '';
 
     if (isVideo) {
-        // Cargar un video
         const videoElement = document.createElement('video');
         videoElement.id = 'main-content';
         videoElement.controls = true;
@@ -89,7 +84,6 @@ function changeContent(src, isVideo) {
         videoElement.appendChild(sourceElement);
         mainContentContainer.appendChild(videoElement);
     } else {
-        // Cargar una imagen
         const imageElement = document.createElement('img');
         imageElement.id = 'main-content';
         imageElement.src = src;
@@ -97,6 +91,7 @@ function changeContent(src, isVideo) {
         mainContentContainer.appendChild(imageElement);
     }
 }
+
 
 // Función para abrir el modal del departamento correspondiente
 function openModal(departmentNumber) {
@@ -129,46 +124,30 @@ document.querySelectorAll('.btn-details').forEach(button => {
 
 
 
+// Cambiar entre métodos de pago
 function togglePaymentMethod() {
-    const paymentMethod = document.getElementById("payment-method").value;
-    const creditCardForm = document.getElementById("credit-card-form");
-    const cashPaymentForm = document.getElementById("cash-payment-form");
+    const selectedMethod = document.getElementById('payment-method').value;
+    document.getElementById('credit-card-form').style.display = selectedMethod === 'credit-card' ? 'block' : 'none';
+    document.getElementById('cash-payment-form').style.display = selectedMethod === 'cash' ? 'block' : 'none';
+}
 
-    if (paymentMethod === "cash") {
-        creditCardForm.style.display = "none"; // Oculta el formulario de tarjeta de crédito
-        cashPaymentForm.style.display = "block"; // Muestra el formulario de pago en efectivo
+// Generar un código único para pago en efectivo
+function generatePaymentCode() {
+    const code = 'PE-' + Math.floor(100000000 + Math.random() * 900000000); // Código único
+    document.getElementById('payment-code').value = code;
+    alert('Código de pago generado: ' + code);
+}
 
-        // Mostrar solo los campos requeridos para efectivo
-        cashPaymentForm.innerHTML = `
-            <div class="form-group">
-                <label for="cash-first-name">Nombre</label>
-                <input type="text" id="cash-first-name" name="cash-first-name" required placeholder="Ingresa tu nombre">
-            </div>
-            <div class="form-group">
-                <label for="cash-last-name">Apellido</label>
-                <input type="text" id="cash-last-name" name="cash-last-name" required placeholder="Ingresa tu apellido">
-            </div>
-            <div class="form-group">
-                <label for="cash-dni">DNI</label>
-                <input type="text" id="cash-dni" name="cash-dni" required placeholder="Ingresa tu DNI">
-            </div>
-            <div class="form-group">
-                <label for="cash-email">Correo Electrónico</label>
-                <input type="email" id="cash-email" name="cash-email" required placeholder="Ingresa tu correo electrónico">
-            </div>
-            <div class="form-actions">
-                <button type="button" class="btn" onclick="submitCashPayment()">Enviar</button>
-                <!-- Botón Cancelar en Pago en Efectivo -->
-                <button type="button" class="btn-secondary" onclick="window.location.href='/index.html'">Cancelar</button>
-            </div>
-        `;
+// Copiar el código al portapapeles
+function copyPaymentCode() {
+    const paymentCode = document.getElementById('payment-code').value;
+    if (paymentCode) {
+        navigator.clipboard.writeText(paymentCode).then(() => {
+            alert('Código de pago copiado al portapapeles.');
+        });
     } else {
-        creditCardForm.style.display = "block"; // Muestra el formulario de tarjeta de crédito
-        cashPaymentForm.style.display = "none"; // Oculta el formulario de pago en efectivo
+        alert('Primero genera un código de pago.');
     }
 }
 
-function submitCashPayment() {
-    alert("Pago en efectivo procesado correctamente.");
-    // Lógica adicional para procesar el pago en efectivo
-}
+
