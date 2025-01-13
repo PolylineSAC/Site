@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>POLYLINE - Constructora</title>
     <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css">
-    
+    <script src="/css/anime.min.js"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preload" as="video" href="/Resource/background1.mp4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/assistant.css">
 </head>
 <body>
     <header>
@@ -18,10 +25,7 @@
                 <h1 class="company-name">POLYLINE</h1>
                 <p class="slogan">CONSTRUCTORA</p>
             </div>
-            
         </div>
-        
-        
         <div class="logo-container">
             <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
             <h1 class="company-name">POLYLINE</h1>
@@ -45,193 +49,415 @@
                     <ul class="dropdown-menu">
                         <li><a href="/Contact/Información.html">Información</a></li>
                         <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
-                        
                     </ul>
                 </li>
+                <li><a href="/pages/login.html" class="login-link"></i> Login</a></li>
+                
+                
             </ul>
         </nav>
     </header>
 
     <!--audio de ambiente-->
     <audio id="ambient-sound" autoplay loop volume="0.0">
-        <source src="/Resource/sounds/ambiente-sound.mp3" type="audio/mp3">
-        
+        <!--<source src="/Resource/sounds/ambiente-sound.mp3" type="audio/mp3"> -->
     </audio>
-    
+
     <section id="inicio" style="position: relative; height: 80vh; overflow: hidden;">
         <!-- Video de fondo -->
         <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
-            <source src="Resource/background1.mp4" type="video/mp4">
+            <source src="/Resource/background1.mp4" type="video/mp4">
         </video>
         <!-- Contenido de la sección -->
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
-            <h2 class="hero-title">BIENVENIDO A POLYLINE</h2>
-            <p class="hero-subtitle">Proyectos inmobiliarios creados para ti.</p>
+            <h2 class="hero-title">
+                <span class="letter-wrapper">
+                    <span class="letters-main">BIENVENIDO A POLYLINE</span>
+                </span>
+            </h2>
+            <p class="hero-subtitle">
+                <span class="letter-wrapper">
+                    <span class="letters-sub">Proyectos inmobiliarios creados para ti.</span>
+                </span>
+            </p>
         </div>
+
+        <script>
+            // Optimización de la animación de letras
+            function wrapLetters(selector) {
+                const textWrapper = document.querySelector(selector);
+                if (!textWrapper) return;
+                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='will-change: transform'>$&</span>");
+            }
+
+            // Animaciones optimizadas
+            document.addEventListener('DOMContentLoaded', () => {
+                wrapLetters('.letters-main');
+                wrapLetters('.letters-sub');
+
+                anime.timeline({
+                    loop: false,
+                    easing: 'easeOutExpo'
+                })
+                .add({
+                    targets: '.hero-title .letter',
+                    translateY: ["1.1em", 0],
+                    translateX: ["0.55em", 0],
+                    rotateZ: [180, 0],
+                    duration: 600,
+                    delay: anime.stagger(40),
+                    changeBegin: function() {
+                        document.querySelectorAll('.hero-title .letter').forEach(el => {
+                            el.style.opacity = '1';
+                        });
+                    }
+                })
+                .add({
+                    targets: '.hero-subtitle .letter',
+                    opacity: [0, 1],
+                    duration: 800,
+                    delay: anime.stagger(20),
+                    offset: '-=400'
+                });
+            });
+        </script>
     </section>
-    
+
     <script>
-        // Aseguramos que el video se reinicie de manera suave sin interrupciones
+        // Optimización de carga del video
         const video = document.getElementById('background-video');
-        video.addEventListener('play', () => {
-            video.style.opacity = 1; // Hacemos visible el video
-        });
-    
-        video.addEventListener('ended', () => {
-            video.style.opacity = 0; // Ocultamos el video al final del ciclo
-            setTimeout(() => {
-                video.currentTime = 0; // Reiniciamos el video
-                video.play(); // Lo volvemos a reproducir
-            }, 1000); // Esperamos 1 segundo para un fade-out suave
+        if (video) {
+            video.setAttribute('playsinline', '');
+            video.setAttribute('preload', 'auto');
+            
+            const playVideo = () => {
+                video.play().catch(() => {
+                    // Fallback silencioso si el autoplay falla
+                    video.muted = true;
+                    video.play();
+                });
+                video.style.opacity = '1';
+            };
+
+            if (video.readyState >= 2) {
+                playVideo();
+            } else {
+                video.addEventListener('loadeddata', playVideo, { once: true });
+            }
+        }
+
+        // Optimización de la pantalla de carga
+        window.addEventListener('load', function() {
+            requestAnimationFrame(() => {
+                document.body.classList.add('loaded');
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.transform = 'translateY(-100%)';
+                    loadingScreen.addEventListener('transitionend', () => {
+                        loadingScreen.style.display = 'none';
+                    });
+                }
+            });
         });
     </script>
 
     <div class="separator"></div>
 
-    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed; color: #fff; padding: 50px 20px; text-align: center;">
-        <section id="para-ti" style="height: auto; background: #f9f9f900; padding: 50px 20px;">
-
+    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed;">
+        <div class="container">
+            <h2 class="section-heading">Servicios Personalizados para Ti</h2>
+            <p class="section-description">En POLYLINE, transformamos tus sueños en realidad.</p>
             
-            <div class="container">
-                <h2 style="text-align: center; font-size: 2.5rem; color: #ffffff; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);">
-                    Servicios Personalizados para Ti
-                </h2>
-                <p style="text-align: center; font-size: 1.2rem; color: #ffffff; margin-bottom: 40px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.);">
-                    En POLYLINE, transformamos tus sueños en realidad. Ofrecemos soluciones a medida para cada proyecto, con la calidad y el profesionalismo que nos caracteriza.
-                </p>
-
-                <div class="services-grid">
-    
-                <div class="service-item">
-                    
-                    <h3>Remodelación Completa</h3>
-                    <p>Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.</p>
+            <div class="services-container">
+                <div class="service-card" data-tilt>
+                    <div class="card-content">
+                        <h3>Remodelación Completa</h3>
+                        <p>Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    
-                    <h3>Remodelación de Cocinas</h3>
-                    <p>Transforma tu cocina en un espacio moderno y funcional.</p>
+                <div class="service-card" data-tilt>
+                    <div class="card-content">
+                        <h3>Remodelación de Cocinas</h3>
+                        <p>Transforma tu cocina en un espacio moderno y funcional.</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    
-                    <h3>Remodelación de Baños</h3>
-                    <p>Crea un ambiente relajante y elegante con nuestros diseños personalizados.</p>
+                <div class="service-card" data-tilt>
+                    <div class="card-content">
+                        <h3>Remodelación de Baños</h3>
+                        <p>Crea un ambiente relajante y elegante con nuestros diseños personalizados.</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    
-                    <h3>Diseño de Interiores</h3>
-                    <p>Optimiza tus espacios con soluciones creativas y modernas.</p>
+                <div class="service-card" data-tilt>
+                    <div class="card-content">
+                        <h3>Diseño de Interiores</h3>
+                        <p>Optimiza tus espacios con soluciones creativas y modernas.</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    
-                    <h3>Pisos</h3>
-                    <p>Elige entre una amplia gama de materiales de alta calidad para renovar tus suelos.</p>
+                <div class="service-card" data-tilt>
+                    <div class="card-content">
+                        <h3>Pisos</h3>
+                        <p>Elige entre una amplia gama de materiales de alta calidad.</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Agregar vanilla-tilt.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+        <script>
+            // Inicializar vanilla-tilt con configuración mejorada
+            VanillaTilt.init(document.querySelectorAll(".service-card"), {
+                max: 8,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.1,
+                scale: 1.03,
+                perspective: 1000,
+                transition: true,
+                gyroscope: true,
+                easing: "cubic-bezier(.03,.98,.52,.99)"
+            });
+
+            // Animaciones con anime.js
+            document.addEventListener('DOMContentLoaded', () => {
+                anime({
+                    targets: '.service-card',
+                    translateY: [50, 0],
+                    opacity: [0, 1],
+                    duration: 1500,
+                    delay: anime.stagger(150),
+                    easing: 'spring(1, 80, 10, 0)',
+                    loop: false
+                });
+
+                // Efecto hover con anime.js
+                const cards = document.querySelectorAll('.service-card');
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        anime({
+                            targets: card,
+                            scale: 1.05,
+                            duration: 300,
+                            easing: 'easeOutElastic(1, .8)'
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        anime({
+                            targets: card,
+                            scale: 1,
+                            duration: 300,
+                            easing: 'easeOutElastic(1, .8)'
+                        });
+                    });
+                });
+            });
+        </script>
     </section>
 
-    
     <div class="separator"></div>
-    
-    <section id="nosotros">
-        <div class="content">
-            <h2>Nosotros</h2>
-            <p>
-                Polyline SAC es una empresa constructora que inició actividades en marzo del 2002.  
-                Con 21 años de experiencia, ha desarrollado proyectos y construcciones como:
-            </p>
-            <ul>
-                <li>Habilitaciones Urbanas</li>
-                <li>Demolición de edificaciones de hasta 3,500m² techados</li>
-                <li>Edificaciones unifamiliares y multifamiliares</li>
-            </ul>
-        </div>
-        <div class="image-container">
-            <img src="/Resource/background-nosotros.png" alt="Equipo de trabajo de Polyline" class="nosotros-image">
-        </div>
-    </section>
-    
-    
 
-    
-        <title>Botón Animado para Redes Sociales</title>
+    <section id="nosotros">
+    <div class="content">
+        <h2>Nosotros</h2>
+        <p>
+            Polyline SAC es una empresa constructora que inició actividades en marzo del 2002.  
+            Con 21 años de experiencia, ha desarrollado proyectos y construcciones como:
+        </p>
+        <ul>
+            <li>Habilitaciones Urbanas</li>
+            <li>Demolición de edificaciones de hasta 3,500m² techados</li>
+            <li>Edificaciones unifamiliares y multifamiliares</li>
+        </ul>
+        <section class="buttons">
+            <a href="https://www.facebook.com/PolylineSalas" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp"></a>
+            <a href="https://www.instagram.com/arquitectosalasperu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/arquitectosalas" target="_blank" class="fa fa-linkedin"></a>
+            <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw" target="_blank" class="fa fa-youtube"></a>
+        </section>
+    </div>
+    <div class="model-container">
+        <div class="loading-3d">
+            <div class="spinner"></div>
+            <p>Cargando modelo 3D...</p>
+        </div>
+        <canvas id="model-canvas"></canvas>
+    </div>
+</section>
+
+<script>
+// Animación de la sección Nosotros
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Anima el contenido
+                anime({
+                    targets: '#nosotros .content',
+                    translateX: ['-50px', '0'],
+                    opacity: [0, 1],
+                    duration: 1000,
+                    easing: 'easeOutExpo'
+                });
+
+                // Anima el modelo 3D
+                anime({
+                    targets: '.model-container',
+                    translateX: ['50px', '0'],
+                    opacity: [0, 1],
+                    duration: 1000,
+                    delay: 300,
+                    easing: 'easeOutExpo'
+                });
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    observer.observe(document.querySelector('#nosotros'));
+});
+</script>
+
+<script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
+    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/loaders/GLTFLoader.js';
+
+    // Inicialización del modelo 3D
+    const init3DModel = () => {
+        const container = document.querySelector('.model-container');
+        const canvas = document.getElementById('model-canvas');
+        const loadingElement = document.querySelector('.loading-3d');
+
+        // Configuración básica
+        const scene = new THREE.Scene();
+        // Definir color según el modo
+        const updateSceneBackground = () => {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            scene.background = new THREE.Color(isDarkMode ? 0x1a1a1a : 0xf5f5f5);
+        };
+        
+        // Actualizar inicialmente
+        updateSceneBackground();
+
+        // Escuchar cambios en el modo oscuro
+        const darkModeButton = document.getElementById('dark-mode-toggle');
+        if (darkModeButton) {
+            darkModeButton.addEventListener('click', updateSceneBackground);
+        }
+
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 2, 5);
+
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+            alpha: true
+        });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Luces
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+
+        // Controles
+        const controls = new OrbitControls(camera, canvas);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 3;
+        controls.maxDistance = 10;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2;
+
+        // Cargar el modelo GLTF
+        const loader = new GLTFLoader();
+        loader.load(
+            '/models/house.glb', // URL del modelo de ejemplo
+            (gltf) => {
+                const model = gltf.scene;
+                
+                // Centrar y escalar el modelo
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 5 / maxDim;
+                model.scale.setScalar(scale);
+                
+                model.position.sub(center.multiplyScalar(scale));
+                scene.add(model);
+                
+                // Ocultar pantalla de carga
+                if (loadingElement) {
+                    loadingElement.style.display = 'none';
+                }
+            },
+            // Progreso de carga
+            (xhr) => {
+                const percent = (xhr.loaded / xhr.total * 100);
+                if (loadingElement) {
+                    loadingElement.querySelector('p').textContent = 
+                        `Cargando modelo 3D: ${Math.round(percent)}%`;
+                }
+            },
+            // Error de carga
+            (error) => {
+                console.error('Error cargando el modelo:', error);
+                if (loadingElement) {
+                    loadingElement.innerHTML = '<p>Error al cargar el modelo 3D</p>';
+                }
+            }
+        );
+
+        // Animación
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Manejo de redimensionamiento
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    };
+
+    // Iniciar cuando el documento esté listo
+    document.addEventListener('DOMContentLoaded', init3DModel);
+</script>
+
+    <title>Botón Animado para Redes Sociales</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    .buttons {
-      display: flex;
-      justify-content: left;
-      gap: 10px; 
-      margin-top: 25px;
-    }
-    .buttons a {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 100%;
-      background: #333;
-      color: #fff;
-      text-decoration: none;
-      font-size: 20px;
-      transition: all 0.3s ease;
-    }
-    .buttons a.fa-facebook:hover{
-      background: #007bff; 
-      transform: scale(1.5); 
-    }
-    .buttons a.fa-whatsapp:hover{
-      background: #25D366ff; 
-      transform: scale(1.5); 
-    }
-    .buttons a.fa-instagram:hover{
-      background: #E1306CFf; 
-      transform: scale(1.5); 
-    }
-    .buttons a.fa-linkedin:hover{
-      background: #617286; 
-      transform: scale(1.5); 
-    }
-    .buttons a.fa-youtube:hover{
-      background: #FF0000; 
-      transform: scale(1.5); 
-    }
+
+
   </style>
 </head>
     <body>
-    <section class="buttons">
-        <a href="https://www.facebook.com/PolylineSalas" target="_blank" class="fa fa-facebook"></a>
-        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp"></a>
-        <a href="https://www.instagram.com/arquitectosalasperu/" target="_blank" class="fa fa-instagram"></a>
-        <a href="https://www.linkedin.com/in/arquitectosalas" target="_blank" class="fa fa-linkedin"></a>
-        <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw" target="_blank" class="fa fa-youtube"></a>
-    </section>
         
-    
-
-
 
     <!-- Botón de modo oscuro -->
-    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
-
-
-    <!-- Botón de Contacto -->
-    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
+    <button id="dark-mode-toggle" class="dark-mode-button" aria-label="Cambiar modo oscuro">
+        <span class="mode-icon"></span>
+    </button>
 
     
 
-    <!-- Opciones de contacto desplegables -->
-    <div class="contact-options" id="contact-options">
-        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-    </div>
-
-
-
-    <script src="scripts.js"></script>
-
+    <script src="/scripts.js"></script>
+    <script src="/js/assistant.js"></script>
 
     <script>
         window.addEventListener('load', function () {
@@ -239,7 +465,7 @@
         });
     </script>
 
-
+    
 
 <footer class="footer">
     <div class="footer-logo">
@@ -247,8 +473,7 @@
         <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
         <p>Construyendo sueños con pasión y calidad.</p>
     </div>
-    
-    
+
     <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
 </footer>
 
