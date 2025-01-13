@@ -6,10 +6,9 @@
     <title>POLYLINE - Constructora</title>
     <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
     <header>
@@ -50,12 +49,115 @@
         </video>
         <!-- Contenido de la sección -->
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
-            <h2 class="hero-title">Proyectos en Venta / Alquiler</h2>
+            <div class="magic-title-container">
+                <h2 class="hero-title">Proyectos en Venta / Alquiler</h2>
+                <div class="sparkles">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
+            </div>
             <p class="hero-subtitle">Conoce nuestros proyectos y encuentra lo mejor para ti</p>
         </div>
     </section>
-    
-    
+
+    <style>
+        .magic-title-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 3em;
+            opacity: 0;
+            transform: scale(0.5);
+            filter: brightness(0);
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 1; }
+        }
+    </style>
+
+    <script>
+        // Función para crear destellos aleatorios
+        function createSparkleAnimation(sparkle, delay) {
+            anime({
+                targets: sparkle,
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                translateX: () => anime.random(-100, 100),
+                translateY: () => anime.random(-100, 100),
+                rotate: () => anime.random(0, 360),
+                duration: 2000,
+                delay: delay,
+                easing: 'easeOutExpo',
+                complete: () => {
+                    // Reiniciar la animación
+                    setTimeout(() => createSparkleAnimation(sparkle, 0), anime.random(100, 1000));
+                }
+            });
+        }
+
+        // Animación del título estilo Disney
+        window.addEventListener('load', () => {
+            // Animación principal del título
+            anime({
+                targets: '.hero-title',
+                opacity: [0, 1],
+                scale: [0.5, 1],
+                filter: ['brightness(0)', 'brightness(1.2)', 'brightness(1)'],
+                duration: 2000,
+                delay: 500,
+                easing: 'easeOutElastic(1, .5)',
+                complete: () => {
+                    // Añadir brillo permanente
+                    anime({
+                        targets: '.hero-title',
+                        textShadow: [
+                            '0 0 10px rgba(255,255,255,0.8)',
+                            '0 0 20px rgba(255,255,255,0.8)',
+                            '0 0 10px rgba(255,255,255,0.8)'
+                        ],
+                        duration: 2000,
+                        direction: 'alternate',
+                        loop: true,
+                        easing: 'easeInOutSine'
+                    });
+                }
+            });
+
+            // Animar cada destello con un retraso aleatorio
+            document.querySelectorAll('.sparkle').forEach((sparkle, index) => {
+                createSparkleAnimation(sparkle, index * 200);
+            });
+
+            // Animación del subtítulo
+            anime({
+                targets: '.hero-subtitle',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                delay: 1500,
+                duration: 1000,
+                easing: 'easeOutQuad'
+            });
+        });
+    </script>
+
     <div class="separator"></div>
 
     <!-- Cuadros de proyectos -->
@@ -73,8 +175,7 @@
                 </div>
             </div>
         </div>
-            
-            
+
             <!-- Cuadro 2 -->
             <div class="project-card">
                 <img src="/Resource/VENTA/proyecto2.jpg" alt="Proyecto 2">
@@ -114,7 +215,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Cuadro 5 -->
             <div class="project-card">
@@ -202,21 +302,22 @@
         </div>
     </section>
 
-    <!-- Botón de modo oscuro -->
-<button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+    <!-- Botón de modo oscuro mejorado -->
+    <button id="dark-mode-toggle" class="dark-mode-button"></button>
+        
+    
 
+    
 
-<!-- Botón de Contacto -->
-<button class="contact-button" onclick="toggleContactOptions()">💬</button>
+    <!-- Botón de Contacto -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
 
-
-
-<!-- Opciones de contacto desplegables -->
-<div class="contact-options" id="contact-options">
-    <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-    <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-    <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-</div>
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
 
     <script src="/scripts.js"></script>
 
@@ -227,13 +328,7 @@
             <p>Construyendo sueños con pasión y calidad.</p>
         </div>
         
-        
         <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
     </footer>
-    
-
-
-    
-    
 </body>
 </html>

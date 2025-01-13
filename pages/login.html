@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyline - Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- SDK de Google -->
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <!-- SDK de Facebook -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-section">
+                <img src="/Resource/Logo/logo.png" alt="Polyline Logo" class="login-logo">
+                <h2 class="company-name">POLYLINE</h2>
+            </div>
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="login-content">
+                <!-- Formulario principal -->
+                <form id="loginForm" class="active-form">
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Email</label>
+                        <div class="line"></div>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" required>
+                        <label for="password">Contraseña</label>
+                        <div class="line"></div>
+                    </div>
+                    <button type="submit" class="login-btn primary-btn">
+                        <span>Ingresar</span>
+                    </button>
+                    <div class="social-divider">
+                        <span>o continúa con</span>
+                    </div>
+                    <div class="social-buttons">
+                        <div id="googleBtn" class="social-btn google-btn">
+                            <img src="/Login/Logos/google-icon.png" alt="Google">
+                            <span>Google</span>
+                        </div>
+                        <button type="button" class="social-btn facebook-btn" onclick="handleFacebookLogin()">
+                            <img src="/Login/Logos/facebook-icon.png" alt="Facebook">
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Formulario para redes sociales -->
+                <form id="socialLoginForm" class="hidden-form">
+                    <div class="social-login-content">
+                        <img id="socialProviderIcon" src="" alt="Provider Icon" class="provider-icon">
+                        <h2 id="socialLoginTitle">Iniciando sesión con</h2>
+                        <p id="socialLoginEmail" class="social-email"></p>
+                        <button type="button" class="login-btn primary-btn" id="continueWithSocial">
+                            <span>Continuar</span>
+                        </button>
+                        <button type="button" class="login-btn secondary-btn" id="backToLogin">
+                            <span>Volver</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/login.js"></script>
+</body>
+</html>

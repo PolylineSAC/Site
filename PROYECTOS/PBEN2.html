@@ -6,9 +6,137 @@
     <title>POLYLINE - Constructora</title>
     <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .animated-title {
+            position: relative;
+            padding: 40px 0;
+            text-align: center;
+            perspective: 1000px;
+            margin-bottom: 50px;
+        }
+        
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform-origin: center;
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: text-shadow 0.3s;
+        }
+
+        .letter:hover {
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            opacity: 0;
+            font-size: 2em;
+            color: #505050;
+            margin-top: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .departamento-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .departamento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-details, .btn-separate {
+            transition: all 0.3s;
+        }
+
+        .btn-details:hover, .btn-separate:hover {
+            transform: scale(1.05);
+        }
+
+        .departamento {
+            margin: 20px;
+        }
+        .departamento img {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .departamento h3 {
+            margin-top: 10px;
+        }
+
+        /* Estilo del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Botones */
+        .modal-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .modal-button:hover {
+            background-color: #333;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgb(255, 115, 0);
+            border: none;
+            padding: 10px;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .close:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,7 +157,7 @@
         </div>
         <nav>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">INICIO</a></li>
+                <li><a href="/index.html" class="active">INICIO</a></li>
                 <li><a href="#para-ti">PARA TI</a></li>
                 <li class="dropdown">
                     <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
@@ -51,15 +179,269 @@
             </ul>
         </nav>
     </header>
-    <script src="scripts.js"></script>
 
+    <section id="departamentos" class="departamentos-section">
+        <div class="animated-title">
+            <div class="main-title">
+                <span class="letter">P</span>
+                <span class="letter">R</span>
+                <span class="letter">O</span>
+                <span class="letter">Y</span>
+                <span class="letter">E</span>
+                <span class="letter">C</span>
+                <span class="letter">T</span>
+                <span class="letter">O</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">B</span>
+                <span class="letter">E</span>
+                <span class="letter">N</span>
+                <span class="letter">A</span>
+                <span class="letter">V</span>
+                <span class="letter">I</span>
+                <span class="letter">D</span>
+                <span class="letter">E</span>
+                <span class="letter">S</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">2</span>
+            </div>
+            <div class="subtitle">EXCLUSIVOS DEPARTAMENTOS</div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="/Resource/PBEN2/LOBBY.jpg" alt="LOBBY" class="lobby-img">
+                <div class="card-details">
+                    <h3>LOBBY</h3>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="/Resource/PBEN2/SALA.jpg" alt="SALA-COMEDOR" class="sala-img">
+                <div class="card-details">
+                    <h3>SALA-COMEDOR</h3>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="/Resource/PBEN2/DORMITORIO.jpg" alt="DORMITORIO" class="dormitorio-img">
+                <div class="card-details">
+                    <h3>DORMITORIO PRINCIPAL</h3>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="/Resource/PBEN2/DORMITORIO_SEGUNDA.jpg" alt="DORMITORIO_SECUNDARIO" class="dormitorio-sec.-img">
+                <div class="card-details">
+                    <h3>DORMITORIO SECUNDARIO</h3>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="/Resource/PBEN2/BAÑO.jpg" alt="Baño" class="baño-img">
+                <div class="card-details">
+                    <h3>BAÑO</h3>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="/Resource/PBEN2/COCINA.jpg" alt="cocina" class="cocina-img">
+                <div class="card-details">
+                    <h3>COCINA</h3>
+                </div>
+            </div>
+        </div>
+            <!-- Lista de departamentos -->
+    <div class="departamento" onclick="openModal('departamento101')">
+        <img src="/Resource/PBEN2/DEP101/1.jpeg" alt="Departamento 101" class="departamento-img">
+        <h3>Departamento 101</h3>
+        <p>Haz clic en la imagen para ver más</p>
+    </div>
+
+    <div class="departamento" onclick="openModal('departamento202')">
+        <img src="/Resource/PBEN2/DEP202/1.jpeg" alt="Departamento 202" class="departamento-img">
+        <h3>Departamento 202</h3>
+        <p>Haz clic en la imagen para ver más</p>
+    </div>
+    <div class="departamento" onclick="openModal('departamento203')">
+        <img src="/Resource/PBEN2/DEP203/1.jpeg" alt="Departamento 203" class="departamento-img">
+        <h3>Departamento 203</h3>
+        <p>Haz clic en la imagen para ver más</p>
+    </div>
+    <div class="departamento" onclick="openModal('departamento401')">
+        <img src="/Resource/PBEN2/DEP401/1.jpeg" alt="Departamento 401" class="departamento-img">
+        <h3>Departamento 401</h3>
+        <p>Haz clic en la imagen para ver más</p>
+    </div>
+    <div class="departamento" onclick="openModal('departamento402')">
+        <img src="/Resource/PBEN2/DEP402/1.jpeg" alt="Departamento 402" class="departamento-img">
+        <h3>Departamento 402</h3>
+        <p>Haz clic en la imagen para ver más</p>
+    </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-button prev" onclick="changeImage(-1)">&#9664;</button>
+            <img id="modal-image" src="" alt="Imagen">
+            <button class="modal-button next" onclick="changeImage(1)">&#9654;</button>
+            <button class="close" onclick="closeModal()">✖</button>
+        </div>
+    </div>
+        </div>
+    </section>
+    
+
+        
+    <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+    <!-- Botón de Contacto -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+    <script src="/scripts.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animation timeline
+            anime.timeline({loop: false})
+            .add({
+                targets: '.letter',
+                scale: [0, 1],
+                duration: 1500,
+                elasticity: 600,
+                delay: (el, i) => 70 * (i+1),
+                opacity: {
+                    value: 1,
+                    duration: 1,
+                    delay: (el, i) => 70 * (i+1)
+                },
+                rotate: {
+                    value: [-360, 0],
+                    duration: 1500,
+                    easing: 'easeOutElastic'
+                }
+            }).add({
+                targets: '.subtitle',
+                opacity: [0, 1],
+                duration: 1000,
+                translateY: [20, 0],
+                easing: 'easeOutExpo',
+                offset: '-=1000'
+            });
+
+            // Hover effects
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach(letter => {
+                letter.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: letter,
+                        scale: 1.2,
+                        rotate: '15deg',
+                        duration: 300,
+                        color: '#007bff',
+                        textShadow: '0 0 10px rgba(0,123,255,0.5)'
+                    });
+                });
+                
+                letter.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: letter,
+                        scale: 1,
+                        rotate: '0deg',
+                        duration: 300,
+                        color: '#333',
+                        textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
+                    });
+                });
+            });
+        });
+
         window.addEventListener('load', function () {
             document.body.classList.add('loaded');
         });
+
+        const images = {
+            'departamento101': [
+                '/Resource/PBEN2/DEP101/1.jpeg',
+                '/Resource/PBEN2/DEP101/2.jpeg',
+                '/Resource/PBEN2/DEP101/3.jpeg',
+                '/Resource/PBEN2/DEP101/4.jpeg'
+            ],
+            'departamento202': [
+                '/Resource/PBEN2/DEP202/1.jpeg',
+                '/Resource/PBEN2/DEP202/2.jpeg',
+                '/Resource/PBEN2/DEP202/3.jpeg',
+                '/Resource/PBEN2/DEP202/4.jpeg',
+                '/Resource/PBEN2/DEP202/5.jpeg',
+                '/Resource/PBEN2/DEP202/6.jpeg',
+                '/Resource/PBEN2/DEP202/7.jpeg'
+            ],
+            'departamento203': [
+                '/Resource/PBEN2/DEP203/1.jpeg',
+                '/Resource/PBEN2/DEP203/2.jpeg',
+                '/Resource/PBEN2/DEP203/3.jpeg',
+                '/Resource/PBEN2/DEP203/4.jpeg',
+                '/Resource/PBEN2/DEP203/5.jpeg',
+                '/Resource/PBEN2/DEP203/6.jpeg',
+                '/Resource/PBEN2/DEP203/7.jpeg'
+            ],
+            'departamento401': [
+                '/Resource/PBEN2/DEP401/1.jpeg',
+                '/Resource/PBEN2/DEP401/2.jpeg',
+                '/Resource/PBEN2/DEP401/3.jpeg',
+                '/Resource/PBEN2/DEP401/4.jpeg',
+                '/Resource/PBEN2/DEP401/5.jpeg',
+                '/Resource/PBEN2/DEP401/6.jpeg',
+                '/Resource/PBEN2/DEP401/7.jpeg'
+            ],
+            'departamento402': [
+                '/Resource/PBEN2/DEP402/1.jpeg',
+                '/Resource/PBEN2/DEP402/2.jpeg',
+                '/Resource/PBEN2/DEP402/3.jpeg',
+                '/Resource/PBEN2/DEP402/4.jpeg',
+                '/Resource/PBEN2/DEP402/5.jpeg',
+                '/Resource/PBEN2/DEP402/6.jpeg',
+                '/Resource/PBEN2/DEP402/7.jpeg'
+            ]
+        };
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function openModal(departamento) {
+            currentImages = images[departamento];
+            currentIndex = 0;
+            updateModalImage();
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            document.getElementById('modal-image').src = currentImages[currentIndex];
+        }
     </script>
-    
-    </body>
-    
+
+    <div class="separator"></div>
+       
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
+            <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
+            <p>Construyendo sueños con pasión y calidad.</p>
+        </div>
+        
+        <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+    </footer>
+</body>
 </html>
+
+

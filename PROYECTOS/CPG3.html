@@ -1,131 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>POLYLINE - Constructora</title>
-        <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    <body>
-        <header>
-            <div class="logo-container">
-                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
-                <h1 class="company-name">POLYLINE</h1>
-                <p class="slogan">CONSTRUCTORA</p>
-            </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="/index.html" class="active">INICIO</a></li>
-                    <li><a href="/index.html">PARA TI</a></li>
-                    <li class="dropdown">
-                        <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
-                            <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
-                            <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
-                            <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Contact/Información.html">Información</a></li>
-                            <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
-                            
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Casa de Playa del Golf 3</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan">CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="active">INICIO</a></li>
+                <li><a href="/index.html">PARA TI</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="inicio" style="position: relative; height: 80vh; display: flex; justify-content: space-between; align-items: center;">
+    <section id="inicio" class="property-showcase">
         <!-- Contenedor de las imágenes (a la izquierda) -->
-        <div id="image-container" style="position: relative; width: 50%; height: 80%; overflow: hidden; margin-left: 40px;">
-            <!-- Imágenes del proyecto con borde redondeado -->
-            <img src="/Resource/CPG3/proyecto3.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; z-index: -1;">
-            <img src="/Resource/CPG3/1.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 100%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
-            <img src="/Resource/CPG3/2.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 200%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
-            <img src="/Resource/CPG3/3.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 300%; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: opacity 1s ease;">
-            
-            <!-- Flechas para controlar las imágenes -->
-            <div class="arrow left" onclick="changeImage('prev')" style="position: absolute; top: 50%; left: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10094;</div>
-            <div class="arrow right" onclick="changeImage('next')" style="position: absolute; top: 50%; right: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10095;</div>
-        </div>
-    
-        <!-- Contenido de la sección (a la derecha) -->
-        <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; text-align: left; height: 100%; color: #000000; padding: 20px; z-index: 1; width: 55%; margin-left: 20px;">
-            <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; background-color: rgba(255, 255, 255, 0.6); padding: 10px 20px; border-radius: 8px;">
-                Casa de Playa del Golf 3
-            </h2>
-            <div class="content">
-                <h3>Primer Piso</h2>
-                <ul>
-                    <li class= "large-text"><i class="fas fa-broom"></i> Área de servicio y lavandería</li>
-                </ul>
-                <h3>Segundo Piso</h2>
-                <ul>
-                    <li class= "large-text"><i class="fas fa-bed"></i> 3 dormitorios, cada uno con baño</li>
-                </ul>
-                <h3>Tercer Piso</h2>
-                <ul>
-                    <li class= "large-text"><i class="fas fa-couch"></i> Sala</li>
-                    <li class= "large-text"><i class="fas fa-utensils"></i> Comedor / Cocina</li>
-                    <li class= "large-text"><i class="fas fa-fire"></i> Terraza con parrilla</li>
-                    <li class= "large-text"><i class="fas fa-swimming-pool"></i> Piscina</li>
-                </ul>
-                <h3>Cuarto Piso</h2>
-                <ul>
-                    <li class= "large-text"><i class="fas fa-bed"></i> Suite principal con baño completo</li>
-                    <li class= "large-text"><i class="fas fa-bed"></i> Cama king</li>
-                    <li class= "large-text"><i class="fas fa-umbrella-beach"></i> Terraza</li>
-                </ul>
+        <div class="image-gallery">
+            <div class="image-slider">
+                <img src="/Resource/CPG3/proyecto3.jpg" alt="Vista principal" class="slider-image active">
+                <img src="/Resource/CPG3/1.jpg" alt="Interior 1" class="slider-image">
+                <img src="/Resource/CPG3/2.jpg" alt="Interior 2" class="slider-image">
+                <img src="/Resource/CPG3/3.jpg" alt="Interior 3" class="slider-image">
+            </div>
+            <div class="image-controls">
+                <button class="nav-btn prev-btn" onclick="changeImage('prev')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="image-dots">
+                    <span class="dot active" onclick="goToImage(0)"></span>
+                    <span class="dot" onclick="goToImage(1)"></span>
+                    <span class="dot" onclick="goToImage(2)"></span>
+                    <span class="dot" onclick="goToImage(3)"></span>
+                </div>
+                <button class="nav-btn next-btn" onclick="changeImage('next')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
-        
+
+        <!-- Contenido de la descripción (a la derecha) -->
+        <div class="property-details">
+            <h2 class="property-title">Casa de Playa del Golf 3</h2>
+            <div class="property-features">
+                <div class="feature-item">
+                    <i class="fa fa-building"></i>
+                    <div class="feature-text">
+                        <h4>Primer Piso</h4>
+                        <p>Área de servicio y lavandería</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-bed"></i>
+                    <div class="feature-text">
+                        <h4>Segundo Piso</h4>
+                        <p>3 dormitorios, cada uno con baño propio</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-couch"></i>
+                    <div class="feature-text">
+                        <h4>Tercer Piso</h4>
+                        <p>Sala y áreas sociales</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-ruler-combined"></i>
+                    <div class="feature-text">
+                        <h4>Área</h4>
+                        <p>220 m² de área construida</p>
+                    </div>
+                </div>
+            </div>
+            <div class="property-description">
+                <p>Moderna casa de playa distribuida en tres niveles, perfecta para familias que valoran la privacidad y el confort. Diseñada con una distribución inteligente que separa las áreas sociales de las privadas, ofreciendo vistas privilegiadas al Golf desde sus terrazas.</p>
+            </div>
+            <button class="contact-now-btn">
+                Contactar ahora
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
     </section>
-    
 
-<script>
-    let currentImageIndex = 0;
-    const images = document.querySelectorAll('.project-image');
-    const totalImages = images.length;
+    <script>
+        // Variables para el control del slider
+        let currentImage = 0;
+        const images = document.querySelectorAll('.slider-image');
+        const dots = document.querySelectorAll('.dot');
 
-    // Cambiar la imagen automáticamente cada 1 segundo
-    setInterval(() => {
-        changeImage('next');
-    }, 2000);
+        // Función para cambiar la imagen con animación
+        function changeImage(direction) {
+            const nextImage = direction === 'next' 
+                ? (currentImage + 1) % images.length 
+                : (currentImage - 1 + images.length) % images.length;
+            
+            // Animación de salida
+            anime({
+                targets: images[currentImage],
+                opacity: [1, 0],
+                translateX: direction === 'next' ? [-0, -100] : [0, 100],
+                easing: 'easeInOutQuad',
+                duration: 600
+            });
 
-    // Función para cambiar la imagen
-    function changeImage(direction) {
-        // Ocultar la imagen actual con la transición suave
-        images[currentImageIndex].style.left = `${currentImageIndex * 100}%`;
-        
-        // Actualizar el índice de la imagen
-        if (direction === 'next') {
-            currentImageIndex = (currentImageIndex + 1) % totalImages;
-        } else {
-            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            // Animación de entrada
+            anime({
+                targets: images[nextImage],
+                opacity: [0, 1],
+                translateX: direction === 'next' ? [100, 0] : [-100, 0],
+                easing: 'easeInOutQuad',
+                duration: 600
+            });
+
+            // Actualizar clases activas
+            images[currentImage].classList.remove('active');
+            images[nextImage].classList.add('active');
+            dots[currentImage].classList.remove('active');
+            dots[nextImage].classList.add('active');
+            
+            currentImage = nextImage;
         }
 
-        // Mostrar la nueva imagen con transición suave
-        images[currentImageIndex].style.left = '0';
-    }
-</script>
+        // Función para ir a una imagen específica
+        function goToImage(index) {
+            if (index === currentImage) return;
+            changeImage(index > currentImage ? 'next' : 'prev');
+        }
 
-<!-- BOTON DE CONTACTO ----------------->
-</section>
-<button class="contact-button" onclick="toggleContactOptions()">💬</button>
+        // Animación inicial de los elementos
+        window.addEventListener('load', () => {
+            // Animar título
+            anime({
+                targets: '.property-title',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 1000,
+                easing: 'easeOutExpo'
+            });
 
-<!-- Opciones de contacto desplegables -->
-<div class="contact-options" id="contact-options">
-    <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-    <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-</div>
+            // Animar características
+            anime({
+                targets: '.feature-item',
+                opacity: [0, 1],
+                translateX: [20, 0],
+                delay: anime.stagger(100),
+                duration: 800,
+                easing: 'easeOutQuad'
+            });
 
-<script src="scripts.js"></script>
+            // Animar descripción
+            anime({
+                targets: '.property-description',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 1000,
+                delay: 500,
+                easing: 'easeOutExpo'
+            });
+        });
+    </script>
 
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+    <!-- BOTON DE CONTACTO -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
 
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+    <script src="/scripts.js"></script>
 </body>
 </html>
