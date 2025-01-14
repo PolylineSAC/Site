@@ -5,23 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POLYLINE - Constructora</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
         /* Estilos para el contenedor del Calendly */
         .calendly-container {
-            background-color: #f1f1f1; /* Color de fondo suave */
-            border-radius: 15px; /* Bordes redondeados */
-            padding: 20px; /* Espaciado interno */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-            max-width: 900px; /* Tamaño máximo */
-            margin: 0 auto; /* Centrado en la página */
-            overflow: hidden; /* Asegura que el contenido no se desborde */
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 3rem auto;
+            max-width: 1200px;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        /* Opcional: Ajustar el iframe para que ocupe todo el espacio disponible dentro del contenedor */
-        .calendly-container iframe {
-            width: 100%;
-            height: 800px; /* Ajustar el tamaño del calendario */
+        .calendly-container.active {
+            display: block;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .tipo-reunion {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .tipo-reunion h3 {
+            font-size: 2em;
+            margin-bottom: 1rem;
+            color: #ff6b00;
+        }
+
+        .tipo-reunion p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .beneficios-reunion {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .beneficio {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .beneficio i {
+            font-size: 2.5em;
+            color: #ff6b00;
+            margin-bottom: 1rem;
+        }
+
+        .beneficio h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .beneficio p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
             border: none;
+            font-size: 1.5em;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover {
+            color: #ff6b00;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .contenido-agenda {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .botones-agenda {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .boton-agenda {
+            position: relative;
+            padding: 1rem 2rem;
+            font-size: 1.2em;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(45deg, #ff6b00, #ff9d00);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .boton-agenda:hover {
+            transform: translateY(-5px);
+        }
+
+        .boton-agenda::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .boton-agenda:hover::before {
+            left: 100%;
+        }
+
+        .boton-agenda i {
+            margin-right: 10px;
+        }
+
+        .calendly-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .calendly-iframe-container iframe {
+            width: 100%;
+            height: 1000px; /* Altura mayor para asegurar que se vea todo el contenido */
+            border: none;
+            transform: translateY(-150px); /* Ajusta este valor según necesites */
+        }
+
+        /* Ocultar el powered by Calendly */
+        .calendly-iframe-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px; /* Ajusta según la altura del footer de Calendly */
+            background: white;
+            z-index: 10;
         }
     </style>
 </head>
@@ -57,51 +255,135 @@
     </header>
 
     <main>
-        <!-- Sección de Agendar Reuniones con Botones -->
-        <section id="contacto" style="position: relative; height: 80vh; overflow: hidden;">
-            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+        <section class="hero-section">
+            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
                 <source src="/Resource/Equipo/background_Agendar.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
             </video>
+            <div class="video-overlay"></div>
             <div class="contenido-agenda">
-                <h2 class="hero-title">Agenda una reunión con nosotros</h2>
-                <p class="hero-subtitle">Queremos ayudarte a construir tus sueños.</p>
+                <h2 class="hero-title">Agenda una Reunión con Nosotros</h2>
+                <p class="hero-subtitle">Estamos aquí para ayudarte a hacer realidad tus proyectos</p>
                 <div class="botones-agenda">
-                    <a href="#" onclick="mostrarCalendly('remoto')" class="boton-agenda">Agendar Reunión Remota</a>
-                    <a href="#" onclick="mostrarCalendly('presencial')" class="boton-agenda">Agendar Reunión Presencial</a>
+                    <a href="#" onclick="mostrarCalendly('remoto')" class="boton-agenda">
+                        <i class="fas fa-video"></i>Reunión Virtual
+                    </a>
+                    <a href="#" onclick="mostrarCalendly('presencial')" class="boton-agenda">
+                        <i class="fas fa-handshake"></i>Reunión Presencial
+                    </a>
                 </div>
             </div>
         </section>
 
         <section id="calendly-remoto" class="calendly-container">
-            <iframe src="https://calendly.com/jhostingrivas100?locale=es" frameborder="0"></iframe>
-            <div class="overlay-cover"></div> 
+            <button class="close-button" onclick="cerrarCalendly('remoto')">×</button>
+            <div class="tipo-reunion">
+                <h3>Reunión Virtual</h3>
+                <p>Agenda una videollamada con nuestro equipo desde la comodidad de tu hogar u oficina.</p>
+            </div>
+            <div class="beneficios-reunion">
+                <div class="beneficio">
+                    <i class="fas fa-clock"></i>
+                    <h4>Ahorra Tiempo</h4>
+                    <p>Sin necesidad de desplazarte</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-laptop"></i>
+                    <h4>Presentación Digital</h4>
+                    <p>Compartiremos toda la información en tiempo real</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-comments"></i>
+                    <h4>Comunicación Efectiva</h4>
+                    <p>Resuelve todas tus dudas en directo</p>
+                </div>
+            </div>
+            <div class="calendly-iframe-container">
+                <iframe src="https://calendly.com/jhostingrivas100/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=1" frameborder="0"></iframe>
+            </div>
         </section>
 
         <section id="calendly-presencial" class="calendly-container">
-            <iframe src="https://calendly.com/jhostingrivas100?locale=es&presencial=true" frameborder="0"></iframe>
-            <div class="overlay-cover"></div> 
+            <button class="close-button" onclick="cerrarCalendly('presencial')">×</button>
+            <div class="tipo-reunion">
+                <h3>Reunión Presencial</h3>
+                <p>Visítanos en nuestras oficinas para conocer más sobre nuestros proyectos.</p>
+            </div>
+            <div class="beneficios-reunion">
+                <div class="beneficio">
+                    <i class="fas fa-building"></i>
+                    <h4>Conoce Nuestras Instalaciones</h4>
+                    <p>Visita nuestra oficina principal</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h4>Ubicación Céntrica</h4>
+                    <p>Fácil acceso y estacionamiento disponible</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-file-contract"></i>
+                    <h4>Documentación Física</h4>
+                    <p>Revisa todos los detalles en persona</p>
+                </div>
+            </div>
+            <div class="calendly-iframe-container">
+                <iframe src="https://calendly.com/jhostingrivas100/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=1&presencial=true" frameborder="0"></iframe>
+            </div>
         </section>
 
         <script>
+            // Animación inicial
+            window.addEventListener('load', () => {
+                anime({
+                    targets: '.contenido-agenda',
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: 1500,
+                    easing: 'easeOutExpo'
+                });
+            });
+
             function mostrarCalendly(tipo) {
+                // Ocultar ambos calendarios
                 document.getElementById('calendly-remoto').style.display = 'none';
                 document.getElementById('calendly-presencial').style.display = 'none';
-                document.getElementById(`calendly-${tipo}`).style.display = 'block';
-                window.scrollTo(0, document.getElementById(`calendly-${tipo}`).offsetTop);
+                
+                // Mostrar el calendario seleccionado
+                const calendlyElement = document.getElementById(`calendly-${tipo}`);
+                calendlyElement.style.display = 'block';
+                
+                // Animar la aparición
+                anime({
+                    targets: calendlyElement,
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: 800,
+                    easing: 'easeOutQuad'
+                });
+
+                // Scroll suave hasta el calendario
+                calendlyElement.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function cerrarCalendly(tipo) {
+                const calendlyElement = document.getElementById(`calendly-${tipo}`);
+                
+                anime({
+                    targets: calendlyElement,
+                    opacity: 0,
+                    translateY: 30,
+                    duration: 500,
+                    easing: 'easeOutQuad',
+                    complete: function() {
+                        calendlyElement.style.display = 'none';
+                    }
+                });
             }
         </script>
-
-
-
-
-        
-        
-
     </main>
 
     <footer>
-        <p>© 2024 POLYLINE una CONSTRUCTORA. Todos los derechos reservados.</p>
+        <p> 2024 POLYLINE una CONSTRUCTORA. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>

@@ -142,22 +142,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Manejo del formulario
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Animación al enviar
-        anime({
-            targets: '.login-btn',
-            scale: [1, 0.95, 1],
-            duration: 300,
-            easing: 'easeInOutQuad'
-        });
-
-        // Aquí iría la lógica de autenticación
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        
-        console.log('Intento de login:', { email, password });
+        const errorElement = document.getElementById('error-message');
+
+        try {
+            const result = await loginUser(email, password);
+            if (result.success) {
+                errorElement.style.color = '#4CAF50';
+                errorElement.textContent = '¡Login exitoso! Redirigiendo...';
+                
+                // Guardar el nombre del usuario
+                if (result.userData && result.userData.name) {
+                    sessionStorage.setItem('userName', result.userData.name);
+                }
+                
+                setTimeout(() => {
+                    window.location.href = '/index.html';
+                }, 2000);
+            } else {
+                errorElement.style.color = '#ff0000';
+                errorElement.textContent = result.error;
+            }
+        } catch (error) {
+            errorElement.style.color = '#ff0000';
+            errorElement.textContent = 'Error al iniciar sesión';
+        }
     });
 
     // Manejar el botón de continuar
@@ -176,4 +189,83 @@ document.addEventListener('DOMContentLoaded', () => {
         socialForm.style.display = 'none';
         loginForm.style.display = 'block';
     });
+
+    document.getElementById('showLogin').addEventListener('click', () => {
+        const container = document.querySelector('.toggle-buttons');
+        container.dataset.active = 'login';
+        
+        document.getElementById('loginForm').classList.add('active-form');
+        document.getElementById('registerForm').classList.remove('active-form');
+        document.getElementById('showLogin').classList.add('active');
+        document.getElementById('showRegister').classList.remove('active');
+    });
+
+    document.getElementById('showRegister').addEventListener('click', () => {
+        const container = document.querySelector('.toggle-buttons');
+        container.dataset.active = 'register';
+        
+        document.getElementById('registerForm').classList.add('active-form');
+        document.getElementById('loginForm').classList.remove('active-form');
+        document.getElementById('showRegister').classList.add('active');
+        document.getElementById('showLogin').classList.remove('active');
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const errorElement = document.getElementById('reg-error-message');
+    
+        // Validaciones básicas
+        if (!name || !email || !password) {
+            errorElement.textContent = "Todos los campos son obligatorios";
+            return;
+        }
+    
+        if (password.length < 6) {
+            errorElement.textContent = "La contraseña debe tener al menos 6 caracteres";
+            return;
+        }
+    
+        try {
+            const result = await registerNewUser(name, email, password);
+            if (result.success) {
+                errorElement.style.color = '#4CAF50';
+                errorElement.textContent = '¡Registro exitoso! Redirigiendo...';
+                setTimeout(() => {
+                    window.location.href = '/index.html';
+                }, 2000);
+            } else {
+                errorElement.style.color = '#ff0000';
+                errorElement.textContent = result.error;
+            }
+        } catch (error) {
+            errorElement.style.color = '#ff0000';
+            errorElement.textContent = error.message;
+        }
+    });
 });
+
+const showLogin = () => {
+    document.getElementById('loginForm').style.transform = 'translateX(0)';
+    document.getElementById('registerForm').style.transform = 'translateX(100%)';
+    // Reiniciar las animaciones de los inputs
+    document.querySelectorAll('#loginForm .input-group').forEach(input => {
+        input.style.animation = 'none';
+        input.offsetHeight; // Trigger reflow
+        input.style.animation = null;
+    });
+};
+
+const showRegister = () => {
+    document.getElementById('loginForm').style.transform = 'translateX(-100%)';
+    document.getElementById('registerForm').style.transform = 'translateX(0)';
+    // Reiniciar las animaciones de los inputs
+    document.querySelectorAll('#registerForm .input-group').forEach(input => {
+        input.style.animation = 'none';
+        input.offsetHeight; // Trigger reflow
+        input.style.animation = null;
+    });
+};

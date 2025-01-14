@@ -6,8 +6,186 @@
     <title>POLYLINE - Constructora</title>
     <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            background-image: url('/Resource/Equipo/background-info.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            color: #ffffff;
+        }
+
+        .hero-title {
+            font-size: 4em;
+            margin-bottom: 0.5em;
+            opacity: 0;
+            transform: translateY(50px);
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            opacity: 0;
+            transform: translateY(30px);
+            color: #ffffff;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card h2 {
+            color: #333333;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b00, #ff9d00);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card {
+            background: #dedede;
+        }
+
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .team-member {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            opacity: 0;
+            transform: scale(0.8);
+            background: #ffffff;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(51, 51, 51, 0.9);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .member-info h3 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-info p {
+            color: #ff6b00;
+            margin: 0;
+        }
+
+        .team-member:hover .member-info {
+            transform: translateY(0);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: #dedede;
+            border-radius: 15px;
+            margin: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff6b00;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #333333;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            color: #333;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5em;
+        }
+
+        .contact-button {
+            background: linear-gradient(45deg, #ff6b00, #ff9d00);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -40,197 +218,192 @@
         </nav>
     </header>
     
-    <section id="inicio" style="position: relative; height: 80vh; overflow: hidden; background-image: url('/Resource/Equipo/background-info.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-        <!-- Contenido de la sección -->
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
-            <h2 class="hero-title">INFORMATE</h2>
-            <p class="hero-subtitle">Obtén más información sobre nosotros y nuestros proyectos.</p>
+    <section id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">Información</h2>
+            <p class="hero-subtitle">Conoce más sobre nosotros y nuestro trabajo</p>
         </div>
     </section>
-    <div class="separator"></div>
-    <section id="informacion" style="padding: 50px; background-color: #f9f9f9; text-align: center;">
-        <div class="informacion-content">
-            <h2 style="color: #333;">Información de la Empresa</h2>
-            <p style="color: #666; font-size: 1.2em;">
-                Polyline SAC es una empresa constructora con más de 20 años de experiencia, especializada en proyectos inmobiliarios de alta calidad. Iniciamos nuestras actividades en marzo de 2002 y desde entonces hemos entregado más de 50 proyectos, todos ellos enfocados en brindar soluciones innovadoras y sostenibles para nuestros clientes.
-            </p>
+
+    <section class="stats-container">
+        <div class="stat-item">
+            <div class="stat-number" data-target="20">0</div>
+            <div class="stat-label">Años de Experiencia</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="50">0</div>
+            <div class="stat-label">Proyectos Completados</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">Clientes Satisfechos</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="30">0</div>
+            <div class="stat-label">Profesionales</div>
         </div>
     </section>
-    <div class="separator"></div>
-    <section id="informacion" style="padding: 50px; background-color: #f9f9f9; text-align: center;">
-        <div class="informacion-content">
-            <h2 style="color: #333;"> MISIÓN</h2>
-            <p style="color: #666; font-size: 1.2em;">
-              Asesoramiento integral, a personas y empresas, que permita solucionar todas sus necesidades relacionadas con el mercado inmobiliario. 
-            </p>
-        </div>
+
+    <section class="info-card">
+        <h2>Información de la Empresa</h2>
+        <p>Polyline SAC es una empresa constructora con más de 20 años de experiencia, especializada en proyectos inmobiliarios de alta calidad. Iniciamos nuestras actividades en marzo de 2002 y desde entonces hemos entregado más de 50 proyectos, todos ellos enfocados en brindar soluciones innovadoras y sostenibles para nuestros clientes.</p>
     </section>
-    <div class="separator"></div>
-    <section id="informacion" style="padding: 50px; background-color: #f9f9f9; text-align: center;">
-        <div class="informacion-content">
-            <h2 style="color: #333;"> VISIÓN</h2>
-            <p style="color: #666; font-size: 1.2em;">
-              Desarrollar proyectos de  viviendas con calidad Arquitectónica : Muy buena iluminación , ventilación, buenos acabados, que haga  de la vivienda, una experiencia para toda su vida.
-            </p>
-        </div>
+
+    <section class="info-card">
+        <h2>MISIÓN</h2>
+        <p>Asesoramiento integral, a personas y empresas, que permita solucionar todas sus necesidades relacionadas con el mercado inmobiliario.</p>
     </section>
-    <!-- Sección del equipo -->
-    <section id="equipo" style="padding: 50px 0; background-color: #fff; text-align: center;">
-        <h2 style="color: #333; margin-bottom: 40px;">Conoce a Nuestro Equipo</h2>
+
+    <section class="info-card">
+        <h2>VISIÓN</h2>
+        <p>Desarrollar proyectos de viviendas con calidad Arquitectónica: Muy buena iluminación, ventilación, buenos acabados, que haga de la vivienda, una experiencia para toda su vida.</p>
+    </section>
+
+    <section id="equipo">
+        <h2 class="section-title">Nuestro Equipo</h2>
         <div class="team-section">
-            <!-- Miembro 1 -->
             <div class="team-member">
                 <img src="/Resource/Equipo/carlos-valdivia.jpg" alt="Carlos Valdivia">
-                <h3>Carlos Valdivia</h3>
-                <p>Ing. Mecánico Electricista</p>
+                <div class="member-info">
+                    <h3>Carlos Valdivia</h3>
+                    <p>Ing. Mecánico Electricista</p>
+                </div>
             </div>
 
-            <!-- Miembro 2 -->
             <div class="team-member">
                 <img src="/Resource/Equipo/luis-salas.jpg" alt="Luis Salas">
-                <h3>Luis Salas</h3>
-                <p>Arquitecto</p>
+                <div class="member-info">
+                    <h3>Luis Salas</h3>
+                    <p>Arquitecto</p>
+                </div>
             </div>
 
-            <!-- Miembro 3 -->
             <div class="team-member">
                 <img src="/Resource/Equipo/juan-valenzuela.jpg" alt="Juan Valenzuela">
-                <h3>Juan Valenzuela</h3>
-                <p>Ingeniero</p>
+                <div class="member-info">
+                    <h3>Juan Valenzuela</h3>
+                    <p>Ingeniero</p>
+                </div>
             </div>
 
-            <!-- Miembro 4 -->
             <div class="team-member">
                 <img src="/Resource/Equipo/robert-rose.jpg" alt="Robert Rose">
-                <h3>Robert Rose</h3>
-                <p>Product Designer</p>
+                <div class="member-info">
+                    <h3>Robert Rose</h3>
+                    <p>Product Designer</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección de ubicación -->
-    <section id="ubicacion" style="padding: 50px 0; background-color: #f4f4f4; text-align: center;">
-        <h2 style="color: #333; margin-bottom: 40px;">Nos Ubicamos en</h2>
-        <p style="font-size: 1.2em; color: #666;">Av. Óscar R. Benavides, Lima</p>
-        <div class="google-map">
-            <iframe src="https://www.google.com/maps/embed/v1/place?q=Av.%20%C3%93scar%20R.%20Benavides,%20Lima&key=AIzaSyC5GN_erCBHDs1cUtj2unzCuevpDtQHC04" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <section class="location-section">
+        <h2 class="section-title">Nuestra Ubicación</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed/v1/place?q=Av.%20%C3%93scar%20R.%20Benavides,%20Lima&key=AIzaSyC5GN_erCBHDs1cUtj2unzCuevpDtQHC04" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </section>
-    <div class="button-container">
-    
-        <div class="dropdown">
-            
-          <button>Contáctanos</button>
-          
-          <div class="dropdown-content">
-        <h2>POLYLINE CONSTRUCTORA</h2>
-        <textarea id="mensaje" rows="1" placeholder="Escribe tu mensaje aquí"></textarea>
-        <button onclick="enviarMensaje()">Enviar</button>
-        
-        <script>
-          function enviarMensaje() {
-            const textarea = document.getElementById("mensaje");
-            if (textarea.value.trim() === "") {
-              alert("Por favor, escribe un mensaje antes de enviarlo.");
-            } else {
-              alert("Mensaje enviado correctamente");
-            }
-          }
-        </script>
-        
-          
-          <a href="https://wa.me/51944436004" target="_blank">Contactar por WhatsApp</a>
-          </div>
-        </div>
-      </div>
-      <script>
-        const form = document.getElementById('contactForm');
-    const nameField = document.getElementById('name');
-    const emailField = document.getElementById('email');
-    const nameError = document.getElementById('nameError');
-    const emailError = document.getElementById('emailError');
-    
-    form.addEventListener('submit', function(event) {
-      let isValid = true;
-    
-      // Validar campo de nombre
-      if (nameField.value.trim() === '') {
-        nameField.classList.add('error');
-        nameError.textContent = 'Ingrese el nombre correctamente';
-        isValid = false;
-      } else {
-        nameField.classList.remove('error');
-        nameError.textContent = '';
-      }
-    
-      // Validar campo de email
-      if (emailField.value.trim() === '' || !emailField.value.includes('@') ) {
-        emailField.classList.add('error');
-        emailError.textContent = emailField.value.trim() === '' 
-          ? 'El campo de correo no puede estar vacío' 
-          : 'Incluya un signo "@" en la dirección de correo electrónico'
-        isValid = false;
-      } else {
-        emailField.classList.remove('error');
-        emailError.textContent = '';
-      }
-      if (emailField.value.trim() === '' || !emailField.value.includes('.com') ) {
-        emailField.classList.add('error');
-        emailError.textContent = emailField.value.trim() === '' 
-          ? 'El campo de correo no puede estar vacío' 
-          : 'Incluya un signo ".com" en la dirección de correo electrónico'
-        isValid = false;
-      } else {
-        emailField.classList.remove('error');
-        emailError.textContent = '';
-      }
-    
-      // Evitar envío si no es válido
-      if (!isValid) {
-        event.preventDefault(); // Evitar el envío del formulario
-      }
-    });
-    
-    // Eliminar mensaje de error mientras el usuario escribe
-    nameField.addEventListener('input', () => {
-      nameField.classList.remove('error');
-      nameError.textContent = '';
-    });
-    
-    emailField.addEventListener('input', () => {
-      emailField.classList.remove('error');
-      emailError.textContent = '';
-    });
-    
-      </script>
 
-
-      <!-- Botón de modo oscuro -->
-      <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
-
-
-      <!-- Botón de Contacto -->
-      <button class="contact-button" onclick="toggleContactOptions()">💬</button>
-
-
-
-      <!-- Opciones de contacto desplegables -->
-      <div class="contact-options" id="contact-options">
-          <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-          <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-          <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-      </div>
-      <script src="/scripts.js"></script>
-
+    <div class="floating-contact">
+        <button class="contact-button" onclick="toggleContactOptions()">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
 
     <script>
-        window.addEventListener('load', function () {
-            document.body.classList.add('loaded');
+        // Animación del héroe
+        window.addEventListener('load', () => {
+            anime({
+                targets: '.hero-title',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 1500,
+                easing: 'easeOutExpo'
+            });
+
+            anime({
+                targets: '.hero-subtitle',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 1500,
+                delay: 500,
+                easing: 'easeOutExpo'
+            });
+
+            // Animación de las tarjetas de información
+            anime({
+                targets: '.info-card',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 1000,
+                delay: anime.stagger(200),
+                easing: 'easeOutQuad'
+            });
+
+            // Animación de los miembros del equipo
+            anime({
+                targets: '.team-member',
+                opacity: [0, 1],
+                scale: [0.8, 1],
+                duration: 1000,
+                delay: anime.stagger(200),
+                easing: 'easeOutElastic(1, .5)'
+            });
+
+            // Animación del contenedor del mapa
+            anime({
+                targets: '.map-container',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 1000,
+                easing: 'easeOutQuad'
+            });
+
+            // Animación del contenedor de estadísticas
+            anime({
+                targets: '.stats-container',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 1000,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Animación de los números de estadísticas
+        const stats = document.querySelectorAll('.stat-number');
+        stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 50; // Velocidad de la animación
+            const updateCount = () => {
+                if(current < target) {
+                    current += increment;
+                    stat.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    stat.textContent = target;
+                }
+            };
+            
+            // Iniciar la animación cuando el elemento sea visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(stat);
+        });
+
+        // Efecto parallax en el héroe
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
     </script>
-
 </body>
 </html>
-
-
-
