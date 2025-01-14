@@ -46,6 +46,8 @@
                 <div class="image-slider">
                     <img src="/Resource/CPG5/proyecto5.jpg" alt="Vista principal" class="slider-image active">
                     <img src="/Resource/CPG5/1.jpg" alt="Interior 1" class="slider-image">
+                    <img src="/Resource/CPG5/2.jpg" alt="Interior 2" class="slider-image">
+                    <img src="/Resource/CPG5/3.jpg" alt="Interior 3" class="slider-image">
                 </div>
                 <div class="image-controls">
                     <button class="nav-btn prev-btn" onclick="changeImage('prev')">
@@ -66,143 +68,89 @@
                 <h2 class="property-title">Casa de Playa del Golf 5</h2>
                 <div class="property-features">
                     <div class="feature-item">
-                        <i class="fa fa-building"></i>
-                        <div class="feature-text">
-                            <h4>Niveles</h4>
-                            <p>3 pisos con vistas</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
                         <i class="fa fa-bed"></i>
                         <div class="feature-text">
                             <h4>Dormitorios</h4>
-                            <p>4 dormitorios con baño</p>
+                            <p>6 dormitorios con vista al mar</p>
                         </div>
                     </div>
                     <div class="feature-item">
                         <i class="fa fa-swimming-pool"></i>
                         <div class="feature-text">
-                            <h4>Piscina</h4>
-                            <p>Piscina en azotea</p>
+                            <h4>Piscina Infinita</h4>
+                            <p>Piscina infinita con vista panorámica</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <i class="fa fa-umbrella-beach"></i>
+                        <i class="fa fa-home"></i>
                         <div class="feature-text">
-                            <h4>Terrazas</h4>
-                            <p>Múltiples terrazas</p>
+                            <h4>Terraza</h4>
+                            <p>Terraza panorámica de 100m²</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa fa-ruler-combined"></i>
+                        <div class="feature-text">
+                            <h4>Área</h4>
+                            <p>300 m² de área construida</p>
                         </div>
                     </div>
                 </div>
                 <div class="property-description">
-                    <p>Exclusiva casa de playa de 3 niveles con 4 dormitorios, cada uno con baño propio. Cuenta con amplias áreas sociales que incluyen sala, comedor y cocina. Disfrute de múltiples terrazas y una espectacular piscina en la azotea con área de parrilla. Completamente equipada con aire acondicionado y área de servicio.</p>
+                    <p>Excepcional residencia de playa con vistas panorámicas al océano. Diseño contemporáneo que maximiza la luz natural y las vistas al mar. Acabados de lujo, amplios espacios sociales y comodidades premium para una vida costera exclusiva.</p>
                 </div>
-                <button class="contact-now-btn">
+                <button class="contact-now-btn" onclick="openContactModal()">
                     Contactar ahora
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
         </section>
 
-        <script>
-            // Variables para el control del slider
-            let currentImage = 0;
-            const images = document.querySelectorAll('.slider-image');
-            const dots = document.querySelectorAll('.dot');
-
-            // Función para cambiar la imagen con animación
-            function changeImage(direction) {
-                const nextImage = direction === 'next' 
-                    ? (currentImage + 1) % images.length 
-                    : (currentImage - 1 + images.length) % images.length;
-                
-                // Animación de salida
-                anime({
-                    targets: images[currentImage],
-                    opacity: [1, 0],
-                    translateX: direction === 'next' ? [-0, -100] : [0, 100],
-                    easing: 'easeInOutQuad',
-                    duration: 600
-                });
-
-                // Animación de entrada
-                anime({
-                    targets: images[nextImage],
-                    opacity: [0, 1],
-                    translateX: direction === 'next' ? [100, 0] : [-100, 0],
-                    easing: 'easeInOutQuad',
-                    duration: 600
-                });
-
-                // Actualizar clases activas
-                images[currentImage].classList.remove('active');
-                images[nextImage].classList.add('active');
-                dots[currentImage].classList.remove('active');
-                dots[nextImage].classList.add('active');
-                
-                currentImage = nextImage;
-            }
-
-            // Función para ir a una imagen específica
-            function goToImage(index) {
-                if (index === currentImage) return;
-                changeImage(index > currentImage ? 'next' : 'prev');
-            }
-
-            // Animación inicial de los elementos
-            window.addEventListener('load', () => {
-                // Animar título
-                anime({
-                    targets: '.property-title',
-                    opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 1000,
-                    easing: 'easeOutExpo'
-                });
-
-                // Animar características
-                anime({
-                    targets: '.feature-item',
-                    opacity: [0, 1],
-                    translateX: [20, 0],
-                    delay: anime.stagger(100),
-                    duration: 800,
-                    easing: 'easeOutQuad'
-                });
-
-                // Animar descripción
-                anime({
-                    targets: '.property-description',
-                    opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 1000,
-                    delay: 500,
-                    easing: 'easeOutExpo'
-                });
-
-                // Animar listas de niveles
-                anime({
-                    targets: '.level-description ul',
-                    opacity: [0, 1],
-                    translateX: [20, 0],
-                    delay: anime.stagger(200),
-                    duration: 800,
-                    easing: 'easeOutQuad'
-                });
-            });
-        </script>
-        
-        <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
-
-        <!-- BOTON DE CONTACTO ----------------->
-        <button class="contact-button" onclick="toggleContactOptions()">💬</button>
-
-        <!-- Opciones de contacto desplegables -->
-        <div class="contact-options" id="contact-options">
-            <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-            <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+        <!-- Modal de contacto -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-grid">
+                    <div class="property-preview">
+                        <img src="/Resource/CPG5/proyecto5.jpg" alt="Casa de Playa del Golf 5">
+                        <div class="preview-details">
+                            <h3>Casa de Playa del Golf 5</h3>
+                            <p>Residencia de lujo con 6 dormitorios, 300 m² de área construida, piscina infinita y vistas panorámicas al mar.</p>
+                            <div class="preview-features">
+                                <span><i class="fa fa-bed"></i> 6 Dormitorios</span>
+                                <span><i class="fa fa-ruler-combined"></i> 300 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="contactForm" class="contact-form">
+                        <h2>Solicitar información</h2>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Nombre completo</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Correo electrónico</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">Teléfono</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Enviar solicitud
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
+        <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+        
+
+        <link rel="stylesheet" href="/css/contact-form.css">
+        <script src="/js/contact-form.js"></script>
         <script src="/scripts.js"></script>
     </body>
 </html>

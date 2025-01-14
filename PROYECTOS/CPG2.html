@@ -102,7 +102,7 @@
             <div class="property-description">
                 <p>Lujosa casa de playa ubicada en una zona exclusiva del Golf. Diseñada para familias que buscan espacios amplios y confort. Acabados de primera calidad, amplias áreas sociales y una distribución perfecta para disfrutar de la vida en playa.</p>
             </div>
-            <button class="contact-now-btn">
+            <button class="contact-now-btn" onclick="openContactModal()">
                 Contactar ahora
                 <i class="fas fa-arrow-right"></i>
             </button>
@@ -195,6 +195,47 @@
         <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
         <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
     </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-grid">
+                <div class="property-preview">
+                    <img src="/Resource/CPG2/proyecto2.jpg" alt="Casa de Playa del Golf 2">
+                    <div class="preview-details">
+                        <h3>Casa de Playa del Golf 2</h3>
+                        <p>Lujosa casa de playa con 7 dormitorios, 250 m² de área construida, piscina privada y acabados de primera.</p>
+                        <div class="preview-features">
+                            <span><i class="fa fa-bed"></i> 7 Dormitorios</span>
+                            <span><i class="fa fa-ruler-combined"></i> 250 m²</span>
+                        </div>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <h2>Solicitar información</h2>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Nombre completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Teléfono</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Enviar solicitud
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="/css/contact-form.css">
+    <script src="/js/contact-form.js"></script>
 
     <script src="scripts.js"></script>
 </body>

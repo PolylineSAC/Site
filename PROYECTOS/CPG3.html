@@ -70,24 +70,24 @@
             <h2 class="property-title">Casa de Playa del Golf 3</h2>
             <div class="property-features">
                 <div class="feature-item">
-                    <i class="fa fa-building"></i>
-                    <div class="feature-text">
-                        <h4>Primer Piso</h4>
-                        <p>Área de servicio y lavandería</p>
-                    </div>
-                </div>
-                <div class="feature-item">
                     <i class="fa fa-bed"></i>
                     <div class="feature-text">
-                        <h4>Segundo Piso</h4>
-                        <p>3 dormitorios, cada uno con baño propio</p>
+                        <h4>Dormitorios</h4>
+                        <p>5 dormitorios con baño incorporado</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <i class="fa fa-couch"></i>
+                    <i class="fa fa-hot-tub"></i>
                     <div class="feature-text">
-                        <h4>Tercer Piso</h4>
-                        <p>Sala y áreas sociales</p>
+                        <h4>Jacuzzi</h4>
+                        <p>Jacuzzi con vista al mar</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa fa-warehouse"></i>
+                    <div class="feature-text">
+                        <h4>Garage</h4>
+                        <p>Garage para 3 vehículos</p>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -99,14 +99,53 @@
                 </div>
             </div>
             <div class="property-description">
-                <p>Moderna casa de playa distribuida en tres niveles, perfecta para familias que valoran la privacidad y el confort. Diseñada con una distribución inteligente que separa las áreas sociales de las privadas, ofreciendo vistas privilegiadas al Golf desde sus terrazas.</p>
+                <p>Espectacular casa de playa con vista al mar, diseñada para el máximo confort y entretenimiento. Amplia área social, terraza con jacuzzi y acabados de lujo en todos sus ambientes.</p>
             </div>
-            <button class="contact-now-btn">
+            <button class="contact-now-btn" onclick="openContactModal()">
                 Contactar ahora
                 <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </section>
+
+    <!-- Modal de contacto -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-grid">
+                <div class="property-preview">
+                    <img src="/Resource/CPG3/proyecto3.jpg" alt="Casa de Playa del Golf 3">
+                    <div class="preview-details">
+                        <h3>Casa de Playa del Golf 3</h3>
+                        <p>Espectacular casa de playa con 5 dormitorios, 220 m² de área construida, jacuzzi con vista al mar y garage para 3 vehículos.</p>
+                        <div class="preview-features">
+                            <span><i class="fa fa-bed"></i> 5 Dormitorios</span>
+                            <span><i class="fa fa-ruler-combined"></i> 220 m²</span>
+                        </div>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <h2>Solicitar información</h2>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Nombre completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Teléfono</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Enviar solicitud
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Variables para el control del slider
@@ -196,6 +235,8 @@
         <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
     </div>
 
+    <link rel="stylesheet" href="/css/contact-form.css">
+    <script src="/js/contact-form.js"></script>
     <script src="/scripts.js"></script>
 </body>
 </html>
