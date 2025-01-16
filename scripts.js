@@ -102,10 +102,12 @@ function openModal(departmentNumber) {
 // Función para cerrar el modal del departamento correspondiente
 function closeModal(departmentNumber) {
     const modal = document.getElementById('detail-modal-' + departmentNumber);
-    modal.classList.add('hidden');
-    const mainContent = document.getElementById('main-content-' + departmentNumber);
-    if (mainContent && mainContent.tagName === 'VIDEO') {
-        mainContent.pause(); // Pausar video si está reproduciéndose
+    if (modal) {
+        modal.classList.add('hidden');
+        const video = modal.querySelector('video');
+        if (video) {
+            video.pause();
+        }
     }
 }
 

@@ -48,3 +48,16 @@ export const addAppointment = async (appointmentData) => {
         return { success: false, error: error.message };
     }
 };
+
+// Agregar contacto
+export const addContact = async (contactData) => {
+    try {
+        const docRef = await addDoc(collection(db, "contacts"), {
+            ...contactData,
+            createdAt: new Date()
+        });
+        return { success: true, id: docRef.id };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+};

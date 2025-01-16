@@ -1,8 +1,11 @@
 .virtual-assistant {
     position: fixed;
     bottom: 20px;
-    right: 180px; /* Aumentado a 180px para moverlo más a la derecha */
+    right: 90px; /* Cambiado de 180px a 90px para estar más cerca del botón de modo oscuro */
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el asistente y el botón */
 }
 
 .assistant-avatar {

@@ -28,25 +28,28 @@ export const loginUser = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         
-        // Obtener datos adicionales del usuario desde Firestore
+        // Verificar si es admin
+        const isAdmin = email === 'admin@polyline.com';
+        
+        // Obtener datos del usuario desde Firestore
         const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
         
         if (userDoc.exists()) {
             const userData = userDoc.data();
-            // Guardar el nombre en sessionStorage
+            // Guardar datos en sessionStorage
             sessionStorage.setItem('userName', userData.name);
-            return { 
-                success: true, 
-                user: userCredential.user,
-                userData: userData
-            };
         } else {
-            return { 
-                success: true, 
-                user: userCredential.user,
-                userData: { name: 'Usuario' } 
-            };
+            sessionStorage.setItem('userName', 'Usuario');
         }
+
+        // Guardar el email para verificaciones
+        sessionStorage.setItem('userEmail', email);
+
+        return { 
+            success: true, 
+            user: userCredential.user,
+            isAdmin: isAdmin
+        };
     } catch (error) {
         return { success: false, error: error.message };
     }
