@@ -11,6 +11,7 @@ import {
     getDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { createProjectFile } from './fileGenerator.js';
+import { githubConfig } from './github-config.js';
 
 // Funciones para manejar inmuebles
 export const propertyService = {
@@ -46,7 +47,9 @@ export const propertyService = {
     // Añadir nuevo inmueble
     addProperty: async (propertyData) => {
         try {
-            // 1. Primero guardar en Firebase
+            // Usar URL de Netlify en lugar de GitHub Pages
+            const netlifyUrl = 'https://polylinesac.netlify.app';
+
             const formattedData = {
                 name: propertyData.name,
                 squareMeters: parseInt(propertyData.squareMeters),
@@ -59,7 +62,7 @@ export const propertyService = {
                 images: propertyData.images || [],
                 createdAt: new Date().toISOString(),
                 details: {
-                    url: `/PROYECTOS/${propertyData.urlSlug}.html`
+                    url: `${netlifyUrl}/PROYECTOS/${propertyData.urlSlug}.html`
                 }
             };
 
@@ -82,16 +85,8 @@ export const propertyService = {
                 id: docRef.id
             });
 
-            // Crear y descargar el archivo
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = window.URL.createObjectURL(blob);
-            const downloadLink = document.createElement('a');
-            downloadLink.href = url;
-            downloadLink.download = `${propertyData.urlSlug}.html`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            window.URL.revokeObjectURL(url);
+            // En vez de crear descarga, guardamos en GitHub
+            await createProjectFile(formattedData);
 
             return { success: true, id: docRef.id, data: formattedData };
         } catch (error) {
