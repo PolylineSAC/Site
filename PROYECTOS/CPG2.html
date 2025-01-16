@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    <script type="module" src="/js/firebase-config.js"></script>
+    <script type="module" src="/js/property-sync.js"></script>
 </head>
 <body>
     <header>
@@ -44,21 +48,15 @@
     <section id="inicio" class="property-showcase">
         <!-- Contenedor de las imágenes (a la izquierda) -->
         <div class="image-gallery">
-            <div class="image-slider">
-                <img src="/Resource/CPG2/proyecto2.jpg" alt="Vista principal" class="slider-image active">
-                <img src="/Resource/CPG2/1.jpg" alt="Interior 1" class="slider-image">
-                <img src="/Resource/CPG2/2.jpg" alt="Interior 2" class="slider-image">
-                <img src="/Resource/CPG2/3.jpg" alt="Interior 3" class="slider-image">
+            <div class="image-slider" id="propertyImages">
+                <!-- Las imágenes se cargarán dinámicamente -->
             </div>
             <div class="image-controls">
                 <button class="nav-btn prev-btn" onclick="changeImage('prev')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="image-dots">
-                    <span class="dot active" onclick="goToImage(0)"></span>
-                    <span class="dot" onclick="goToImage(1)"></span>
-                    <span class="dot" onclick="goToImage(2)"></span>
-                    <span class="dot" onclick="goToImage(3)"></span>
+                    <!-- Los dots se generarán dinámicamente -->
                 </div>
                 <button class="nav-btn next-btn" onclick="changeImage('next')">
                     <i class="fas fa-chevron-right"></i>
@@ -68,39 +66,12 @@
 
         <!-- Contenido de la descripción (a la derecha) -->
         <div class="property-details">
-            <h2 class="property-title">Casa de Playa del Golf 2</h2>
-            <div class="property-features">
-                <div class="feature-item">
-                    <i class="fa fa-bed"></i>
-                    <div class="feature-text">
-                        <h4>Dormitorios</h4>
-                        <p>7 dormitorios amplios y luminosos</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-bath"></i>
-                    <div class="feature-text">
-                        <h4>Baños</h4>
-                        <p>7 baños completos con acabados de lujo</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-swimming-pool"></i>
-                    <div class="feature-text">
-                        <h4>Piscina</h4>
-                        <p>Piscina privada con área de terraza</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-ruler-combined"></i>
-                    <div class="feature-text">
-                        <h4>Área</h4>
-                        <p>250 m² de área construida</p>
-                    </div>
-                </div>
+            <h2 class="property-title" id="propertyTitle">Casa de Playa del Golf 2</h2>
+            <div class="property-features" id="propertyFeatures">
+                <!-- Las características se cargarán dinámicamente manteniendo los datos originales -->
             </div>
             <div class="property-description">
-                <p>Lujosa casa de playa ubicada en una zona exclusiva del Golf. Diseñada para familias que buscan espacios amplios y confort. Acabados de primera calidad, amplias áreas sociales y una distribución perfecta para disfrutar de la vida en playa.</p>
+                <p id="propertyDescription">Lujosa casa de playa ubicada en una zona exclusiva del Golf. Diseñada para familias que buscan espacios amplios y confort. Acabados de primera calidad, amplias áreas sociales y una distribución perfecta para disfrutar de la vida en playa.</p>
             </div>
             <button class="contact-now-btn" onclick="openContactModal()">
                 Contactar ahora
@@ -108,6 +79,14 @@
             </button>
         </div>
     </section>
+
+    <script type="module">
+        import { initPropertySync } from '/js/property-sync.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initPropertySync('1nTmvbpfhFt76rl90XHd'); // ID de Firebase para CPG2
+        });
+    </script>
 
     <script>
         // Variables para el control del slider

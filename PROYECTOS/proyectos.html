@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
     <header>
@@ -163,142 +164,7 @@
     <!-- Cuadros de proyectos -->
     <section id="proyectos">
         <div class="projects-container">
-           <!-- Cuadro 1 -->
-           <div class="project-card">
-            <img src="/Resource/VENTA/proyecto1.jpg" alt="Proyecto 1">
-            <div class="project-info">
-                <h3>Casa de Playa del Golf 1</h3>
-            </div>
-            <div class="view-more">
-                <div class="circle" onclick="window.location.href='/PROYECTOS/CPG1.html';">
-                    <span>&#8594;</span>
-                </div>
-            </div>
-        </div>
-
-            <!-- Cuadro 2 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto2.jpg" alt="Proyecto 2">
-                <div class="project-info">
-                    <h3>Casa de Playa del Golf 2</h3>
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPG2.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Repite para más proyectos -->
-             <!-- Cuadro 3 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto3.jpg" alt="Proyecto 3">
-                <div class="project-info">
-                    <h3>Casa de Playa del Golf 3 </h3>
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPG3.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cuadro 4 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto4.jpg" alt="Proyecto 4">
-                <div class="project-info">
-                    <h3>Casa de Playa del Golf 4 </h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPG4.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cuadro 5 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto5.jpg" alt="Proyecto 5">
-                <div class="project-info">
-                    <h3>Casa de Playa del Golf 5 </h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPG5.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cuadro 6 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto6.png" alt="Proyecto 1">
-                <div class="project-info">
-                    <h3>Casa de Playa en Mykonos 1 </h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPM1.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cuadro 7 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyecto7.png" alt="Proyecto 1">
-                <div class="project-info">
-                    <h3>Casa de Playa en Mykonos 2 </h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPM2.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cuadro 8 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyectoPLAY.png" alt="Proyecto Playa">
-                <div class="project-info">
-                    <h3>Casa de Playa</h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPLAY.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Cuadro 9 -->
-           
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyectoLA.png" alt="Proyecto Lagunas">
-                <div class="project-info">
-                    <h3>Casa en Playa Lagunas </h3>
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CPLAG.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>  
-
-            <!-- Cuadro 10 -->
-            <div class="project-card">
-                <img src="/Resource/VENTA/proyectoSur.png" alt="Proyecto Dept.Surco">
-                <div class="project-info">
-                    <h3>Casa en Surco </h3>
-                    
-                </div>
-                <div class="view-more">
-                    <div class="circle" onclick="window.location.href='/PROYECTOS/CSUR.html';">
-                        <span>&#8594;</span>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Los proyectos se cargarán dinámicamente aquí -->
         </div>
     </section>
 
@@ -306,6 +172,802 @@
     <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; right: 30px;"></button>
     
     <script src="/scripts.js"></script>
+
+    <!-- Agregar antes del footer -->
+    <div class="fab-container">
+        <button class="fab-button" id="fabButton">+</button>
+        <div class="fab-menu" id="fabMenu">
+            <button class="fab-menu-item" onclick="agregarInmueble()">Agregar inmueble</button>
+            <button class="fab-menu-item" onclick="editarInmueble()">Editar inmueble</button>
+            <button class="fab-menu-item" onclick="cerrarMenu()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Add this before the footer -->
+    <div id="propertyModal" class="property-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Agregar Nuevo Inmueble</h2>
+            
+            <div class="form-grid">
+                <div class="form-section">
+                    <form id="propertyForm">
+                        <div class="input-group">
+                            <input type="text" id="propertyName" placeholder=" " required>
+                            <label>Nombre del Inmueble</label>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="number" id="squareMeters" placeholder=" " required>
+                                <label>Metros Cuadrados</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" id="bathrooms" placeholder=" " required>
+                                <label>Baños</label>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="number" id="bedrooms" placeholder=" " required>
+                                <label>Dormitorios</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="additions" placeholder=" ">
+                                <label>Añadidos</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group description-group">
+                            <textarea id="description" placeholder=" " rows="4"></textarea>
+                            <label>Descripción</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="text" id="location" placeholder=" " required>
+                            <label>Ubicación</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="type" placeholder=" " required>
+                            <label>Tipo de Inmueble</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="text" id="urlSlug" placeholder=" " required>
+                            <label>URL Slug (ejemplo: CPG2)</label>
+                        </div>
+
+                        <!-- Agregar input oculto para el ID -->
+                        <input type="hidden" id="propertyId">
+
+                        <!-- ... en el formulario ... -->
+                        <div class="form-group">
+                            <input type="file" id="propertyImage" accept="image/*" multiple>
+                            <label for="propertyImage">Imágenes del inmueble</label>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="image-upload-section">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-plus"></i>
+                        <p>Añadir Fotos</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                    </div>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+            </div>
+
+            <button id="submitProperty" class="submit-button">
+                <span>Añadir Inmueble</span>
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Add before closing body tag -->
+    <div id="editListModal" class="property-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditListModal()">&times;</span>
+            <h2>Seleccionar Inmueble para Editar</h2>
+            
+            <div class="property-list">
+                <!-- Property cards will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Update the existing script section -->
+    <script>
+        const fabButton = document.getElementById('fabButton');
+        const fabMenu = document.getElementById('fabMenu');
+
+        // Animación del botón al hover
+        fabButton.addEventListener('mouseenter', () => {
+            anime({
+                targets: fabButton,
+                scale: 1.1,
+                duration: 300,
+                easing: 'easeOutElastic(1, .5)'
+            });
+        });
+
+        fabButton.addEventListener('mouseleave', () => {
+            anime({
+                targets: fabButton,
+                scale: 1,
+                duration: 300,
+                easing: 'easeOutElastic(1, .5)'
+            });
+        });
+
+        // Animación del menú
+        fabButton.addEventListener('click', () => {
+            fabButton.classList.toggle('active');
+            
+            if (!fabMenu.classList.contains('active')) {
+                fabMenu.style.display = 'flex';
+                anime({
+                    targets: fabMenu,
+                    opacity: [0, 1],
+                    translateY: [-20, 0],
+                    duration: 500,
+                    easing: 'easeOutElastic(1, .8)',
+                    begin: () => {
+                        fabMenu.classList.add('active');
+                    }
+                });
+
+                // Animar cada elemento del menú
+                anime({
+                    targets: '.fab-menu-item',
+                    translateX: [-50, 0],
+                    opacity: [0, 1],
+                    delay: anime.stagger(100),
+                    duration: 800,
+                    easing: 'easeOutElastic(1, .8)'
+                });
+            } else {
+                anime({
+                    targets: fabMenu,
+                    opacity: 0,
+                    translateY: -20,
+                    duration: 300,
+                    easing: 'easeOutQuad',
+                    complete: () => {
+                        fabMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        function cerrarMenu() {
+            anime({
+                targets: fabMenu,
+                opacity: 0,
+                translateY: -20,
+                duration: 300,
+                easing: 'easeOutQuad',
+                complete: () => {
+                    fabMenu.classList.remove('active');
+                    fabButton.classList.remove('active');
+                }
+            });
+        }
+
+        function agregarInmueble() {
+            const modal = document.getElementById('propertyModal');
+            modal.style.display = 'flex';
+            
+            // Restablecer el título del modal
+            modal.querySelector('h2').textContent = 'Agregar Nuevo Inmueble';
+            
+            // Restablecer el botón de submit
+            const submitButton = document.getElementById('submitProperty');
+            submitButton.innerHTML = `
+                <span>Añadir Inmueble</span>
+                <i class="fas fa-check"></i>
+            `;
+            
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)',
+                complete: animateFormFields
+            });
+        }
+
+        // Add new modal related code
+        document.querySelector('.close-modal').addEventListener('click', closeModal);
+        
+        function closeModal() {
+            anime({
+                targets: '.modal-content',
+                scale: [1, 0.8],
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeInQuad',
+                complete: () => {
+                    document.getElementById('propertyModal').style.display = 'none';
+                }
+            });
+        }
+
+        // Image upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            
+            for(let file of files) {
+                if(file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.createElement('div');
+                        preview.className = 'preview-item';
+                        preview.innerHTML = `
+                            <img src="${e.target.result}">
+                            <button class="remove-image">&times;</button>
+                        `;
+                        imagePreview.appendChild(preview);
+
+                        // Add remove functionality
+                        preview.querySelector('.remove-image').onclick = function() {
+                            preview.remove();
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // Form submission
+        document.getElementById('submitProperty').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('propertyForm');
+            const imageFiles = Array.from(document.querySelectorAll('.preview-item img'))
+                .map(img => img.src);
+
+            const propertyData = {
+                name: document.getElementById('propertyName').value,
+                squareMeters: document.getElementById('squareMeters').value,
+                bathrooms: document.getElementById('bathrooms').value,
+                bedrooms: document.getElementById('bedrooms').value,
+                location: document.getElementById('location').value,
+                type: document.getElementById('type').value,
+                urlSlug: document.getElementById('urlSlug').value,
+                images: imageFiles
+            };
+
+            try {
+                await propertyService.addProperty(propertyData);
+                closeModal();
+                await loadProperties(); // Recargar el grid
+                showNotification('Inmueble agregado exitosamente', 'success');
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('Error al agregar el inmueble', 'error');
+            }
+        });
+
+        function editarInmueble() {
+            const modal = document.getElementById('editListModal');
+            modal.style.display = 'flex';
+            
+            // Get property list container
+            const propertyList = modal.querySelector('.property-list');
+            propertyList.innerHTML = ''; // Clear existing items
+            
+            // Get all project cards from the page
+            const projects = document.querySelectorAll('.project-card');
+            
+            // Create selection cards
+            projects.forEach((project, index) => {
+                const title = project.querySelector('.project-info h3').textContent;
+                const image = project.querySelector('img').src;
+                
+                const card = document.createElement('div');
+                card.className = 'edit-property-card';
+                card.innerHTML = `
+                    <img src="${image}" alt="${title}">
+                    <div class="card-content">
+                        <h3>${title}</h3>
+                        <button onclick="openEditForm(${index})">Editar</button>
+                    </div>
+                `;
+                
+                propertyList.appendChild(card);
+                
+                // Animate card entry
+                anime({
+                    targets: card,
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    delay: index * 100,
+                    duration: 500,
+                    easing: 'easeOutQuad'
+                });
+            });
+            
+            // Animate modal opening
+            anime({
+                targets: '#editListModal .modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        }
+        
+        function openEditForm(index) {
+            // Get the selected property data
+            const project = document.querySelectorAll('.project-card')[index];
+            const title = project.querySelector('.project-info h3').textContent;
+            const details = project.querySelector('.property-details').textContent;
+            
+            // Extract property details
+            const matches = details.match(/(\d+) m² \| (\d+) Dorm\. \| (\d+) Baños/);
+            
+            // Close the list modal
+            closeEditListModal();
+            
+            // Open and populate the edit form
+            const propertyModal = document.getElementById('propertyModal');
+            propertyModal.style.display = 'flex';
+            
+            // Reset form
+            document.getElementById('propertyForm').reset();
+            
+            // Cambiar el título del modal con animación
+            const modalTitle = propertyModal.querySelector('h2');
+            anime({
+                targets: modalTitle,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeOutQuad',
+                complete: () => {
+                    modalTitle.textContent = 'Editar Inmueble';
+                    anime({
+                        targets: modalTitle,
+                        opacity: [0, 1],
+                        duration: 300,
+                        easing: 'easeInQuad'
+                    });
+                }
+            });
+            
+            // Pre-fill the form with animation
+            setTimeout(() => {
+                document.getElementById('propertyName').value = title;
+                if (matches) {
+                    document.getElementById('squareMeters').value = matches[1];
+                    document.getElementById('bedrooms').value = matches[2];
+                    document.getElementById('bathrooms').value = matches[3];
+                }
+                
+                // Update submit button with animation
+                const submitButton = document.getElementById('submitProperty');
+                anime({
+                    targets: submitButton,
+                    opacity: [1, 0],
+                    duration: 300,
+                    easing: 'easeOutQuad',
+                    complete: () => {
+                        submitButton.innerHTML = `
+                            <span>Guardar Cambios</span>
+                            <i class="fas fa-save"></i>
+                        `;
+                        anime({
+                            targets: submitButton,
+                            opacity: [0, 1],
+                            duration: 300,
+                            easing: 'easeInQuad'
+                        });
+                    }
+                });
+            }, 300);
+            
+            // Animate modal opening
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)',
+                complete: () => {
+                    // Animate form fields after modal opens
+                    animateFormFields(true);
+                }
+            });
+        }
+        
+        function closeEditListModal() {
+            anime({
+                targets: '#editListModal .modal-content',
+                scale: [1, 0.8],
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeInQuad',
+                complete: () => {
+                    document.getElementById('editListModal').style.display = 'none';
+                }
+            });
+        }
+
+        // Animación para los inputs cuando el modal se abre
+        function animateFormInputs() {
+            anime({
+                targets: '.input-group input, .input-group textarea',
+                translateY: [-20, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(100),
+                duration: 800,
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            anime({
+                targets: '.input-group label',
+                translateY: [-20, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(100, {start: 200}),
+                duration: 800,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        }
+
+        // Modificar la función animateFormFields para soportar modo de edición
+        function animateFormFields(isEditing = false) {
+            const timeline = anime.timeline({
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            timeline
+                .add({
+                    targets: '.form-section',
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 800
+                })
+                .add({
+                    targets: '.input-group',
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    delay: anime.stagger(100),
+                    duration: 600
+                }, '-=400')
+                .add({
+                    targets: '.image-upload-section',
+                    opacity: [0, 1],
+                    translateX: [20, 0],
+                    duration: 600
+                }, '-=400');
+
+            if (isEditing) {
+                timeline.add({
+                    targets: '.input-group input:not(:placeholder-shown), .input-group textarea:not(:placeholder-shown)',
+                    scale: [1, 1.02, 1],
+                    duration: 400,
+                    delay: anime.stagger(50)
+                }, '-=200');
+            }
+        }
+    </script>
+
+    <!-- Add after your existing scripts but before the closing body tag -->
+    <script type="module">
+    import { auth } from '/js/firebase-config.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Función para verificar si el usuario es admin
+    function checkAdminAccess(user) {
+        const fabContainer = document.querySelector('.fab-container');
+        if (user && user.email === 'admin@polyline.com') {
+            fabContainer.style.display = 'block';
+            // Animación de entrada
+            anime({
+                targets: '.fab-container',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        } else {
+            fabContainer.style.display = 'none';
+        }
+    }
+
+    // Verificar estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+        checkAdminAccess(user);
+    });
+</script>
+
+    <script type="module">
+    import { propertyService } from '/js/propertyService.js';
+
+    async function loadProperties() {
+        try {
+            const properties = await propertyService.getAllProperties();
+            const container = document.querySelector('.projects-container');
+            container.innerHTML = ''; // Limpiar el contenedor
+
+            properties.forEach(property => {
+                // Obtener la primera imagen del array de imágenes
+                const coverImage = Array.isArray(property.image) ? property.image[0] : property.image;
+                
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'project-card';
+                propertyCard.innerHTML = `
+                    <img src="${coverImage}" alt="${property.name}">
+                    <div class="project-info">
+                        <h3>${property.name}</h3>
+                        <div class="property-details">
+                            <span>${property.squareMeters} m² | ${property.bedrooms} Dorm. | ${property.bathrooms} Baños</span>
+                        </div>
+                    </div>
+                    <div class="view-more">
+                        <div class="circle" onclick="location.href='${property.details.url}';">
+                            <span>&#8594;</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(propertyCard);
+
+                // Animación de entrada para cada tarjeta
+                anime({
+                    targets: propertyCard,
+                    opacity: [0, 1],
+                    translateY: [50, 0],
+                    delay: anime.stagger(100),
+                    duration: 800,
+                    easing: 'easeOutElastic(1, .8)'
+                });
+            });
+        } catch (error) {
+            console.error('Error loading properties:', error);
+        }
+    }
+
+    // Cargar las propiedades cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', loadProperties);
+</script>
+
+    <script>
+// Animación para entrada de campos del formulario
+function animateFormFields() {
+    // Animar cada input y su label con un efecto de cascada
+    const formElements = document.querySelectorAll('.input-group');
+    
+    anime.timeline({
+        easing: 'easeOutElastic(1, .8)'
+    })
+    .add({
+        targets: '.form-section',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800
+    })
+    .add({
+        targets: '.input-group',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(100),
+        duration: 600
+    }, '-=400')
+    .add({
+        targets: '.image-upload-section',
+        opacity: [0, 1],
+        translateX: [20, 0],
+        duration: 600
+    }, '-=400');
+
+    // Animación al focus de los inputs
+    document.querySelectorAll('.input-group input, .input-group textarea').forEach(input => {
+        input.addEventListener('focus', () => {
+            anime({
+                targets: input,
+                scale: [1, 1.02],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        input.addEventListener('blur', () => {
+            anime({
+                targets: input,
+                scale: [1.02, 1],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+    });
+}
+
+// Modificar la función agregarInmueble existente
+function agregarInmueble() {
+    const modal = document.getElementById('propertyModal');
+    modal.style.display = 'flex';
+    
+    // Restablecer el título del modal
+    modal.querySelector('h2').textContent = 'Agregar Nuevo Inmueble';
+    
+    // Restablecer el botón de submit
+    const submitButton = document.getElementById('submitProperty');
+    submitButton.innerHTML = `
+        <span>Añadir Inmueble</span>
+        <i class="fas fa-check"></i>
+    `;
+    
+    anime({
+        targets: '.modal-content',
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        duration: 500,
+        easing: 'easeOutElastic(1, .8)',
+        complete: animateFormFields
+    });
+}
+</script>
+
+    <script type="module">
+    import { propertyService } from '/js/propertyService.js';
+
+    // Función para actualizar un inmueble
+    async function updateProperty(propertyId, propertyData) {
+        try {
+            await propertyService.updateProperty(propertyId, propertyData);
+            await loadProperties(); // Recargar la lista de propiedades
+            closeModal();
+            // Mostrar mensaje de éxito
+            showNotification('Inmueble actualizado exitosamente', 'success');
+        } catch (error) {
+            console.error('Error updating property:', error);
+            showNotification('Error al actualizar el inmueble', 'error');
+        }
+    }
+
+    // Función para mostrar notificaciones
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        anime({
+            targets: notification,
+            translateX: [-100, 0],
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeOutExpo'
+        });
+
+        setTimeout(() => {
+            anime({
+                targets: notification,
+                translateX: [0, 100],
+                opacity: [1, 0],
+                duration: 500,
+                easing: 'easeInExpo',
+                complete: () => notification.remove()
+            });
+        }, 3000);
+    }
+
+    // Modificar la función openEditForm
+    async function openEditForm(propertyId) {
+        try {
+            const property = await propertyService.getPropertyById(propertyId);
+            
+            const propertyModal = document.getElementById('propertyModal');
+            propertyModal.style.display = 'flex';
+            
+            // Actualizar el título y el botón
+            propertyModal.querySelector('h2').textContent = 'Editar Inmueble';
+            const submitButton = document.getElementById('submitProperty');
+            submitButton.innerHTML = `
+                <span>Guardar Cambios</span>
+                <i class="fas fa-save"></i>
+            `;
+
+            // Guardar el ID del inmueble
+            document.getElementById('propertyId').value = propertyId;
+            
+            // Rellenar el formulario con los datos existentes
+            document.getElementById('propertyName').value = property.name;
+            document.getElementById('squareMeters').value = property.squareMeters;
+            document.getElementById('bedrooms').value = property.bedrooms;
+            document.getElementById('bathrooms').value = property.bathrooms;
+            document.getElementById('location').value = property.location;
+            document.getElementById('type').value = property.type;
+            
+            // Mostrar la imagen actual
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = `
+                <div class="preview-item">
+                    <img src="${property.image}" alt="${property.name}">
+                    <button class="remove-image">&times;</button>
+                </div>
+            `;
+
+            // Animar la apertura del modal
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)',
+                complete: () => animateFormFields(true)
+            });
+        } catch (error) {
+            console.error('Error loading property:', error);
+            showNotification('Error al cargar el inmueble', 'error');
+        }
+    }
+
+    // Modificar el event listener del formulario
+    document.getElementById('submitProperty').addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const propertyId = document.getElementById('propertyId').value;
+        const propertyData = {
+            name: document.getElementById('propertyName').value,
+            squareMeters: parseInt(document.getElementById('squareMeters').value),
+            bedrooms: parseInt(document.getElementById('bedrooms').value),
+            bathrooms: parseInt(document.getElementById('bathrooms').value),
+            location: document.getElementById('location').value,
+            type: document.getElementById('type').value,
+            // Mantener la imagen y URL existentes si no se actualizan
+            image: propertyId ? (await propertyService.getPropertyById(propertyId)).image : '',
+            details: propertyId ? (await propertyService.getPropertyById(propertyId)).details : {}
+        };
+
+        if (propertyId) {
+            // Actualizar inmueble existente
+            await updateProperty(propertyId, propertyData);
+        } else {
+            // Añadir nuevo inmueble
+            try {
+                await propertyService.addProperty(propertyData);
+                closeModal();
+                await loadProperties();
+                showNotification('Inmueble agregado exitosamente', 'success');
+            } catch (error) {
+                console.error('Error adding property:', error);
+                showNotification('Error al agregar el inmueble', 'error');
+            }
+        }
+    });
+</script>
+
+<!-- Agregar estilos para las notificaciones -->
+<style>
+    .notification {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        padding: 15px 25px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .notification.success {
+        background: #4CAF50;
+    }
+
+    
+</style>
 
     <footer class="footer">
         <div class="footer-logo">
@@ -316,5 +978,598 @@
         
         <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
     </footer>
+
+<script type="module">
+    import { propertyService } from '/js/propertyService.js';
+
+    // Función para editar inmueble
+    async function editarInmueble() {
+        try {
+            const properties = await propertyService.getAllProperties();
+            const modal = document.getElementById('editListModal');
+            modal.style.display = 'flex';
+            
+            const propertyList = modal.querySelector('.property-list');
+            propertyList.innerHTML = ''; // Limpiar lista
+            
+            // Crear tarjetas para cada propiedad
+            properties.forEach(property => {
+                const card = document.createElement('div');
+                card.className = 'edit-property-card';
+                card.innerHTML = `
+                    <img src="${property.image}" alt="${property.name}">
+                    <div class="card-content">
+                        <h3>${property.name}</h3>
+                        <button onclick="window.openEditForm('${property.id}')">Editar</button>
+                    </div>
+                `;
+                
+                propertyList.appendChild(card);
+                
+                // Animar entrada de tarjeta
+                anime({
+                    targets: card,
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 500,
+                    easing: 'easeOutQuad'
+                });
+            });
+            
+            // Animar apertura del modal
+            anime({
+                targets: '#editListModal .modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        } catch (error) {
+            console.error('Error loading properties:', error);
+            showNotification('Error al cargar los inmuebles', 'error');
+        }
+    }
+
+    // Hacer la función openEditForm disponible globalmente
+    window.openEditForm = async function(propertyId) {
+        try {
+            const property = await propertyService.getPropertyById(propertyId);
+            
+            // Cerrar modal de lista
+            closeEditListModal();
+            
+            const propertyModal = document.getElementById('propertyModal');
+            propertyModal.style.display = 'flex';
+            
+            // Actualizar título y botón
+            propertyModal.querySelector('h2').textContent = 'Editar Inmueble';
+            const submitButton = document.getElementById('submitProperty');
+            submitButton.innerHTML = `
+                <span>Guardar Cambios</span>
+                <i class="fas fa-save"></i>
+            `;
+
+            // Guardar ID del inmueble
+            document.getElementById('propertyId').value = propertyId;
+            
+            // Rellenar formulario
+            document.getElementById('propertyName').value = property.name;
+            document.getElementById('squareMeters').value = property.squareMeters;
+            document.getElementById('bedrooms').value = property.bedrooms;
+            document.getElementById('bathrooms').value = property.bathrooms;
+            document.getElementById('location').value = property.location || '';
+            document.getElementById('type').value = property.type || '';
+            
+            // Mostrar imagen actual
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = `
+                <div class="preview-item">
+                    <img src="${property.image}" alt="${property.name}">
+                    <button class="remove-image">&times;</button>
+                </div>
+            `;
+
+            // Animar apertura
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)',
+                complete: () => animateFormFields(true)
+            });
+        } catch (error) {
+            console.error('Error loading property:', error);
+            showNotification('Error al cargar el inmueble', 'error');
+        }
+    };
+
+    // Modificar el event listener del formulario para manejar actualizaciones
+    document.getElementById('submitProperty').addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const propertyId = document.getElementById('propertyId').value;
+        const propertyData = {
+            name: document.getElementById('propertyName').value,
+            squareMeters: parseInt(document.getElementById('squareMeters').value),
+            bedrooms: parseInt(document.getElementById('bedrooms').value),
+            bathrooms: parseInt(document.getElementById('bathrooms').value),
+            location: document.getElementById('location').value,
+            type: document.getElementById('type').value
+        };
+
+        try {
+            if (propertyId) {
+                // Obtener datos existentes
+                const existingProperty = await propertyService.getPropertyById(propertyId);
+                // Mantener imagen y detalles existentes
+                propertyData.image = existingProperty.image;
+                propertyData.details = existingProperty.details;
+                
+                // Actualizar inmueble
+                await propertyService.updateProperty(propertyId, propertyData);
+                showNotification('Inmueble actualizado exitosamente', 'success');
+            } else {
+                // Añadir nuevo inmueble
+                await propertyService.addProperty(propertyData);
+                showNotification('Inmueble agregado exitosamente', 'success');
+            }
+            
+            closeModal();
+            await loadProperties(); // Recargar lista de propiedades
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('Error al procesar el inmueble', 'error');
+        }
+    });
+</script>
+
+<script type="module">
+    import { propertyService } from '/js/propertyService.js';
+
+    // Hacer las funciones disponibles globalmente
+    window.editarInmueble = async function() {
+        try {
+            const properties = await propertyService.getAllProperties();
+            const modal = document.getElementById('editListModal');
+            modal.style.display = 'flex';
+            
+            const propertyList = modal.querySelector('.property-list');
+            propertyList.innerHTML = '';
+            
+            properties.forEach(property => {
+                const card = document.createElement('div');
+                card.className = 'edit-property-card';
+                card.innerHTML = `
+                    <img src="${property.image}" alt="${property.name}">
+                    <div class="card-content">
+                        <h3>${property.name}</h3>
+                        <div class="property-details">
+                            <span>${property.squareMeters} m² | ${property.bedrooms} Dorm. | ${property.bathrooms} Baños</span>
+                        </div>
+                        <button onclick="openEditForm('${property.id}')">Editar</button>
+                    </div>
+                `;
+                
+                propertyList.appendChild(card);
+                
+                anime({
+                    targets: card,
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    delay: anime.random(0, 300),
+                    duration: 600,
+                    easing: 'easeOutElastic(1, .8)'
+                });
+            });
+            
+            anime({
+                targets: '#editListModal .modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        } catch (error) {
+            console.error('Error loading properties:', error);
+            showNotification('Error al cargar los inmuebles', 'error');
+        }
+    };
+
+    window.openEditForm = async function(propertyId) {
+        try {
+            const property = await propertyService.getPropertyById(propertyId);
+            
+            closeEditListModal();
+            
+            const propertyModal = document.getElementById('propertyModal');
+            propertyModal.style.display = 'flex';
+            
+            document.getElementById('propertyId').value = propertyId;
+            document.getElementById('propertyName').value = property.name;
+            document.getElementById('squareMeters').value = property.squareMeters;
+            document.getElementById('bedrooms').value = property.bedrooms;
+            document.getElementById('bathrooms').value = property.bathrooms;
+            document.getElementById('location').value = property.location || '';
+            document.getElementById('type').value = property.type || '';
+            
+            // Actualizar título y botón
+            propertyModal.querySelector('h2').textContent = 'Editar Inmueble';
+            const submitButton = document.getElementById('submitProperty');
+            submitButton.innerHTML = `
+                <span>Guardar Cambios</span>
+                <i class="fas fa-save"></i>
+            `;
+            
+            // Mostrar imagen actual
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = `
+                <div class="preview-item">
+                    <img src="${property.image}" alt="${property.name}">
+                    <button class="remove-image">&times;</button>
+                </div>
+            `;
+            
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutElastic(1, .8)',
+                complete: () => animateFormFields(true)
+            });
+        } catch (error) {
+            console.error('Error loading property:', error);
+            showNotification('Error al cargar el inmueble', 'error');
+        }
+    };
+
+    window.showNotification = function(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        anime({
+            targets: notification,
+            translateX: [-100, 0],
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeOutExpo'
+        });
+
+        setTimeout(() => {
+            anime({
+                targets: notification,
+                translateX: [0, 100],
+                opacity: [1, 0],
+                duration: 500,
+                easing: 'easeInExpo',
+                complete: () => notification.remove()
+            });
+        }, 3000);
+    };
+</script>
+
+<script>
+    // Animaciones para los botones
+    document.querySelectorAll('.edit-property-card button').forEach(button => {
+        // Efecto hover
+        button.addEventListener('mouseenter', () => {
+            anime({
+                targets: button,
+                scale: 1.05,
+                duration: 300,
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            // Efecto de brillo
+            anime({
+                targets: button,
+                background: ['linear-gradient(45deg, #FF9800, #F57C00)', 'linear-gradient(45deg, #FFA726, #FF9800)'],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        button.addEventListener('mouseleave', () => {
+            anime({
+                targets: button,
+                scale: 1,
+                duration: 300,
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            anime({
+                targets: button,
+                background: ['linear-gradient(45deg, #FFA726, #FF9800)', 'linear-gradient(45deg, #FF9800, #F57C00)'],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Efecto click
+        button.addEventListener('click', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Efecto ripple
+            anime({
+                targets: button.querySelector('::after'),
+                opacity: [0.5, 0],
+                scale: [0, 4],
+                duration: 1000,
+                easing: 'easeOutExpo',
+                begin: () => {
+                    const ripple = document.createElement('div');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        left: ${x}px;
+                        top: ${y}px;
+                        transform: translate(-50%, -50%);
+                        width: 5px;
+                        height: 5px;
+                        background: rgba(255,255,255,0.5);
+                        border-radius: 50%;
+                        pointer-events: none;
+                    `;
+                    button.appendChild(ripple);
+                    
+                    anime({
+                        targets: ripple,
+                        scale: [0, 4],
+                        opacity: [1, 0],
+                        duration: 1000,
+                        easing: 'easeOutExpo',
+                        complete: () => ripple.remove()
+                    });
+                }
+            });
+
+            // Efecto de pulso
+            anime({
+                targets: button,
+                scale: [1.05, 1],
+                duration: 400,
+                easing: 'easeOutElastic(2, .5)'
+            });
+        });
+    });
+
+    // Animación de las tarjetas al cargar
+    document.querySelectorAll('.edit-property-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            anime({
+                targets: card,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                scale: [0.98, 1],
+                duration: 800,
+                delay: index * 100,
+                easing: 'easeOutElastic(1, .8)'
+            });
+        }, 100);
+    });
+
+    // Animación hover para las tarjetas
+    document.querySelectorAll('.edit-property-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            anime({
+                targets: card,
+                scale: 1.03,
+                translateY: -5,
+                boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            anime({
+                targets: card,
+                scale: 1,
+                translateY: 0,
+                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+    });
+</script>
+
+<!-- Replace the FAB animation script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const fabButton = document.querySelector('.fab-button');
+    const fabMenu = document.querySelector('.fab-menu');
+    
+    if (!fabButton || !fabMenu) {
+        console.warn('FAB elements not found in the DOM');
+        return;
+    }
+
+    // Initialize particles
+    const particles = [];
+    const particleCount = 12;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'fab-particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF9800;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        `;
+        fabButton.appendChild(particle);
+        particles.push(particle);
+    }
+
+    let isMenuOpen = false;
+
+    // Button click handler
+    fabButton.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        fabButton.classList.toggle('active');
+        fabMenu.classList.toggle('active');
+        
+        // Button animation
+        anime({
+            targets: fabButton,
+            scale: [1, 0.9, 1],
+            rotate: isMenuOpen ? [0, 90] : [90, 0],
+            duration: 600,
+            easing: 'easeOutElastic(1, 0.7)'
+        });
+
+        // Particle animation
+        particles.forEach((particle, i) => {
+            const angle = (i / particleCount) * Math.PI * 2;
+            anime({
+                targets: particle,
+                translateX: isMenuOpen ? [0, Math.cos(angle) * 40] : [Math.cos(angle) * 40, 0],
+                translateY: isMenuOpen ? [0, Math.sin(angle) * 40] : [Math.sin(angle) * 40, 0],
+                opacity: isMenuOpen ? [0, 1, 0] : 0,
+                duration: 1000,
+                easing: 'easeOutExpo',
+                delay: i * 50
+            });
+        });
+
+        // Menu items animation
+        anime({
+            targets: '.fab-menu-item',
+            translateY: isMenuOpen ? [-20, 0] : [0, -20],
+            opacity: isMenuOpen ? [0, 1] : [1, 0],
+            duration: isMenuOpen ? 600 : 300,
+            delay: anime.stagger(isMenuOpen ? 100 : 50, {
+                direction: isMenuOpen ? 'normal' : 'reverse'
+            }),
+            easing: isMenuOpen ? 'easeOutElastic(1, 0.7)' : 'easeInQuad'
+        });
+    });
+
+    // Improved hover animations for menu items
+    document.querySelectorAll('.fab-menu-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            if (!isMenuOpen) return;
+            anime({
+                targets: item,
+                translateX: -5,
+                scale: 1.05,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        item.addEventListener('mouseleave', () => {
+            if (!isMenuOpen) return;
+            anime({
+                targets: item,
+                translateX: 0,
+                scale: 1,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+    });
+
+    // Handle menu close function
+    window.cerrarMenu = () => {
+        isMenuOpen = false;
+        fabButton.classList.remove('active');
+        fabMenu.classList.remove('active');
+        
+        anime({
+            targets: fabButton,
+            rotate: [90, 0],
+            duration: 600,
+            easing: 'easeOutElastic(1, 0.7)'
+        });
+
+        anime({
+            targets: '.fab-menu-item',
+            translateY: [0, -20],
+            opacity: [1, 0],
+            duration: 300,
+            delay: anime.stagger(50, { direction: 'reverse' }),
+            easing: 'easeInQuad'
+        });
+    };
+});
+</script>
+
+<!-- Agregar en la sección de scripts -->
+<script type="module">
+    import { propertyService } from '/js/propertyService.js';
+    
+    // Hacer disponible propertyService globalmente
+    window.propertyService = propertyService;
+    
+    document.getElementById('submitProperty').addEventListener('click', async function(e) {
+        e.preventDefault();
+        this.disabled = true;
+        
+        try {
+            const propertyData = {
+                name: document.getElementById('propertyName').value,
+                squareMeters: parseInt(document.getElementById('squareMeters').value),
+                bedrooms: parseInt(document.getElementById('bedrooms').value),
+                bathrooms: parseInt(document.getElementById('bathrooms').value),
+                location: document.getElementById('location').value,
+                type: document.getElementById('type').value,
+                urlSlug: document.getElementById('urlSlug').value.trim(),
+                description: document.getElementById('description').value
+            };
+
+            // Validar que el URL Slug no esté vacío
+            if (!propertyData.urlSlug) {
+                throw new Error('El URL Slug es requerido');
+            }
+
+            const result = await propertyService.addProperty(propertyData);
+            closeModal();
+            await loadProperties();
+            showNotification('Inmueble agregado exitosamente', 'success');
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification(error.message || 'Error al agregar el inmueble', 'error');
+        } finally {
+            this.disabled = false;
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('propertyForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const images = Array.from(document.getElementById('propertyImage').files)
+            .map(file => URL.createObjectURL(file));
+        
+        const propertyData = {
+            name: formData.get('name'),
+            // ... otros campos ...
+            images: images
+        };
+
+        try {
+            await propertyService.addProperty(propertyData);
+            alert('Inmueble agregado exitosamente');
+            // ... resto del código ...
+        } catch (error) {
+            console.error('Error:', error);
+            alert(error.message);
+        }
+    });
+</script>
+
 </body>
 </html>

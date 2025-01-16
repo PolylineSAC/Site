@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    <script type="module" src="/js/firebase-config.js"></script>
+    <script type="module" src="/js/property-sync.js"></script>
+    <!-- Solo necesitamos una instancia de EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("At9dqPbCCCXcMSTls");
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -44,21 +55,15 @@
     <section id="inicio" class="property-showcase">
         <!-- Contenedor de las imágenes (a la izquierda) -->
         <div class="image-gallery">
-            <div class="image-slider">
-                <img src="/Resource/CPG1/proyecto1.jpg" alt="Vista principal" class="slider-image active">
-                <img src="/Resource/CPG1/1.jpeg" alt="Interior 1" class="slider-image">
-                <img src="/Resource/CPG1/2.jpeg" alt="Interior 2" class="slider-image">
-                <img src="/Resource/CPG1/3.jpeg" alt="Interior 3" class="slider-image">
+            <div class="image-slider" id="propertyImages">
+                <!-- Las imágenes se cargarán dinámicamente -->
             </div>
             <div class="image-controls">
                 <button class="nav-btn prev-btn" onclick="changeImage('prev')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="image-dots">
-                    <span class="dot active" onclick="goToImage(0)"></span>
-                    <span class="dot" onclick="goToImage(1)"></span>
-                    <span class="dot" onclick="goToImage(2)"></span>
-                    <span class="dot" onclick="goToImage(3)"></span>
+                    <!-- Los dots se generarán dinámicamente -->
                 </div>
                 <button class="nav-btn next-btn" onclick="changeImage('next')">
                     <i class="fas fa-chevron-right"></i>
@@ -68,127 +73,28 @@
 
         <!-- Contenido de la descripción (a la derecha) -->
         <div class="property-details">
-            <h2 class="property-title">Casa de Playa del Golf 1</h2>
-            <div class="property-features">
-                <div class="feature-item">
-                    <i class="fa fa-bed"></i>
-                    <div class="feature-text">
-                        <h4>Dormitorios</h4>
-                        <p>2 dormitorios, cada uno con baño propio</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-house"></i>
-                    <div class="feature-text">
-                        <h4>Suite Principal</h4>
-                        <p>Suite elegante con baño propio y terraza amplia</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-car"></i>
-                    <div class="feature-text">
-                        <h4>Estacionamiento</h4>
-                        <p>2 espacios de estacionamiento techados</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <i class="fa fa-ruler-combined"></i>
-                    <div class="feature-text">
-                        <h4>Área</h4>
-                        <p>180 m² de área construida</p>
-                    </div>
-                </div>
+            <h2 class="property-title" id="propertyTitle"></h2>
+            <div class="property-features" id="propertyFeatures">
+                <!-- Las características se cargarán dinámicamente -->
             </div>
             <div class="property-description">
-                <p>Exclusiva casa de playa ubicada en una de las zonas más privilegiadas del Golf. Diseñada para brindar el máximo confort y elegancia, con acabados de primera calidad y espacios perfectamente distribuidos.</p>
+                <p id="propertyDescription"></p>
             </div>
-            <button class="contact-now-btn" onclick="openContactModal()">
+            <button class="contact-now-btn" id="contactBtn">
                 Contactar ahora
                 <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </section>
 
-    <script>
-        // Variables para el control del slider
-        let currentImage = 0;
-        const images = document.querySelectorAll('.slider-image');
-        const dots = document.querySelectorAll('.dot');
-
-        // Función para cambiar la imagen con animación
-        function changeImage(direction) {
-            const nextImage = direction === 'next' 
-                ? (currentImage + 1) % images.length 
-                : (currentImage - 1 + images.length) % images.length;
-            
-            // Animación de salida
-            anime({
-                targets: images[currentImage],
-                opacity: [1, 0],
-                translateX: direction === 'next' ? [-0, -100] : [0, 100],
-                easing: 'easeInOutQuad',
-                duration: 600
-            });
-
-            // Animación de entrada
-            anime({
-                targets: images[nextImage],
-                opacity: [0, 1],
-                translateX: direction === 'next' ? [100, 0] : [-100, 0],
-                easing: 'easeInOutQuad',
-                duration: 600
-            });
-
-            // Actualizar clases activas
-            images[currentImage].classList.remove('active');
-            images[nextImage].classList.add('active');
-            dots[currentImage].classList.remove('active');
-            dots[nextImage].classList.add('active');
-            
-            currentImage = nextImage;
-        }
-
-        // Función para ir a una imagen específica
-        function goToImage(index) {
-            if (index === currentImage) return;
-            changeImage(index > currentImage ? 'next' : 'prev');
-        }
-
-        // Animación inicial de los elementos
-        window.addEventListener('load', () => {
-            // Animar título
-            anime({
-                targets: '.property-title',
-                opacity: [0, 1],
-                translateY: [20, 0],
-                duration: 1000,
-                easing: 'easeOutExpo'
-            });
-
-            // Animar características
-            anime({
-                targets: '.feature-item',
-                opacity: [0, 1],
-                translateX: [20, 0],
-                delay: anime.stagger(100),
-                duration: 800,
-                easing: 'easeOutQuad'
-            });
-
-            // Animar descripción
-            anime({
-                targets: '.property-description',
-                opacity: [0, 1],
-                translateY: [20, 0],
-                duration: 1000,
-                delay: 500,
-                easing: 'easeOutExpo'
-            });
+    <script type="module">
+        import { initPropertySync } from '/js/property-sync.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Asegurarse de usar el ID correcto que coincida con Firebase
+            initPropertySync('4UED5LyNO8UMfouh3Oq6');
         });
     </script>
-    
-
-
 
     <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; right: 30px;"></button>
     
@@ -216,14 +122,16 @@
                     </div>
                 </div>
                 <!-- Contact Form -->
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form" onsubmit="return sendEmail(event)">
                     <h2>Solicitar información</h2>
+                    <input type="hidden" name="to_name" value="Polyline">
+                    <input type="hidden" name="property_title" id="property_title">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="from_name" required>
                         <label for="name">Nombre completo</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="reply_to" required>
                         <label for="email">Correo electrónico</label>
                     </div>
                     <div class="form-group">
@@ -242,5 +150,63 @@
     <link rel="stylesheet" href="/css/contact-form.css">
     <script src="/js/contact-form.js"></script>
     <script src="/scripts.js"></script>
+    <script type="module">
+        import { openContactModal } from '/js/contact-form.js';
+        
+        // Hacer la función disponible globalmente
+        window.openContactModal = openContactModal;
+        
+        // Agregar el evento al botón
+        document.getElementById('contactBtn').addEventListener('click', openContactModal);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactBtn = document.getElementById('contactBtn');
+            const modal = document.getElementById('contactModal');
+            const closeBtn = document.querySelector('.close-modal');
+
+            // Abrir modal
+            contactBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+            });
+
+            // Cerrar modal con X
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Cerrar modal haciendo clic fuera
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        function sendEmail(e) {
+            e.preventDefault();
+            
+            const propertyTitle = document.getElementById('propertyTitle').textContent;
+            const btn = document.querySelector('.submit-btn');
+            btn.disabled = true;
+            
+            emailjs.sendForm('service_nmqdl9u', 'template_xzgzp8p', e.target, 'At9dqPbCCCXcMSTls', {
+                property_title: propertyTitle
+            })
+            .then(function() {
+                alert('¡Mensaje enviado con éxito!');
+                document.getElementById('contactForm').reset();
+                document.getElementById('contactModal').style.display = 'none';
+            }, function(error) {
+                console.error('Error:', error);
+                alert('Error al enviar el mensaje. Por favor, intente nuevamente.');
+            })
+            .finally(() => {
+                btn.disabled = false;
+            });
+
+            return false;
+        }
+    </script>
 </body>
 </html>

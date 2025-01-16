@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    <script type="module" src="/js/firebase-config.js"></script>
+    <script type="module" src="/js/property-sync.js"></script>
 </head>
 <body>
     <header>
@@ -43,21 +47,15 @@
     <section id="inicio" class="property-showcase">
         <!-- Contenedor de las imágenes (a la izquierda) -->
         <div class="image-gallery">
-            <div class="image-slider">
-                <img src="/Resource/CPG3/proyecto3.jpg" alt="Vista principal" class="slider-image active">
-                <img src="/Resource/CPG3/1.jpg" alt="Interior 1" class="slider-image">
-                <img src="/Resource/CPG3/2.jpg" alt="Interior 2" class="slider-image">
-                <img src="/Resource/CPG3/3.jpg" alt="Interior 3" class="slider-image">
+            <div class="image-slider" id="propertyImages">
+                <!-- Las imágenes se cargarán dinámicamente -->
             </div>
             <div class="image-controls">
                 <button class="nav-btn prev-btn" onclick="changeImage('prev')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div class="image-dots">
-                    <span class="dot active" onclick="goToImage(0)"></span>
-                    <span class="dot" onclick="goToImage(1)"></span>
-                    <span class="dot" onclick="goToImage(2)"></span>
-                    <span class="dot" onclick="goToImage(3)"></span>
+                    <!-- Los dots se generarán dinámicamente -->
                 </div>
                 <button class="nav-btn next-btn" onclick="changeImage('next')">
                     <i class="fas fa-chevron-right"></i>
@@ -67,39 +65,39 @@
 
         <!-- Contenido de la descripción (a la derecha) -->
         <div class="property-details">
-            <h2 class="property-title">Casa de Playa del Golf 3</h2>
-            <div class="property-features">
+            <h2 class="property-title" id="propertyTitle">Casa de Playa del Golf 3</h2>
+            <div class="property-features" id="propertyFeatures">
                 <div class="feature-item">
                     <i class="fa fa-bed"></i>
                     <div class="feature-text">
                         <h4>Dormitorios</h4>
-                        <p>5 dormitorios con baño incorporado</p>
+                        <p>5 dormitorios principales</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <i class="fa fa-hot-tub"></i>
+                    <i class="fa fa-bath"></i>
                     <div class="feature-text">
-                        <h4>Jacuzzi</h4>
-                        <p>Jacuzzi con vista al mar</p>
+                        <h4>Baños</h4>
+                        <p>6 baños completos</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <i class="fa fa-warehouse"></i>
+                    <i class="fa fa-swimming-pool"></i>
                     <div class="feature-text">
-                        <h4>Garage</h4>
-                        <p>Garage para 3 vehículos</p>
+                        <h4>Piscina</h4>
+                        <p>Piscina infinita con vista al mar</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <i class="fa fa-ruler-combined"></i>
                     <div class="feature-text">
                         <h4>Área</h4>
-                        <p>220 m² de área construida</p>
+                        <p>300 m² de área construida</p>
                     </div>
                 </div>
             </div>
             <div class="property-description">
-                <p>Espectacular casa de playa con vista al mar, diseñada para el máximo confort y entretenimiento. Amplia área social, terraza con jacuzzi y acabados de lujo en todos sus ambientes.</p>
+                <p id="propertyDescription">Espectacular casa de playa con vista privilegiada al mar. Diseño moderno con amplios espacios, acabados de lujo y una increíble piscina infinita. Perfecta para familias que buscan exclusividad y confort en una ubicación privilegiada.</p>
             </div>
             <button class="contact-now-btn" onclick="openContactModal()">
                 Contactar ahora
@@ -108,7 +106,7 @@
         </div>
     </section>
 
-    <!-- Modal de contacto -->
+    <!-- Modal de contacto - CORRECCIÓN DE LA ESTRUCTURA -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -117,10 +115,10 @@
                     <img src="/Resource/CPG3/proyecto3.jpg" alt="Casa de Playa del Golf 3">
                     <div class="preview-details">
                         <h3>Casa de Playa del Golf 3</h3>
-                        <p>Espectacular casa de playa con 5 dormitorios, 220 m² de área construida, jacuzzi con vista al mar y garage para 3 vehículos.</p>
+                        <p>Exclusiva casa de playa con 5 dormitorios, 300 m² de área construida, piscina infinita y vista al mar.</p>
                         <div class="preview-features">
                             <span><i class="fa fa-bed"></i> 5 Dormitorios</span>
-                            <span><i class="fa fa-ruler-combined"></i> 220 m²</span>
+                            <span><i class="fa fa-ruler-combined"></i> 300 m²</span>
                         </div>
                     </div>
                 </div>
@@ -225,15 +223,17 @@
         });
     </script>
 
+    <script type="module">
+        import { initPropertySync } from '/js/property-sync.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initPropertySync('flRbYgPPcGfigf9n4olr'); // ID de Firebase para CPG3
+        });
+    </script>
+
     <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
     <!-- BOTON DE CONTACTO -->
-    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
-
-    <!-- Opciones de contacto desplegables -->
-    <div class="contact-options" id="contact-options">
-        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-    </div>
+    
 
     <link rel="stylesheet" href="/css/contact-form.css">
     <script src="/js/contact-form.js"></script>

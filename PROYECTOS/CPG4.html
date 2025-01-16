@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>POLYLINE - Constructora</title>
+        <title>POLYLINE - Casa de Playa del Golf 4</title>
         <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+        <script type="module" src="/js/firebase-config.js"></script>
+        <script type="module" src="/js/property-sync.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     </head>
     <body>
         <header>
@@ -40,65 +45,150 @@
             </nav>
         </header>
 
-    <section id="inicio" style="position: relative; height: 80vh; display: flex; justify-content: space-between; align-items: center;">
-        <!-- Contenedor de las imágenes (a la izquierda) -->
-        <div id="image-container" style="position: relative; width: 50%; height: 80%; overflow: hidden; margin-left: 40px;">
-            <!-- Imágenes del proyecto con borde redondeado -->
-            <img src="/Resource/CPG4/proyecto4.jpg" alt="Imagen de fondo" class="project-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 15px; z-index: -1;">
-            <!-- Flechas para controlar las imágenes -->
-            <div class="arrow left" onclick="changeImage('prev')" style="position: absolute; top: 50%; left: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10094;</div>
-            <div class="arrow right" onclick="changeImage('next')" style="position: absolute; top: 50%; right: 10px; font-size: 2rem; color: white; cursor: pointer; z-index: 2;">&#10095;</div>
+    <section id="inicio" class="property-showcase">
+        <div class="image-gallery">
+            <div class="image-slider" id="propertyImages">
+                <!-- Las imágenes se cargarán dinámicamente -->
+            </div>
+            <div class="image-controls">
+                <button class="nav-btn prev-btn" onclick="changeImage('prev')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="image-dots">
+                    <!-- Los dots se generarán dinámicamente -->
+                </div>
+                <button class="nav-btn next-btn" onclick="changeImage('next')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
-    
-        <!-- Contenido de la sección (a la derecha) -->
-        <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; text-align: left; height: 100%; color: #000000; padding: 20px; z-index: 1; width: 55%; margin-left: 20px;">
-            <h2 style="font-size: 2.5rem; font-weight: bold; margin: 0; background-color: rgba(255, 255, 255, 0.6); padding: 10px 20px; border-radius: 8px;">
-                Casa de Playa del Golf 4
-            </h2>
+
+        <div class="property-details">
+            <h2 class="property-title" id="propertyTitle">Casa de Playa del Golf 4</h2>
+            <div class="property-features" id="propertyFeatures">
+                <!-- Las características se cargarán dinámicamente -->
+            </div>
+            <div class="property-description">
+                <p id="propertyDescription">Moderna casa de playa con diseño contemporáneo. Espacios amplios y luminosos, perfecta distribución para el disfrute familiar. Acabados de primera calidad y excelente ubicación en zona residencial exclusiva.</p>
+            </div>
+            <button class="contact-now-btn" onclick="openContactModal()">
+                Contactar ahora
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
-        
     </section>
-    
 
-<script>
-    let currentImageIndex = 0;
-    const images = document.querySelectorAll('.project-image');
-    const totalImages = images.length;
-
-    // Cambiar la imagen automáticamente cada 1 segundo
-    setInterval(() => {
-        changeImage('next');
-    }, 2000);
-
-    // Función para cambiar la imagen
-    function changeImage(direction) {
-        // Ocultar la imagen actual con la transición suave
-        images[currentImageIndex].style.left = `${currentImageIndex * 100}%`;
+    <script type="module">
+        import { initPropertySync } from '/js/property-sync.js';
         
-        // Actualizar el índice de la imagen
-        if (direction === 'next') {
-            currentImageIndex = (currentImageIndex + 1) % totalImages;
-        } else {
-            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+        document.addEventListener('DOMContentLoaded', () => {
+            initPropertySync('cUMNfCVu7uim0hDWge5f'); // ID de Firebase para CPG4
+        });
+    </script>
+
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-grid">
+                <div class="property-preview">
+                    <img src="/Resource/CPG4/proyecto1.jpg" alt="Casa de Playa del Golf 4">
+                    <div class="preview-details">
+                        <h3>Casa de Playa del Golf 4</h3>
+                        <p>Casa de playa moderna con 4 dormitorios, 220 m² de área construida y piscina.</p>
+                        <div class="preview-features">
+                            <span><i class="fa fa-bed"></i> 4 Dormitorios</span>
+                            <span><i class="fa fa-ruler-combined"></i> 220 m²</span>
+                        </div>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <h2>Solicitar información</h2>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Nombre completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Teléfono</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Enviar solicitud
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para el control del modal
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.style.display = 'block';
+            // Animación de apertura
+            anime({
+                targets: '.modal-content',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeOutCubic'
+            });
         }
 
-        // Mostrar la nueva imagen con transición suave
-        images[currentImageIndex].style.left = '0';
-    }
-</script>
+        // Cerrar modal con el botón X
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            const modal = document.getElementById('contactModal');
+            anime({
+                targets: '.modal-content',
+                scale: [1, 0.8],
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeInCubic',
+                complete: function() {
+                    modal.style.display = 'none';
+                }
+            });
+        });
 
-<!-- BOTON DE CONTACTO ----------------->
-</section>
-<button class="contact-button" onclick="toggleContactOptions()">💬</button>
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                anime({
+                    targets: '.modal-content',
+                    scale: [1, 0.8],
+                    opacity: [1, 0],
+                    duration: 300,
+                    easing: 'easeInCubic',
+                    complete: function() {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
 
-<!-- Opciones de contacto desplegables -->
-<div class="contact-options" id="contact-options">
-    <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-    <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-</div>
+        // Función para el botón de contacto flotante
+        function toggleContactOptions() {
+            const options = document.getElementById('contact-options');
+            options.classList.toggle('show');
+        }
+    </script>
 
-<script src="scripts.js"></script>
-
+    <link rel="stylesheet" href="/css/contact-form.css">
+    <script src="/js/contact-form.js"></script>
+    <script src="/scripts.js"></script>
 
 </body>
 </html>
