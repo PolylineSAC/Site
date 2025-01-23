@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Mi Perfil</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/perfil-styles.css">
+    <link rel="stylesheet" href="/css/themes.css">
+    <script src="/js/themes.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYAjRrl3d5nSYqSUnvE1zYG9sDW6lu7YM",
+            authDomain: "polyline-8476e.firebaseapp.com",
+            projectId: "polyline-8476e",
+            storageBucket: "polyline-8476e.firebasestorage.app",
+            messagingSenderId: "845208967834",
+            appId: "1:845208967834:web:51c4249e86a988e45a5d23",
+            measurementId: "G-QEFDKVQPBW"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Verificar autenticación y cargar datos
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                try {
+                    // Cargar datos básicos del usuario
+                    document.getElementById('userName').textContent = user.displayName || 'Usuario';
+                    document.getElementById('userEmail').textContent = user.email;
+                    document.getElementById('emailDisplay').textContent = user.email;
+                    document.getElementById('registrationDate').textContent = 
+                        new Date(user.metadata.creationTime).toLocaleDateString();
+
+                    // Cargar datos adicionales de Firestore
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.phone) {
+                            document.getElementById('phoneDisplay').textContent = userData.phone;
+                        }
+                        // Aquí puedes cargar más datos del usuario si los tienes
+                    }
+
+                    // Animar elementos después de cargar los datos
+                    animateProfileElements();
+
+                } catch (error) {
+                    console.error("Error al cargar datos:", error);
+                }
+            } else {
+                window.location.href = '/login.html';
+            }
+        });
+
+        // Función para cerrar sesión
+        window.logout = async () => {
+            try {
+                await auth.signOut();
+                window.location.href = '/index.html';
+            } catch (error) {
+                console.error("Error al cerrar sesión:", error);
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- Copiar header del index -->
+    <header>
+        <!-- ... existing header code ... -->
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-cover"></div>
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 id="userName">Cargando...</h1>
+            <p id="userEmail" class="user-email">Cargando...</p>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section">
+                <h2>Información Personal</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-details">
+                            <label>Email</label>
+                            <p id="emailDisplay">Cargando...</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-key"></i>
+                        <div class="info-details">
+                            <label>Contraseña</label>
+                            <p>••••••••• <button class="change-password-btn">Cambiar</button></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-details">
+                            <label>Teléfono</label>
+                            <p id="phoneDisplay">No configurado</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <div class="info-details">
+                            <label>Fecha de registro</label>
+                            <p id="registrationDate">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>Actividad Reciente</h2>
+                <div class="activity-timeline" id="activityTimeline">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="edit-profile-btn">
+                    <i class="fas fa-edit"></i> Editar Perfil
+                </button>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+    <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; bottom: 20px; right: 30px;"></button>
+    <script>
+        function animateProfileElements() {
+            // Animación de entrada de elementos
+            anime.timeline({
+                easing: 'easeOutExpo'
+            })
+            .add({
+                targets: '.profile-avatar',
+                scale: [0, 1],
+                rotate: [45, 0],
+                duration: 1000
+            })
+            .add({
+                targets: '.profile-header h1, .profile-header p',
+                translateY: [20, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: anime.stagger(100)
+            }, '-=800')
+            .add({
+                targets: '.info-item',
+                translateX: [-30, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: anime.stagger(100)
+            }, '-=600');
+        }
+
+        function loadActivityTimeline(userId) {
+            const timeline = document.getElementById('activityTimeline');
+            // Aquí puedes cargar la actividad del usuario desde Firebase
+            // y crear elementos dinámicamente
+        }
+    </script>
+    <script src="/scripts.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeManager = new ThemeManager();
+    });
+</script>
+</body>
+</html>

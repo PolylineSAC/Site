@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLYLINE - Constructora</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Add Anime.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .animated-title {
+            position: relative;
+            padding: 40px 0;
+            text-align: center;
+            perspective: 1000px;
+            margin-bottom: 50px;
+        }
+        
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform-origin: center;
+            font-size: 3.5em; /* Increased size */
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: text-shadow 0.3s;
+        }
+
+        .letter:hover {
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            opacity: 0;
+            font-size: 2em; /* Increased size */
+            color: #505050;
+            margin-top: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* New styles for cards enhancement */
+        .departamento-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .departamento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-details, .btn-separate {
+            transition: all 0.3s;
+        }
+
+        .btn-details:hover, .btn-separate:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="loading-screen" class="loading-screen">
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+            
+        </div>
+        
+        
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan">CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="active">INICIO</a></li>
+                <li><a href="/index.html">PARA TI</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                        
+                    </ul>
+                </li>
+                <li><a href="/PROYECTOS/cotizar.html">Cotizar Proyecto</a></li>
+                <li id="loginContainer">
+                    <a href="/pages/login.html" class="login-link" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <div id="userProfile" style="display: none;">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName"></span>
+                        <div class="user-dropdown">
+                            <a href="/pages/perfil.html"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a href="/pages/settings.html"><i class="fas fa-cog"></i> Configuración</a>
+                            <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+        <!-- Sección de Proyectos -->
+        <section id="departamentos" class="departamentos-section">
+            <div class="animated-title">
+                <div class="main-title">
+                    <span class="letter">P</span>
+                    <span class="letter">R</span>
+                    <span class="letter">O</span>
+                    <span class="letter">Y</span>
+                    <span class="letter">E</span>
+                    <span class="letter">C</span>
+                    <span class="letter">T</span>
+                    <span class="letter">O</span>
+                    <span class="letter">&nbsp;</span>
+                    <span class="letter">B</span>
+                    <span class="letter">E</span>
+                    <span class="letter">N</span>
+                    <span class="letter">A</span>
+                    <span class="letter">V</span>
+                    <span class="letter">I</span>
+                    <span class="letter">D</span>
+                    <span class="letter">E</span>
+                    <span class="letter">S</span>
+                    <span class="letter">&nbsp;</span>
+                    <span class="letter">2</span>
+                </div>
+                <div class="subtitle">EXCLUSIVOS DEPARTAMENTOS</div>
+            </div>
+            
+            <div class="launch-countdown">
+                <div class="countdown-title">
+                    <span class="shine-text"> Iniciamos 30 de enero de 2025</span>
+                </div>
+                <div class="countdown" id="countdown">
+                    <div class="time-block">
+                        <span class="days">000</span>
+                        <span class="label">Días</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="hours">00</span>
+                        <span class="label">Horas</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="minutes">00</span>
+                        <span class="label">Minutos</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="seconds">00</span>
+                        <span class="label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="departamentos-grid">
+                <!-- Departamento 1 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP101/1.jpeg" alt="Departamento 101" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 101</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="101a">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-101a" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('101a')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP101/101_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP101/101_VID.mp4', true, '101a')">
+                                    <img src="/Resource/PBEN2/DEP101/1.jpeg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP101/1.jpeg', false, '101a')">
+                                    <img src="/Resource/PBEN2/DEP101/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP101/2.jpeg', false, '101a')">
+                                    <img src="/Resource/PBEN2/DEP101/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP101/3.jpeg', false, '101a')">
+                                    <img src="/Resource/PBEN2/DEP101/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP101/4.jpeg', false, '101a')">
+                                    <img src="/Resource/PBEN2/DEP101/4.jpeg" alt="Vista 4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departamento 2 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP202/1.jpeg" alt="Departamento 202" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 202</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="202a">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-202a" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('202a')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP202/202_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/202_VID.mp4', true, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/1.jpeg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/1.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/2.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/3.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/4.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/4.jpeg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/5.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/5.jpeg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/6.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/6.jpeg" alt="Vista 6">
+                                </div>
+                                <!-- Ítem 7 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP202/7.jpeg', false, '202a')">
+                                    <img src="/Resource/PBEN2/DEP202/7.jpeg" alt="Vista 7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Departamento 3 -->
+                 <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP203/1.jpeg" alt="Departamento 203" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 203</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="203">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-203" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('203')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP203/203_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/203_VID.mp4', true, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/1.jpeg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/1.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/2.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/3.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/4.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/4.jpeg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/5.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/5.jpeg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/6.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/6.jpeg" alt="Vista 6">
+                                </div>
+                                <!-- Ítem 7 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP203/7.jpeg', false, '203')">
+                                    <img src="/Resource/PBEN2/DEP203/7.jpeg" alt="Vista 7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Departamento 4 -->
+                 <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP401/1.jpeg" alt="Departamento 401" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 401</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="401">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-401" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('401')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP401/401_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/401_VID.mp4', true, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/5.jpeg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/1.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/2.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/3.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/4.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/4.jpeg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/5.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/5.jpeg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/6.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/6.jpeg" alt="Vista 6">
+                                </div>
+                                <!-- Ítem 7 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP401/7.jpeg', false, '401')">
+                                    <img src="/Resource/PBEN2/DEP401/7.jpeg" alt="Vista 7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departamento 5 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP402/2.jpeg" alt="Departamento 402" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 402</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="402">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-402" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('402')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP402/402_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/402_VID.mp4', true, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/5.jpeg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/1.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/1.jpeg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/2.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/2.jpeg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/3.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/3.jpeg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/4.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/4.jpeg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/5.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/5.jpeg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/6.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/6.jpeg" alt="Vista 6">
+                                </div>
+                                <!-- Ítem 7 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP402/7.jpeg', false, '402')">
+                                    <img src="/Resource/PBEN2/DEP402/7.jpeg" alt="Vista 7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Departamento 6 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP501/1.jpg" alt="Departamento 501" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 501</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="501">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-501" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('501')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP501/501_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/501_VID.mp4', true, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/1.jpg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/1.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/1.jpg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/2.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/2.jpg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/3.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/3.jpg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/4.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/4.jpg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/5.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/5.jpg" alt="Vista 5">
+                                </div>
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP501/6.jpg', false, '501')">
+                                    <img src="/Resource/PBEN2/DEP501/6.jpg" alt="Vista 6">
+                                </div>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Departamento 7 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP502/1.jpg" alt="Departamento 502" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 502</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="502">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-502" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('502')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP502/502_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/502_VID.mp4', true, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/5.jpg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/1.jpg', false, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/1.jpg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/2.jpg', false, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/2.jpg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/3.jpg', false, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/3.jpg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/4.jpg', false, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/4.jpg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP502/5.jpg', false, '502')">
+                                    <img src="/Resource/PBEN2/DEP502/5.jpg" alt="Vista 5">
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departamento 8 -->
+                <div class="departamento-card">
+                    <img src="/Resource/PBEN2/DEP503/2.jpg" alt="Departamento 503" class="departamento-img">
+                    <div class="card-details">
+                        <h3>Departamento 503</h3>
+                        <p>Haz clic para ver más detalles</p>
+                        <a href="#" class="btn-details" data-department="503">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    </div>
+                </div>
+                
+                <!-- Layout emergente para detalles -->
+                <div id="detail-modal-503" class="modal hidden dark-mode">
+                    <div class="modal-content dark-mode">
+                        <!-- Botón para cerrar el modal -->
+                        <span class="close-btn" onclick="closeModal('503')">&times;</span>
+                        
+                        <!-- Contenedor principal del contenido (video o imagen) -->
+                        <div id="main-content-container" class="video-container dark-mode">
+                            <video id="main-content" controls autoplay>
+                                <source src="/Resource/PBEN2/DEP503/503_VID.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Carrusel de imágenes -->
+                        <div class="image-carousel">
+                            <div class="carousel-track">
+                                <!-- Ítem Principal -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/503_VID.mp4', true, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/1.jpg" alt="Vista 0">
+                                </div>
+                                <!-- Ítem 1 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/1.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/1.jpg" alt="Vista 1">
+                                </div>
+                                <!-- Ítem 2 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/2.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/2.jpg" alt="Vista 2">
+                                </div>
+                                <!-- Ítem 3 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/3.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/3.jpg" alt="Vista 3">
+                                </div>
+                                <!-- Ítem 4 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/4.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/4.jpg" alt="Vista 4">
+                                </div>
+                                <!-- Ítem 5 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/5.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/5.jpg" alt="Vista 5">
+                                </div>  
+                                <!-- Ítem 6 -->
+                                <div class="carousel-item" onclick="changeContent('/Resource/PBEN2/DEP503/6.jpg', false, '503')">
+                                    <img src="/Resource/PBEN2/DEP503/6.jpg" alt="Vista 6">                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section >
+            <div class="services-grid">
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/LOBBY.jpg" alt="LOBBY" class="lobby-img">
+                    <div class="card-details">
+                        <h3>LOBBY</h3>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/SALA.jpg" alt="SALA-COMEDOR" class="sala-img">
+                    <div class="card-details">
+                        <h3>SALA-COMEDOR</h3>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/DORMITORIO.jpg" alt="DORMITORIO" class="dormitorio-img">
+                    <div class="card-details">
+                        <h3>DORMITORIO PRINCIPAL</h3>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/DORMITORIO_SEGUNDA.jpg" alt="DORMITORIO_SECUNDARIO" class="dormitorio-sec.-img">
+                    <div class="card-details">
+                        <h3>DORMITORIO SECUNDARIO</h3>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/BAÑO.jpg" alt="Baño" class="baño-img">
+                    <div class="card-details">
+                        <h3>BAÑO</h3>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <img src="/Resource/PBEN2/COCINA.jpg" alt="cocina" class="cocina-img">
+                    <div class="card-details">
+                        <h3>COCINA</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="departamentos" class="departamentos-section">
+            <div class="animated-title">
+                <div class="main-title">
+                    <span class="letter">T</span>
+                    <span class="letter">I</span>
+                    <span class="letter">P</span>
+                    <span class="letter">O</span>
+                    <span class="letter">L</span>
+                    <span class="letter">O</span>
+                    <span class="letter">G</span>
+                    <span class="letter">Í</span>
+                    <span class="letter">A</span>
+                </div>
+            <div class="tipologia-container">
+                <img src="/Resource/PBEN2/TIPOLOGIA.jpg" alt="Tipología del Departamento" class="tipologia-imagen">
+                <div class="tipologia-contenido">
+                    <h3>Proyecto Benavides 2</h3>
+                  <p>Haga clic para descargar la tipología</p>
+                  <a href="/Resource/PBEN2/TIP_BEN2.pdf" download class="download-btn">
+                    Descargar Plano
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+            </div>
+        </section>
+
+     
+        
+
+        <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+
+
+    <!-- Botón de Contacto -->
+    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
+
+    
+
+    <!-- Opciones de contacto desplegables -->
+    <div class="contact-options" id="contact-options">
+        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
+        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
+    </div>
+
+    <script src="/scripts.js"></script>
+
+    <script>
+        // Add this before the existing scripts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Enhanced animation timeline
+            anime.timeline({loop: false})
+            .add({
+                targets: '.letter',
+                scale: [0, 1],
+                duration: 1500,
+                elasticity: 600,
+                delay: (el, i) => 70 * (i+1),
+                opacity: {
+                    value: 1,
+                    duration: 1,
+                    delay: (el, i) => 70 * (i+1)
+                },
+                rotate: {
+                    value: [-360, 0],
+                    duration: 1500,
+                    easing: 'easeOutElastic'
+                }
+            }).add({
+                targets: '.subtitle',
+                opacity: [0, 1],
+                duration: 1000,
+                translateY: [20, 0],
+                easing: 'easeOutExpo',
+                offset: '-=1000'
+            });
+
+            // Enhanced hover effects
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach(letter => {
+                letter.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: letter,
+                        scale: 1.2,
+                        rotate: '15deg',
+                        duration: 300,
+                        color: '#007bff',
+                        textShadow: '0 0 10px rgba(0,123,255,0.5)'
+                    });
+                });
+                
+                letter.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: letter,
+                        scale: 1,
+                        rotate: '0deg',
+                        duration: 300,
+                        color: '#333',
+                        textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
+                    });
+                });
+            });
+        });
+
+        
+    </script>
+
+    <script>
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
+    <script>
+        // Función para crear efecto de partículas
+        function createParticles(e) {
+            const particles = 10;
+            const button = e.target;
+            const rect = button.getBoundingClientRect();
+            const btnColor = window.getComputedStyle(button).backgroundColor;
+
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 3 + 2;
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 50 + 50;
+                
+                particle.style.cssText = `
+                    position: fixed;
+                    pointer-events: none;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${btnColor};
+                    border-radius: 50%;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    transform: translate(-50%, -50%);
+                    animation: particle-fade 1s ease-out forwards;
+                `;
+
+                document.body.appendChild(particle);
+
+                const animation = particle.animate([
+                    {
+                        transform: `translate(-50%, -50%)`,
+                        opacity: 1
+                    },
+                    {
+                        transform: `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                });
+
+                animation.onfinish = () => particle.remove();
+            }
+        }
+
+        // Función para actualizar el contador
+        function updateCountdown() {
+            const targetDate = new Date('2025-01-30T00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.querySelector('.days').textContent = days.toString().padStart(3, '');
+            document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+            document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+            document.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Inicializar el contador
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Agregar efecto de partículas a los botones
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn-details, .btn-separate');
+            buttons.forEach(button => {
+                button.addEventListener('click', createParticles);
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes particle-fade {
+            to {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty));
+            }
+        }
+    </style>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
+        <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
+        <p>Construyendo sueños con pasión y calidad.</p>
+    </div>
+    
+    
+    <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+</footer>
+    
+    </body>
+    
+</html>

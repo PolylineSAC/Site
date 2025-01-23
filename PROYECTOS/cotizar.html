@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>POLYLINE - Constructora</title>
+    <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="/css/anime.min.js"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preload" as="video" href="/Resource/background1.mp4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/assistant.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="/css/cotizar.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+    <!-- Firebase SDK -->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyBYAjRrl3d5nSYqSUnvE1zYG9sDW6lu7YM",
+    authDomain: "polyline-8476e.firebaseapp.com",
+    projectId: "polyline-8476e",
+    storageBucket: "polyline-8476e.firebasestorage.app",
+    messagingSenderId: "845208967834",
+    appId: "1:845208967834:web:51c4249e86a988e45a5d23",
+    measurementId: "G-QEFDKVQPBW"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Manejar el cierre de sesión
+    document.addEventListener('DOMContentLoaded', () => {
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    await signOut(auth);
+                    console.log('Sesión cerrada exitosamente');
+                    window.location.href = '/index.html';
+                } catch (error) {
+                    console.error('Error al cerrar sesión:', error);
+                }
+            });
+        }
+    });
+
+    // Observador del estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+        const loginLink = document.getElementById('loginLink');
+        const userProfile = document.getElementById('userProfile');
+        const userName = document.getElementById('userName');
+
+        if (user) {
+            console.log('Usuario autenticado:', user);
+            loginLink.style.display = 'none';
+            userProfile.style.display = 'flex';
+            userName.textContent = user.displayName;
+        } else {
+            console.log('Usuario no autenticado');
+            loginLink.style.display = 'block';
+            userProfile.style.display = 'none';
+            userName.textContent = '';
+        }
+    });
+</script>
+</head>
+
+<body>
+    <header>
+        <!-- Botón de menú móvil -->
+        <button class="mobile-menu-button" aria-label="Menú">
+            <div class="hamburger"></div>
+        </button>
+        <div id="loading-screen" class="loading-screen">
+            <div class="logo-container">
+                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+                <h1 class="company-name">POLYLINE</h1>
+                <p class="slogan">CONSTRUCTORA</p>
+            </div>
+        </div>
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan"> CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="active">Inicio</a></li>
+                <li><a href="/index.html">Para Tí</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                        <li><a href="/PROYECTOS/cotizar.html">Cotizar Proyecto</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link">Contacto</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                    </ul>
+                </li>
+                <li id="loginContainer">
+                    <a href="/pages/login.html" class="login-link" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <div id="userProfile" style="display: none;">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName"></span>
+                        <div class="user-dropdown">
+                            <a href="/pages/profile.html"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a href="/pages/settings.html"><i class="fas fa-cog"></i> Configuración</a>
+                            <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú móvil -->
+    <div class="menu-overlay"></div>
+
+    <!--audio de ambiente-->
+    <audio id="ambient-sound" autoplay loop volume="0.0">
+        <!--<source src="/Resource/sounds/ambiente-sound.mp3" type="audio/mp3"> -->
+    </audio>
+
+    <section id="inicio" style="position: relative; height: 60vh; overflow: hidden;">
+        <!-- Reemplazar video por imagen de fondo -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+            <img src="/RESOURCE/background-cot.jpg" alt="Background" 
+                 style="width: 100%; height: 100%; object-fit: cover; opacity: 0; 
+                        transition: opacity 1s ease-in-out;" 
+                 id="background-image">
+        </div>
+        <!-- Contenido de la sección -->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
+            <h2 class="hero-title">
+                <span class="letter-wrapper">
+                    <span class="letters-main">COTIZA TU FUTURO INMUEBLE</span>
+                </span>
+            </h2>
+            <p class="hero-subtitle">
+                <span class="letter-wrapper">
+                    <span class="letters-sub">Crea tus sueño con Polyline</span>
+                </span>
+            </p>
+        </div>
+
+        <script>
+            // Optimización de la animación de letras
+            function wrapLetters(selector) {
+                const textWrapper = document.querySelector(selector);
+                if (!textWrapper) return;
+                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='will-change: transform'>$&</span>");
+            }
+
+            // Animaciones optimizadas
+            document.addEventListener('DOMContentLoaded', () => {
+                wrapLetters('.letters-main');
+                wrapLetters('.letters-sub');
+
+                anime.timeline({
+                    loop: false,
+                    easing: 'easeOutExpo'
+                })
+                .add({
+                    targets: '.hero-title .letter',
+                    translateY: ["1.1em", 0],
+                    translateX: ["0.55em", 0],
+                    rotateZ: [180, 0],
+                    duration: 600,
+                    delay: anime.stagger(40),
+                    changeBegin: function() {
+                        document.querySelectorAll('.hero-title .letter').forEach(el => {
+                            el.style.opacity = '1';
+                        });
+                    }
+                })
+                .add({
+                    targets: '.hero-subtitle .letter',
+                    opacity: [0, 1],
+                    duration: 800,
+                    delay: anime.stagger(20),
+                    offset: '-=400'
+                });
+            });
+        </script>
+    </section>
+
+    <script>
+        // Reemplazar la lógica del video por la de la imagen
+        window.addEventListener('load', function() {
+            const bgImage = document.getElementById('background-image');
+            if (bgImage) {
+                bgImage.style.opacity = '1';
+            }
+        });
+    </script>
+
+    <div class="separator"></div>
+
+    <div class="excavator-container">
+        <div class="ground"></div> <!-- El suelo debe ir primero -->
+        <div class="crack-network"></div> <!-- Contenedor de grietas -->
+        <div class="excavator">
+            <div class="body">
+                <div class="exhaust"></div>
+                <div class="cabin">
+                    <div class="window"></div>
+                    <div class="metal-shine"></div>
+                    <div class="metal-shine"></div>
+                </div>
+                <div class="arm">
+                    <div class="joint arm-joint"></div>
+                    <div class="hydraulic-system hydraulic-1"></div>
+                    <div class="metal-shine"></div>
+                    <div class="boom">
+                        <div class="joint boom-joint"></div>
+                        <div class="hydraulic-system hydraulic-2"></div>
+                        <div class="metal-shine"></div>
+                        <div class="bucket">
+                            <div class="joint bucket-joint"></div>
+                            <div class="metal-shine"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tracks">
+                <div class="track"></div>
+            </div>
+        </div>
+        <div class="dirt-particles"></div>
+    </div>
+
+    
+<script>
+    function createParticles(x, y) {
+        const particlesContainer = document.querySelector('.dirt-particles');
+        const particleCount = 1; // Más partículas
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particlesContainer.appendChild(particle);
+
+            const angle = (Math.PI / 3) + (Math.random() * Math.PI / 3); // Ángulo más controlado
+            const velocity = 3 + Math.random() * 4;
+            const size = 3 + Math.random() * 4;
+            
+            // Posición inicial ajustada al punto de excavación
+            const startX = x - 20;
+            const startY = y - 10;
+
+            anime({
+                targets: particle,
+                translateX: [
+                    startX,
+                    startX + Math.cos(angle) * velocity * 30
+                ],
+                translateY: [
+                    startY,
+                    startY + Math.sin(angle) * velocity * 30
+                ],
+                scale: [
+                    {value: [0, 1], duration: 200},
+                    {value: 0, duration: 800}
+                ],
+                rotate: anime.random(-360, 360),
+                opacity: [
+                    {value: [0, 1], duration: 200},
+                    {value: 0, duration: 800}
+                ],
+                easing: 'easeOutQuad',
+                duration: 1000,
+                complete: () => particle.remove()
+            });
+        }
+    }
+
+    // Actualiza la animación del cucharón y las partículas
+    const bucketAnimation = anime({
+        targets: '.bucket',
+        rotate: [
+            { value: -45, duration: 800 },
+            { value: 15, duration: 800 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad',
+        update: function(anim) {
+            // Generar partículas solo cuando el cucharón está en la posición correcta
+            if (anim.progress > 40 && anim.progress < 60) {
+                const bucket = document.querySelector('.bucket');
+                const rect = bucket.getBoundingClientRect();
+                // Ajustar el punto de origen de las partículas
+                createParticles(rect.right - 20, rect.bottom - 10);
+            }
+        }
+    });
+
+    // Actualizar las animaciones para movimientos más realistas
+    anime({
+        targets: '.arm',
+        rotate: [
+            { value: -30, duration: 2000 },
+            { value: 0, duration: 2000 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
+
+    anime({
+        targets: '.boom',
+        rotate: [
+            { value: -20, duration: 1800 },
+            { value: 10, duration: 1800 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
+
+    anime({
+        targets: '.bucket',
+        rotate: [
+            { value: -40, duration: 1500 },
+            { value: 20, duration: 1500 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
+</script>   
+
+        <div class="separator"></div>
+
+<section class="cotizacion-section">
+    <h2>Cotización de Inmueble</h2>
+    
+    <div class="tipo-inmueble-options">
+        <div class="tipo-card" data-tipo="casa">
+            <i class="fas fa-home tipo-icon"></i>
+            <h3>Casa</h3>
+            <p>Vivienda unifamiliar</p>
+        </div>
+        <div class="tipo-card" data-tipo="edificio">
+            <i class="fas fa-building tipo-icon"></i>
+            <h3>Edificio</h3>
+            <p>Construcción vertical</p>
+        </div>
+        <div class="tipo-card" data-tipo="comercial">
+            <i class="fas fa-store tipo-icon"></i>
+            <h3>Local Comercial</h3>
+            <p>Espacios de negocio</p>
+        </div>
+        <div class="tipo-card" data-tipo="industrial">
+            <i class="fas fa-industry tipo-icon"></i>
+            <h3>Industrial</h3>
+            <p>Naves y fábricas</p>
+        </div>
+    </div>
+
+    <div class="parametros-form">
+        <!-- Añadir selector de moneda antes de los inputs -->
+        <div class="input-group currency-selector">
+            <label>Moneda</label>
+            <select id="tipo-moneda">
+                <option value="PEN">Soles (S/)</option>
+                <option value="USD">Dólares ($)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>M² de Terreno</label>
+            <input type="number" id="metros-terreno" min="0">
+        </div>
+        <div class="input-group">
+            <label>M² de Construcción</label>
+            <input type="number" id="metros-construccion" min="0">
+        </div>
+        <div class="input-group">
+            <label>M² de Excavación</label>
+            <input type="number" id="metros-excavacion" min="0">
+        </div>
+        <div class="input-group">
+            <label>Niveles</label>
+            <input type="number" id="niveles" min="1" value="1">
+        </div>
+    </div>
+
+    <button class="cotizar-btn">Calcular Cotización</button>
+
+    <div class="resultado-cotizacion">
+        <h3>Presupuesto Estimado</h3>
+        <div class="precio-total">$0.00 <span style="font-size: 0.5em; color: #aaa;">aproximados</span></div>
+        <div class="desglose-precios">
+            <p>Excavación: <span id="precio-excavacion">$0.00</span></p>
+            <p>Construcción: <span id="precio-construccion">$0.00</span></p>
+            <p>Acabados: <span id="precio-acabados">$0.00</span></p>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Animación inicial de la sección
+    anime({
+        targets: '.cotizacion-section',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        duration: 1000,
+        easing: 'easeOutExpo'
+    });
+
+    // Animación de las tarjetas de tipo
+    anime({
+        targets: '.tipo-card',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        delay: anime.stagger(100),
+        easing: 'easeOutQuad'
+    });
+
+    // Animación del formulario
+    anime({
+        targets: '.parametros-form',
+        opacity: [0, 1],
+        duration: 800,
+        delay: 500,
+        easing: 'easeOutQuad'
+    });
+
+    
+
+    // Manejador del botón de cotización
+    document.querySelector('.cotizar-btn').addEventListener('click', () => {
+        const resultado = document.querySelector('.resultado-cotizacion');
+        
+        // Cálculo del presupuesto (ejemplo)
+        const metrosTerreno = parseFloat(document.getElementById('metros-terreno').value) || 0;
+        const metrosConstruccion = parseFloat(document.getElementById('metros-construccion').value) || 0;
+        const metrosExcavacion = parseFloat(document.getElementById('metros-excavacion').value) || 0;
+        const niveles = parseFloat(document.getElementById('niveles').value) || 1;
+
+        const precioExcavacion = metrosExcavacion * 100;
+        const precioConstruccion = metrosConstruccion * 500 * niveles;
+        const precioAcabados = metrosConstruccion * 200 * niveles;
+        const total = precioExcavacion + precioConstruccion + precioAcabados;
+
+        // Animación del resultado
+        anime({
+            targets: '.resultado-cotizacion',
+            opacity: [0, 1],
+            scale: [0.95, 1],
+            duration: 800,
+            easing: 'easeOutElastic(1, .8)'
+        });
+
+        // Animación de los precios
+        anime({
+            targets: '.precio-total',
+            innerHTML: [0, total],
+            round: 1,
+            duration: 2000,
+            easing: 'easeOutExpo',
+            update: function(anim) {
+                document.querySelector('.precio-total').innerHTML = 
+                    '$' + anim.progress.toFixed(2);
+            }
+        });
+
+        // Actualizar desglose
+        document.getElementById('precio-excavacion').textContent = `$${precioExcavacion.toFixed(2)}`;
+        document.getElementById('precio-construccion').textContent = `$${precioConstruccion.toFixed(2)}`;
+        document.getElementById('precio-acabados').textContent = `$${precioAcabados.toFixed(2)}`;
+    });
+
+    // Add touch events for mobile
+    const tipoCards = document.querySelectorAll('.tipo-card');
+    tipoCards.forEach(card => {
+        card.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        card.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
+            // Trigger click event
+            this.click();
+        });
+    });
+
+    // Optimize animations for mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Reduce animation durations for better performance
+        anime.speed = 1.5;
+    }
+});
+</script>
+
+        <div class="separator"></div>
+
+    <title>Botón Animado para Redes Sociales</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+
+
+  </style>
+</head>
+    <body>
+        
+
+    <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; bottom: 20px; right: 30px;"></button>
+
+    </button>
+
+    
+
+    <script src="/scripts.js"></script>
+    <script src="/js/assistant.js"></script>
+    <script src="/js/excavator.js"></script>
+    <script src="/js/cotizacion.js"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
+    
+
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
+        <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
+        <p>Construyendo sueños con pasión y calidad.</p>
+    </div>
+
+    <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+</footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle menú móvil
+    mobileMenuButton.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Cerrar menú al hacer click en el overlay
+    menuOverlay.addEventListener('click', function() {
+        mobileMenuButton.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Manejar dropdowns en móvil
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Cerrar menú al cambiar el tamaño de la ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            mobileMenuButton.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Agregar después de la inicialización de Firebase
+    document.getElementById('logoutButton').addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+            await signOut(auth);
+            console.log('Usuario cerró sesión');
+            window.location.href = '/index.html';
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
+    });
+
+    // Toggle del menú desplegable
+    document.getElementById('userProfile').addEventListener('click', function(e) {
+        const dropdown = this.querySelector('.user-dropdown');
+        dropdown.classList.toggle('show');
+        e.stopPropagation();
+    });
+
+    // Cerrar el menú al hacer clic fuera
+    document.addEventListener('click', function() {
+        const dropdowns = document.getElementsByClassName('user-dropdown');
+        for (const dropdown of dropdowns) {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        }
+    });
+});
+</script>
+
+<script type="module">
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Función para manejar el cierre de sesión
+    document.getElementById('logoutButton').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const auth = getAuth();
+        try {
+            await signOut(auth);
+            console.log('Sesión cerrada exitosamente');
+            window.location.href = '/index.html'; // Redirige al inicio después de cerrar sesión
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
+    });
+</script>
+<script type="module" src="js/nav.js"></script>
+
+<script>
+    const excavator = document.querySelector('.excavator');
+
+    const arm = document.querySelector('.arm');
+    const boom = document.querySelector('.boom');
+    const bucket = document.querySelector('.bucket');
+
+    anime({
+        targets: '.excavator',
+        translateX: [
+            { value: window.innerWidth + 100, duration: 8000 },
+            { value: -100, duration: 0 }
+        ],
+        loop: true,
+        easing: 'linear'
+    });
+
+    anime({
+        targets: '.arm',
+        rotate: [
+            { value: -20, duration: 1000 },
+            { value: 20, duration: 1000 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine'
+    });
+
+    anime({
+        targets: '.boom',
+        rotate: [
+            { value: -15, duration: 800 },
+            { value: 15, duration: 800 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine'
+    });
+
+    anime({
+        targets: '.bucket',
+        rotate: [
+            { value: -30, duration: 600 },
+            { value: 30, duration: 600 }
+        ],
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutSine'
+    });
+</script>
+</body>
+
+</html>
