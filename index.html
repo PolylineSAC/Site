@@ -25,6 +25,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
     <!-- Firebase SDK -->
+    <link rel="preload" as="video" href="/Resource/background1.mp4" type="video/mp4">
+    <link rel="preload" as="video" href="/Resource/background1.webm" type="video/webm">
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -256,8 +258,17 @@
 
     <section id="inicio" style="position: relative; height: 80vh; overflow: hidden;">
         <!-- Video de fondo -->
-        <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
-            <source id="video-source" src="/Resource/background1.mp4" type="video/mp4">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            defaultMuted 
+            preload="auto"
+            id="background-video" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
+            <source id="video-source-webm" src="/Resource/background1.webm" type="video/webm">
+            <source id="video-source-mp4" src="/Resource/background1.mp4" type="video/mp4">
         </video>
         <!-- Contenido de la sección -->
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
@@ -384,9 +395,22 @@
     });
 </script>
 
+
+
     <div class="separator"></div>
 
-    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed;">
+    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed; background-attachment: scroll;">
+        <style>
+            @media screen and (max-width: 768px) {
+                #para-ti {
+                    background-attachment: scroll !important;
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        </style>
         <div class="container">
             <h2 class="section-heading" data-translate="Servicios Personalizados para Ti">Servicios Personalizados para Ti</h2>
             <p class="section-description" data-translate="En POLYLINE transformamos tus sueños en realidad.">En POLYLINE, transformamos tus sueños en realidad.</p>
