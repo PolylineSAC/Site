@@ -257,7 +257,7 @@
     <section id="inicio" style="position: relative; height: 80vh; overflow: hidden;">
         <!-- Video de fondo -->
         <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
-            <source src="/Resource/background1.mp4" type="video/mp4">
+            <source id="video-source" src="/Resource/background1.mp4" type="video/mp4">
         </video>
         <!-- Contenido de la sección -->
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
@@ -351,6 +351,38 @@
             });
         });
     </script>
+
+    <script>
+    // Detectar dispositivo y cambiar fuente del video
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('background-video');
+        const videoSource = document.getElementById('video-source');
+        
+        // Función para verificar si es dispositivo móvil
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        }
+
+        // Establecer la fuente correcta según el dispositivo
+        if (isMobile()) {
+            videoSource.src = '/Resource/background1.webm';
+        } else {
+            videoSource.src = '/Resource/background1.mp4';
+        }
+
+        // Recargar el video para que tome la nueva fuente
+        video.load();
+
+        // Reproducir el video y mostrar con fade
+        video.play().then(() => {
+            video.style.opacity = '1';
+        }).catch(error => {
+            console.log('Auto-play was prevented:', error);
+            video.muted = true;
+            video.play();
+        });
+    });
+</script>
 
     <div class="separator"></div>
 
@@ -631,11 +663,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </button>
 
-    <!-- Mismo código que arriba -->
-    <div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
-
-    <!-- Mismos scripts y estilos que arriba -->
-
     <script src="/scripts.js"></script>
     <script src="/js/assistant.js"></script>
 
@@ -801,12 +828,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'Servicios Personalizados para Ti': 'Personalized Services',
             'En POLYLINE transformamos tus sueños en realidad.': 'At POLYLINE, we transform your dreams into reality',
             'Remodelación Completa': 'Complete Remodeling',
-            'Rediseña completamente': 'Completely redesign your spaces to fit your needs and lifestyle',
+            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Completely redesign your spaces to fit your needs and lifestyle',
             'Remodelación de Cocinas': 'Kitchen Remodeling',
-            'Transforma tu cocina': 'Transform your kitchen into a modern and functional space',
-            'Remodelación de Baños': 'Bathroom Remodeling',
+            'Transforma tu cocina en un espacio moderno y funcional.': 'Transform your kitchen into a modern and functional space',
+            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Bathroom Remodeling',
             'Crea un ambiente': 'Create a relaxing and elegant environment with our custom designs',
-            'Diseño de Interiores': 'Interior Design',
+            'Optimiza tus espacios con soluciones creativas y modernas.': 'Interior Design',
             'Optimiza tus espacios': 'Optimize your spaces with creative and modern solutions',
             'Pisos': 'Floors',
             'Elige entre': 'Choose from a wide range of high-quality materials',
@@ -833,13 +860,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'Servicios Personalizados para Ti': 'Serviços Personalizados',
             'En POLYLINE transformamos tus sueños en realidad.': 'Na POLYLINE, transformamos seus sonhos em realidade',
             'Remodelación Completa': 'Remodelação Completa',
-            'Rediseña completamente': 'Redesenhe completamente seus espaços para atender suas necessidades e estilo de vida',
+            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Redesenhe completamente seus espaços para atender suas necessidades e estilo de vida',
             'Remodelación de Cocinas': 'Remodelação de Cozinhas',
-            'Transforma tu cocina': 'Transforme sua cozinha em um espaço moderno e funcional',
-            'Remodelación de Baños': 'Remodelação de Banheiros',
+            'Transforma tu cocina en un espacio moderno y funcional.': 'Transforme sua cozinha em um espaço moderno e funcional',
+            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Remodelação de Banheiros',
             'Crea un ambiente': 'Crie um ambiente relaxante ed elegante com nossos designs personalizados',
             'Diseño de Interiores': 'Design de Interiores',
-            'Optimiza tus espacios': 'Otimize seus espaços com soluções criativas e modernas',
+            'Optimiza tus espacios con soluciones creativas y modernas.': 'Otimize seus espaços com soluções criativas e modernas',
             'Pisos': 'Pisos',
             'Elige entre': 'Escolha entre uma ampla gama de materiais de alta qualidade',
             'Nosotros': 'Sobre Nós',
@@ -865,13 +892,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'Servicios Personalizados para Ti': '个性化服务',
             'En POLYLINE transformamos tus sueños en realidad.': '在 POLYLINE，我们将您的梦想变为现实',
             'Remodelación Completa': '全面改造',
-            'Rediseña completamente': '完全重新设计您的空间，以适应您的需求和生活方式',
+            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': '完全重新设计您的空间，以适应您的需求和生活方式',
             'Remodelación de Cocinas': '厨房改造',
-            'Transforma tu cocina': '将您的厨房改造成现代化的实用空间',
-            'Remodelación de Baños': '浴室改造',
+            'Transforma tu cocina en un espacio moderno y funcional.': '将您的厨房改造成现代化的实用空间',
+            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '浴室改造',
             'Crea un ambiente': '通过我们的定制设计创造轻松优雅的环境',
             'Diseño de Interiores': '室内设计',
-            'Optimiza tus espacios': '通过创新现代的解决方案优化您的空间',
+            'Optimiza tus espacios con soluciones creativas y modernas.': '通过创新现代的解决方案优化您的空间',
             'Pisos': '地板',
             'Elige entre': '从多种高品质材料中选择',
             'Nosotros': '关于我们',
@@ -897,10 +924,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'Servicios Personalizados para Ti': 'カスタマイズされたサービス',
             'EEn POLYLINE transformamos tus sueños en realidad.': 'POLYLINEでは、あなたの夢を現実に変えます',
             'Remodelación Completa': '全面改装',
-            'Rediseña completamente': 'あなたのニーズとライフスタイルに合わせて空間を完全にリデザイン',
+            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'あなたのニーズとライフスタイルに合わせて空間を完全にリデザイン',
             'Remodelación de Cocinas': 'キッチンリフォーム',
-            'Transforma tu cocina': 'あなたのキッチンを現代的で機能的な空間に変える',
-            'Remodelación de Baños': '浴室リフォーム',
+            'Transforma tu cocina en un espacio moderno y funcional.': 'あなたのキッチンを現代的で機能的な空間に変える',
+            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '浴室リフォーム',
             'Crea un ambiente': '私たちのカスタムデザインで、くつろぎのある優雅な環境を作り出す',
             'Diseño de Interiores': 'インテリアデザイン',
             'Optimiza tus espacios': '創造的でモダンなソリューションであなたの空間を最適化',
@@ -929,10 +956,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'Servicios Personalizados para Ti': 'Servizi Personalizzati',
             'En POLYLINE transformamos tus sueños en realidad.': 'In POLYLINE, trasformiamo i tuoi sogni in realtà',
             'Remodelación Completa': 'Ristrutturazione Completa',
-            'Rediseña completamente': 'Riprogetta completamente i tuoi spazi per adattarli alle tue esigenze e al tuo stile di vita',
+            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Riprogetta completamente i tuoi spazi per adattarli alle tue esigenze e al tuo stile di vita',
             'Remodelación de Cocinas': 'Ristrutturazione Cucine',
-            'Transforma tu cocina': 'Trasforma la tua cucina in uno spazio moderno e funzionale',
-            'Remodelación de Baños': 'Ristrutturazione Bagni',
+            'Transforma tu cocina en un espacio moderno e funzionale.': 'Trasforma la tua cucina in uno spazio moderno e funzionale',
+            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Ristrutturazione Bagni',
             'Crea un ambiente': 'Crea un ambiente rilassante ed elegante con i nostri design personalizzati',
             'Diseño de Interiores': 'Design degli Interni',
             'Optimiza tus espacios': 'Ottimizza i tuoi spazi con soluzioni creative e moderne',
