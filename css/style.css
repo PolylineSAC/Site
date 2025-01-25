@@ -3334,8 +3334,8 @@ body.dark-mode .hamburger::after {
     #userProfile .profile-header {
         width: 100%;
         display: flex;
-        align-items: center;
-        margin-left: -10%;
+        
+        margin-top: 20%;
         gap: 10px;
         padding: 8px 0;
     }
