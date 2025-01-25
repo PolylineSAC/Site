@@ -1,45 +1,99 @@
+/*seccion de Proyecto Benavides 1*/
+
+
 .departamentos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 60px 20px; /* Aumentado el padding superior de 40px a 60px */
-    max-width: 1200px;
-    margin:  auto;
-    margin-top: 50px; /* Añadido margen superior adicional */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: -150%;
 }
 
 .departamento-card {
-    background: #fff;
+    background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.656);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .departamento-card {
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .departamento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .departamento-img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: filter 0.3s;
 }
 
+
 .card-details {
-    padding: 15px;
-    text-align: center;
+    padding: 20px;
 }
 
 .card-details h3 {
     margin: 0 0 10px 0;
     color: #333;
+    position: relative; /* Agregado para el hover */
+}
+
+.card-details h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #FF6B00;
+    transition: width 0.3s ease;
+}
+
+.departamento-card:hover .card-details h3::after {
+    width: 70%;
+}
+
+body.dark-mode .card-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
 }
 
 .card-details p {
-    margin: 0 0 15px 0;
-    color: #666;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #515050;
+}
+
+body.dark-mode .card-details p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #d0d0d0;
+}
+
+
+.btn-details {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    background: #e67e22;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-details:hover {
+    background: #d37a2d;
+    transform: scale(1.1);
 }
 
 .btn-details, .btn-separate {
@@ -100,7 +154,7 @@
 }
 
 .time-block {
-    background: linear-gradient(145deg, #007bff, #0056b3);
+    background: linear-gradient(145deg, #e67d22a7, #9a54173f);
     padding: 15px;
     border-radius: 15px;
     min-width: 10px;
@@ -143,4 +197,77 @@
 .countdown-highlight {
     color: #007bff;
     font-weight: 600;
+}
+
+@media screen and (max-width: 768px)    {
+
+    .departamentos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-top: -150%;
+    }
+    
+    .departamento-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.656);
+        transition: transform 0.3s, box-shadow 0.3s;
+       
+    }
+
+    body.dark-mode .departamento-card {
+        background: #1e1e1e;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .departamento-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .departamento-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: filter 0.3s;
+    }
+
+
+    .card-details {
+        padding: 20px;
+    }
+
+    .card-details h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+        position: relative; /* Agregado para el hover */
+    }
+    .main-title {
+        word-break: break-word;
+        width: 85%;
+        margin: 0 auto;
+        
+    }
+
+    .download-btn{
+        background: #d37a2d;
+        color: white;
+        width: 200%;
+        border-radius: 15px;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: background 0.3s, transform 0.3s;
+    }
+    .tipologia-imagen{
+        width: 90%;
+        margin-bottom: 20px;
+        border-radius: 15px;        
+        transition: filter 0.3s;
+        box-shadow: #666;
+    }
+    
 }

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/idiomas.css">
+    <link rel="stylesheet" href="/css/departamentos.css">
     <!-- Add Anime.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
@@ -64,6 +66,7 @@
             transform: scale(1.05);
         }
     </style>
+
 </head>
 <body>
     <header>
@@ -73,17 +76,50 @@
                 <h1 class="company-name">POLYLINE</h1>
                 <p class="slogan">CONSTRUCTORA</p>
             </div>
-            
         </div>
-        
-        
         <div class="logo-container">
             <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
             <h1 class="company-name">POLYLINE</h1>
             <p class="slogan">CONSTRUCTORA</p>
         </div>
+        <!-- Botón de menú móvil -->
+        <button class="mobile-menu-button" aria-label="Menú">
+            <div class="hamburger"></div>
+        </button>
         <nav>
             <ul class="nav-menu">
+                <li class="language-selector">
+                    <button class="language-btn" onclick="toggleLanguageOptions()">
+                        <img src="/Resource/flags/es.png" alt="Español" id="currentFlag">
+                        <span id="currentLanguage">Español</span>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" onclick="changeLanguage('es')">
+                            <img src="/Resource/flags/es.png" alt="Español">
+                            <span>Español</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('en')">
+                            <img src="/Resource/flags/en.png" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('pt')">
+                            <img src="/Resource/flags/pt.png" alt="Português">
+                            <span>Português</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('zh')">
+                            <img src="/Resource/flags/zh.png" alt="中文">
+                            <span>中文</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('ja')">
+                            <img src="/Resource/flags/ja.png" alt="日本語">
+                            <span>日本語</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('it')">
+                            <img src="/Resource/flags/it.png" alt="Italiano">
+                            <span>Italiano</span>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="/index.html" class="active">INICIO</a></li>
                 <li><a href="/index.html">PARA TI</a></li>
                 <li class="dropdown">
@@ -119,7 +155,7 @@
             </ul>
         </nav>
     </header>
-
+    <div class="menu-overlay"></div>
 
         <!-- Sección de Proyectos -->
         <section id="departamentos" class="departamentos-section">
@@ -731,20 +767,8 @@
         
 
         <!-- Botón de modo oscuro -->
-    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
-
-
-    <!-- Botón de Contacto -->
-    <button class="contact-button" onclick="toggleContactOptions()">💬</button>
-
-    
-
-    <!-- Opciones de contacto desplegables -->
-    <div class="contact-options" id="contact-options">
-        <a href="https://wa.me/51944436004" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-        <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp" title="WhatsApp"></a>
-        <a href="mailto:contacto@polyline.com" target="_blank" class="fa fa-envelope" title="Correo"></a>
-    </div>
+    <!-- Botón de modo oscuro mejorado -->
+    <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; right: 30px;"></button>
 
     <script src="/scripts.js"></script>
 
@@ -912,6 +936,197 @@
     
     <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Toggle menú móvil
+    mobileMenuButton.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Cerrar menú al hacer click en el overlay
+    menuOverlay.addEventListener('click', function() {
+        mobileMenuButton.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Manejar dropdowns en móvil
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Cerrar menú al cambiar el tamaño de la ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            mobileMenuButton.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Agregar después de la inicialización de Firebase
+    document.getElementById('logoutButton').addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+            await signOut(auth);
+            console.log('Usuario cerró sesión');
+            window.location.href = '/index.html';
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
+    });
+
+    // Toggle del menú desplegable
+    document.getElementById('userProfile').addEventListener('click', function(e) {
+        const dropdown = this.querySelector('.user-dropdown');
+        dropdown.classList.toggle('show');
+        e.stopPropagation();
+    });
+
+    // Cerrar el menú al hacer clic fuera
+    document.addEventListener('click', function() {
+        const dropdowns = document.getElementsByClassName('user-dropdown');
+        for (const dropdown of dropdowns) {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        }
+    });
+});
+</script>
+<script type="module">
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Función para manejar el cierre de sesión
+    document.getElementById('logoutButton').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const auth = getAuth();
+        try {
+            await signOut(auth);
+            console.log('Sesión cerrada exitosamente');
+            window.location.href = '/index.html'; // Redirige al inicio después de cerrar sesión
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
+    });
+</script>
+<script type="module" src="js/nav.js"></script>
+<script>
+    // Funciones para el selector de idiomas
+    function toggleLanguageOptions() {
+        const options = document.getElementById('languageOptions');
+        options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function changeLanguage(lang) {
+        const currentFlag = document.getElementById('currentFlag');
+        const currentLanguage = document.getElementById('currentLanguage');
+        const languageOptions = document.getElementById('languageOptions');
+        
+        currentFlag.src = `/Resource/flags/${lang}.png`;
+        currentLanguage.textContent = {
+            'es': 'Español',
+            'en': 'English',
+            'pt': 'Português',
+            'zh': '中文',
+            'ja': '日本語',
+            'it': 'Italiano'
+        }[lang];
+        
+        languageOptions.style.display = 'none';
+        translatePage(lang);
+    }
+
+    // Objeto con las traducciones
+    const translations = {
+        'en': {
+            'Inicio': 'Home',
+            'Para Tí': 'For You',
+            'Proyectos': 'Projects',
+            'Proyectos en Venta': 'Projects for Sale',
+            'Contacto': 'Contact',
+            'Información': 'Information',
+            'Agenda una Reunión con Nosotros': 'Schedule a Meeting with Us',
+            'Cotizar Proyecto': 'Quote Project'
+        },
+        'pt': {
+            'Inicio': 'Início',
+            'Para Tí': 'Para Você',
+            'Proyectos': 'Projetos',
+            'Proyectos en Venta': 'Projetos à Venda',
+            'Contacto': 'Contato',
+            'Información': 'Informação',
+            'Agenda una Reunión con Nosotros': 'Agende uma Reunião Conosco',
+            'Cotizar Proyecto': 'Cotar Projeto'
+        },
+        'zh': {
+            'Inicio': '首页',
+            'Para Tí': '为您服务',
+            'Proyectos': '项目',
+            'Proyectos en Venta': '在售项目',
+            'Contacto': '联系',
+            'Información': '信息',
+            'Agenda una Reunión con Nosotros': '与我们预约会议',
+            'Cotizar Proyecto': '项目报价'
+        },
+        'ja': {
+            'Inicio': 'ホーム',
+            'Para Tí': 'あなたのために',
+            'Proyectos': 'プロジェクト',
+            'Proyectos en Venta': '販売中のプロジェクト',
+            'Contacto': '連絡先',
+            'Información': '情報',
+            'Agenda una Reunión con Nosotros': '私たちとの会議を予約する',
+            'Cotizar Proyecto': 'プロジェクト見積もり'
+        },
+        'it': {
+            'Inicio': 'Home',
+            'Para Tí': 'Per Te',
+            'Proyectos': 'Progetti',
+            'Proyectos en Venta': 'Progetti in Vendita',
+            'Contacto': 'Contatto',
+            'Información': 'Informazioni',
+            'Agenda una Reunión con Nosotros': 'Programma un Incontro con Noi',
+            'Cotizar Proyecto': 'Preventivo Progetto'
+        }
+    };
+
+    function translatePage(lang) {
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+    }
+
+    // Cerrar el menú de idiomas cuando se hace clic fuera
+    document.addEventListener('click', function(event) {
+        const languageSelector = document.querySelector('.language-selector');
+        const languageOptions = document.getElementById('languageOptions');
+        
+        if (!languageSelector.contains(event.target)) {
+            languageOptions.style.display = 'none';
+        }
+    });
+</script>
     
     </body>
     

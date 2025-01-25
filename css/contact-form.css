@@ -34,6 +34,9 @@ body.dark-mode .modal-content {
     animation: modalOpen 0.3s ease-out;
 }
 
+.feature-item {
+    width: flex;
+}
 
 .close-modal {
     position: absolute;
@@ -225,14 +228,140 @@ body.dark-mode .submit-btn {
     border-bottom-color: #444;
 }
 
-@media (max-width: 768px) {
+/* Media queries para dispositivos móviles */
+@media screen and (max-width: 768px) {
+
+    .modal-content {
+        margin: 2vh auto;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .property-preview {
+        padding: 10px;
+    }
+
+    .feature-item {
+        width: flex;
+    }
+    .body.dark-mode .feature-item {
+        width: flex;
+    }
+    .feature-text {
+        width: 20%;
+        text-align: center;
+        font-size: 8%;
+        
+    }
+    .property-preview img {
+        height: 200px;
+    }
+
+    .preview-features {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-form {
+        padding: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .preview-details h3 {
+        font-size: 20px;
+    }
+
+    .property-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
     .modal-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    .property-preview, .contact-form {
+        width: 100%;
+    }
+
+    .property-showcase {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .property-showcase .property-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+        
+    }
+    body.dark-mode .property-showcase .property-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+        
+    }
+
+    .image-gallery {
+        width: 100%;
+        
+    }
+
+
+    .property-title {
+        width: 100%;
+        text-align: center;
+        margin-top: -20px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        order: -1;
+    }
+
+    .property-details {
+        width: 100%;
+        order: 2;
+        padding: 15px 0;
+    }
+
+    /* Ajustes para el modal en móvil */
     .modal-content {
-        margin: 2vh auto;
-        max-height: 96vh;
-        overflow-y: auto;
+        padding: 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-features {
+        flex-direction: column;
+    }
+
+    .contact-now-btn {
+        
+        width: 40%;
+        padding: 20px;
+        margin-left: 130px;
+    }
+    body.dark-mode .contact-now-btn {
+        
+        width: 40%;
+        padding: 12px;
+        margin-left: 120px;
     }
 }
+
+
+
