@@ -6,6 +6,7 @@
     <title>Casa de Playa Golf 2</title>
     <link rel="icon" href="/Resource/Logo/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/idiomas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
@@ -16,6 +17,10 @@
 </head>
 <body>
     <header>
+        <!-- Botón de menú móvil -->
+        <button class="mobile-menu-button" aria-label="Menú">
+            <div class="hamburger"></div>
+        </button>
         <div class="logo-container">
             <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
             <h1 class="company-name">POLYLINE</h1>
@@ -23,41 +28,77 @@
         </div>
         <nav>
             <ul class="nav-menu">
-                <li><a href="/index.html" class="active">INICIO</a></li>
-                <li><a href="/index.html">PARA TI</a></li>
+                <li class="language-selector">
+                    <button class="language-btn" onclick="toggleLanguageOptions()">
+                        <img src="/Resource/flags/es.png" alt="Español" id="currentFlag">
+                        <span id="currentLanguage">Español</span>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" onclick="changeLanguage('es')">
+                            <img src="/Resource/flags/es.png" alt="Español">
+                            <span>Español</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('en')">
+                            <img src="/Resource/flags/en.png" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('pt')">
+                            <img src="/Resource/flags/pt.png" alt="Português">
+                            <span>Português</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('zh')">
+                            <img src="/Resource/flags/zh.png" alt="中文">
+                            <span>中文</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('ja')">
+                            <img src="/Resource/flags/ja.png" alt="日本語">
+                            <span>日本語</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('it')">
+                            <img src="/Resource/flags/it.png" alt="Italiano">
+                            <span>Italiano</span>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="index.html" class="active" data-translate="Inicio">Inicio</a></li>
+                <li><a href="/index.html" data-translate="Para Tí">Para Tí</a></li>
                 <li class="dropdown">
-                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link" data-translate="Proyectos">Proyectos</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
-                        <li><a href="#proyecto2">Proyecto Benavides 1</a></li>
-                        <li><a href="#proyecto3">Proyecto Benavides 2</a></li>
-                        <li><a href="#proyecto4">Proyecto Pueblo Libre 1</a></li>
+                        <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html" data-translate="Proyecto Benavides 1">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html"data-translate="Proyecto Benavides 2">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html" data-translate="Proyecto Pueblo Libre 1">Proyecto Pueblo Libre 1</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <a href="/Contact/Información.html" id="proyectos-link" data-translate="Contacto">Contacto</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Contact/Información.html">Información</a></li>
-                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                        <li><a href="/Contact/Información.html" data-translate="Información">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html" data-translate="Agenda Una Reunión">Agenda una Reunión con Nosotros</a></li>
                     </ul>
                 </li>
-                <li><a href="/PROYECTOS/cotizar.html">Cotizar Proyecto</a></li>
-                <li id="loginContainer">
-                    <a href="/pages/login.html" class="login-link" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <li><a href="/PROYECTOS/cotizar.html" data-translate="Cotizar Proyecto">Cotizar Proyecto</a></li>
+                <li id="translateContainer" class="translate-container">
+                    <div id="google_translate_element" title="Seleccionar idioma"></div>
+                </li>
+                <li id="loginContainer" class="mobile-login">
+                    <a href="/pages/login.html" class="login-link" id="loginLink">
+                        <i class="fas fa-sign-in-alt"></i> 
+                        <span data-translate="Login">Login</span>
+                    </a>
                     <div id="userProfile" style="display: none;">
-                        <i class="fas fa-user-circle"></i>
-                        <span id="userName"></span>
-                        <div class="user-dropdown">
-                            <a href="/pages/perfil.html"><i class="fas fa-user"></i> Mi Perfil</a>
-                            <a href="/pages/settings.html"><i class="fas fa-cog"></i> Configuración</a>
-                            <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        <div class="profile-header">
+                            <a href="/pages/perfil.html" style="text-decoration: none; color: inherit; ">
+                                <span data-translate="Perfil">Perfil</span>
+                            </a>
                         </div>
                     </div>
                 </li>
             </ul>
         </nav>
     </header>
-
+    <div class="menu-overlay"></div>
     <section id="inicio" class="property-showcase">
         <!-- Contenedor de las imágenes (a la izquierda) -->
         <div class="image-gallery">
@@ -89,41 +130,41 @@
 
         <!-- Contenido de la descripción (a la derecha) -->
         <div class="property-details">
-            <h2 class="property-title">Casa de Playa Golf 2</h2>
+            <h2 class="property-title" data-translate="Casa de Playa Golf 2">Casa de Playa Golf 2</h2>
             <div class="property-features">
                 <div class="feature-item">
                     <i class="fa fa-bed"></i>
                     <div class="feature-text">
-                        <h4>Dormitorios</h4>
-                        <p>7 dormitorios amplios y luminosos</p>
+                        <h4 data-translate="Dormitorios">Dormitorios</h4>
+                        <p data-translate="7 dormitorios">7 dormitorios amplios y luminosos</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <i class="fa fa-bath"></i>
                     <div class="feature-text">
-                        <h4>Baños</h4>
-                        <p>7 baños completos con acabados de lujo</p>
+                        <h4 data-translate="Baños">Baños</h4>
+                        <p data-translate="7 baños">7 baños completos con acabados de lujo</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <i class="fa fa-swimming-pool"></i>
                     <div class="feature-text">
-                        <h4>Piscina</h4>
-                        <p>Piscina privada con área de terraza</p>
+                        <h4 data-translate="Piscina">Piscina</h4>
+                        <p data-translate="Piscina privada">Piscina privada con área de terraza</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <i class="fa fa-ruler-combined"></i>
                     <div class="feature-text">
-                        <h4>Área</h4>
-                        <p>250 m² de área construida</p>
+                        <h4 data-translate="Area">Area</h4>
+                        <p data-translate="250 m²">250 m² de área construida</p>
                     </div>
                 </div>
             </div>
             <div class="property-description">
-                <p>Lujosa casa de playa ubicada en una zona exclusiva del Golf. Diseñada para familias que buscan espacios amplios y confort. Acabados de primera calidad, amplias áreas sociales y una distribución perfecta para disfrutar de la vida en playa.</p>
+                <p data-translate="descripcion-propiedad">Lujosa casa de playa ubicada en una zona exclusiva del Golf. Diseñada para familias que buscan espacios amplios y confort. Acabados de primera calidad, amplias áreas sociales y una distribución perfecta para disfrutar de la vida en playa.</p>
             </div>
-            <button class="contact-now-btn" onclick="openContactModal()">
+            <button class="contact-now-btn" onclick="openContactModal()" data-translate="Contactar ahora">
                 Contactar ahora
                 <i class="fas fa-arrow-right"></i>
             </button>
@@ -140,7 +181,9 @@
         });
     </script>
     
-    <button id="dark-mode-toggle" class="dark-mode-button">🌙</button>
+    <!-- Botón de modo oscuro -->
+    <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; bottom: 20px; right: 30px;"></button>
+
 
     <div id="contactModal" class="modal" style="display: none;">
         <div class="modal-content">
@@ -161,10 +204,11 @@
                     </div>
                 </div>
                 <!-- Contact Form -->
-                <form id="contactForm" class="contact-form" onsubmit="return sendEmail(event)">
-                    <h2>Solicitar información</h2>
+                <form id="contactForm">
+                    <h2 data-translate="Solicitar información">Solicitar información</h2>
+                    <form id="contactForm" onsubmit="sendEmail(event)">
                     <input type="hidden" name="to_name" value="Polyline">
-                    <input type="hidden" name="property_title" id="property_title">
+                    <input type="hidden" name="property_title" value="Casa de Playa Golf 2">
                     <div class="form-group">
                         <input type="text" id="name" name="from_name" required>
                         <label for="name">Nombre completo</label>
@@ -190,6 +234,81 @@
     <script src="/js/contact-form.js"></script>
    
     <script src="/scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const dropdowns = document.querySelectorAll('.dropdown');
+    
+        // Toggle menú móvil
+        mobileMenuButton.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    
+        // Cerrar menú al hacer click en el overlay
+        menuOverlay.addEventListener('click', function() {
+            mobileMenuButton.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    
+        // Manejar dropdowns en móvil
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+    
+        // Cerrar menú al cambiar el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                mobileMenuButton.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    
+        // Agregar después de la inicialización de Firebase
+        document.getElementById('logoutButton').addEventListener('click', async (e) => {
+            e.preventDefault();
+            try {
+                await signOut(auth);
+                console.log('Usuario cerró sesión');
+                window.location.href = '/index.html';
+            } catch (error) {
+                console.error('Error al cerrar sesión:', error);
+            }
+        });
+    
+        // Toggle del menú desplegable
+        document.getElementById('userProfile').addEventListener('click', function(e) {
+            const dropdown = this.querySelector('.user-dropdown');
+            dropdown.classList.toggle('show');
+            e.stopPropagation();
+        });
+    
+        // Cerrar el menú al hacer clic fuera
+        document.addEventListener('click', function() {
+            const dropdowns = document.getElementsByClassName('user-dropdown');
+            for (const dropdown of dropdowns) {
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+    });
+    </script>
+
     <script type="module">
         import { openContactModal } from '/js/contact-form.js';
         
@@ -211,7 +330,6 @@
             const closeBtn = document.querySelector('.close-modal');
             const contactForm = document.getElementById('contactForm');
 
-            // Función global para abrir el modal
             window.openContactModal = function() {
                 modal.style.display = 'block';
             };
@@ -354,3 +472,288 @@
 </script>
 </body>
 </html>
+    <script>
+        // Funciones para el selector de idiomas
+        function toggleLanguageOptions() {
+            const selector = document.querySelector('.language-selector');
+            const options = document.getElementById('languageOptions');
+            selector.classList.toggle('active');
+            options.classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLanguage = document.getElementById('currentLanguage');
+            const options = document.getElementById('languageOptions');
+            
+            // Actualizar el botón con el idioma seleccionado
+            currentFlag.src = `/Resource/flags/${lang}.png`;
+            currentLanguage.textContent = {
+                'es': 'Español',
+                'en': 'English',
+                'pt': 'Português',
+                'zh': '中文',
+                'ja': '日本語',
+                'it': 'Italiano'
+            }[lang];
+            
+            // Ocultar las opciones
+            options.classList.remove('show');
+            
+            // Traducir el contenido
+            translatePage(lang);
+        }
+
+        // Objeto con las traducciones
+        const translations = {
+            'en': {
+                'Inicio': 'Home',
+                'Para Tí': 'For You',
+                'Proyectos': 'Projects',
+                'Proyectos en Venta': 'Projects for Sale',
+                'Proyecto Benavides 1': 'Benavides Project 1',
+                'Proyecto Benavides 2': 'Benavides Project 2', 
+                'Proyecto Pueblo Libre 1': 'Pueblo Libre Project 1',
+                'Contacto': 'Contact',
+                'Información': 'Information',
+                'Agenda Una Reunión': 'Schedule a Meeting',
+                'Cotizar Proyecto': 'Quote Project',
+                'BIENVENIDO A POLYLINE': 'WELCOME TO POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Real estate projects created for you.',
+                'Login': 'Login',
+                'Perfil': 'Profile',
+                'Cerrar Sesión': 'Logout',
+                'Edificaciones': 'Single-family and multi-family buildings',
+                'Casa de Playa Golf 2': 'Golf Beach House 2',
+                'Dormitorios': 'Bedrooms',
+                '7 dormitorios': '7 spacious and bright bedrooms',
+                'Baños': 'Bathrooms',
+                '7 baños': '7 full bathrooms with luxury finishes',
+                'Piscina': 'Pool',
+                'Piscina privada': 'Private pool with terrace area',
+                'Area': 'Area',
+                '250 m²': '250 sq m of built area',
+                'descripcion-propiedad': 'Luxury beach house located in an exclusive Golf area. Designed for families looking for spacious areas and comfort. Premium finishes, large social areas and a perfect layout to enjoy beach life.',
+                'Contactar ahora': 'Contact Now',
+            },
+            'pt': {
+                'Inicio': 'Início',
+                'Para Tí': 'Para Você', 
+                'Proyectos': 'Projetos',
+                'Proyectos en Venta': 'Projetos à Venda',
+                'Proyecto Benavides 1': 'Projeto Benavides 1',
+                'Proyecto Benavides 2': 'Projeto Benavides 2', 
+                'Proyecto Pueblo Libre 1': 'Projeto Pueblo Libre 1',
+                'Contacto': 'Contato',
+                'Información': 'Informações',
+                'Agenda Una Reunión': 'Agendar uma Reunião',
+                'Cotizar Proyecto': 'Orçar Projeto',
+                'BIENVENIDO A POLYLINE': 'BEM-VINDO À POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Projetos imobiliários criados para você',
+                'Login': 'Entrar',
+                'Perfil': 'Perfil',
+                'Cerrar Sesión': 'Sair',
+                'Casa de Playa Golf 2': 'Casa de Praia Golf 2',
+                'Dormitorios': 'Quartos',
+                '7 dormitorios': '7 quartos espaçosos e luminosos',
+                'Baños': 'Banheiros',
+                '7 baños': '7 banheiros completos com acabamentos de luxo',
+                'Piscina': 'Piscina',
+                'Piscina privada': 'Piscina privativa com área de terraço',
+                'Área': 'Área',
+                '250 m²': '250 m² de área construída',
+                'descripcion-propiedad': 'Casa de praia luxuosa localizada em área exclusiva do Golf. Projetada para famílias que buscam espaços amplos e conforto. Acabamentos premium, amplas áreas sociais e um layout perfeito para desfrutar da vida na praia.',
+                'Contactar ahora': '立即联系'
+            },
+            'zh': {
+                'Inicio': '首页',
+                'Para Tí': '为您',
+                'Proyectos': '项目',
+                'Proyectos en Venta': '在售项目', 
+                'Proyecto Benavides 1': '贝纳维德斯项目1',
+                'Proyecto Benavides 2': '贝纳维德斯项目2',
+                'Proyecto Pueblo Libre 1': '普埃布洛利布雷项目1',
+                'Contacto': '联系',
+                'Información': '信息', 
+                'Agenda Una Reunión': '预约会议',
+                'Cotizar Proyecto': '项目报价',
+                'BIENVENIDO A POLYLINE': '欢迎来到POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': '为您创建的房地产项目',
+                'Login': '登录',
+                'Perfil': '个人资料',
+                'Cerrar Sesión': '登出',
+                'Casa de Playa Golf 2': '高尔夫海滨别墅2',
+                'Dormitorios': '卧室',
+                '7 dormitorios': '7间卧室',
+                'Baños': '浴室',
+                '7 baños': '7间浴室',
+                'Piscina': '游泳池',
+                'Piscina privada': '私人游泳池',
+                'Area': '面积',
+                '250 m²': '250平方米',
+                'descripcion-propiedad': '位于高尔夫球场高级区域的豪华海滨别墅。为追求空间和舒适的家庭设计。顶级装修，宽敞的社交区域和完美布局，让您尽情享受海滨生活。',
+                'Contactar ahora': '立即联系'
+            },
+            'ja': {
+                'Inicio': 'ホーム',                    // Home
+                'Para Tí': 'あなたのために',            // For You 
+                'Proyectos': 'プロジェクト',            // Projects
+                'Proyectos en Venta': '販売中のプロジェクト', // Projects for Sale
+                'Proyecto Benavides 1': 'ベナビデスプロジェクト1', // Benavides Project 1
+                'Proyecto Benavides 2': 'ベナビデスプロジェクト2', // Benavides Project 2
+                'Proyecto Pueblo Libre 1': 'プエブロリブレプロジェクト1', // Pueblo Libre Project 1
+                'Contacto': 'お問い合わせ',            // Contact
+                'Información': '情報',                // Information
+                'Agenda Una Reunión': '面談予約',      // Schedule a Meeting
+                'Cotizar Proyecto': '見積もり依頼',    // Quote Project
+                'BIENVENIDO A POLYLINE': 'POLYLINEへようこそ', // Welcome to POLYLINE
+                'Proyectos inmobiliarios creados para ti.': 'あなたのための不動産プロジェクト', // Real estate projects created for you
+                'Login': 'ログイン',                  // Login
+                'Perfil': 'プロフィール',              // Profile
+                'Cerrar Sesión': 'ログアウト',        // Logout
+                'Casa de Playa Golf 2': 'ゴルフビーチハウス2', // Golf Beach House 2
+                'Dormitorios': '寝室',                // Bedrooms 
+                '7 dormitorios': '7つの広々とした寝室',  // 7 spacious bedrooms
+                'Baños': 'バスルーム',                // Bathrooms
+                '7 baños': '7つの高級バスルーム',      // 7 luxury bathrooms
+                'Piscina': 'プール',                  // Pool
+                'Piscina privada': 'プライベートプール', // Private pool
+                'Area': '面積',                      // Area
+                '250 m²': '250平方メートル',          // 250 square meters
+                'descripcion-propiedad': 'ゴルフ場の高級エリアに位置する豪華なビーチハウス。広々とした空間と快適さを求める家族のために設計。最高級の仕上げ、広々としたソーシャルエリア、ビーチライフを楽しむための完璧なレイアウト。', // Luxury beach house description
+                'Contactar ahora': '今すぐ問い合わせ'   // Contact Now
+            },
+            'it': {
+                'Inicio': 'Home',
+                'Para Tí': 'Per Te',
+                'Proyectos': 'Progetti',
+                'Proyectos en Venta': 'Progetti in Vendita',
+                'Proyecto Benavides 1': 'Progetto Benavides 1',
+                'Proyecto Benavides 2': 'Progetto Benavides 2', 
+                'Proyecto Pueblo Libre 1': 'Progetto Pueblo Libre 1',
+                'Contacto': 'Contatti',
+                'Información': 'Informazioni',
+                'Agenda Una Reunión': 'Prenota un Appuntamento',
+                'Cotizar Proyecto': 'Richiedi Preventivo',
+                'BIENVENIDO A POLYLINE': 'BENVENUTO A POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Progetti immobiliari creati per te',
+                'Login': 'Accedi',
+                'Perfil': 'Profilo', 
+                'Cerrar Sesión': 'Esci',
+                'Casa de Playa Golf 2': 'Villa al Mare Golf 2',
+                'Dormitorios': 'Camere da Letto',
+                '7 dormitorios': '7 camere da letto spaziose e luminose',
+                'Baños': 'Bagni',
+                '7 baños': '7 bagni completi con finiture di lusso',
+                'Piscina': 'Piscina',
+                'Piscina privada': 'Piscina privata con area terrazza',
+                'Area': 'Superficie',
+                '250 m²': '250 metri quadrati di area costruita',
+                'descripcion-propiedad': 'Lussuosa villa al mare situata in una zona esclusiva del Golf. Progettata per famiglie in cerca di spazi ampi e comfort. Finiture di pregio, ampie aree comuni e una disposizione perfetta per godersi la vita al mare.',
+                'Contactar ahora': 'Contatta Ora'
+            }
+        };
+
+        function translatePage(lang) {
+            if (lang === 'es') {
+                location.reload();
+                return;
+            }
+
+            // Usar un fragmento de documento para optimizar las manipulaciones del DOM
+            const fragment = document.createDocumentFragment();
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            // Procesar elementos en lotes para evitar bloqueo del navegador
+            const batchSize = 10;
+            let currentBatch = 0;
+
+            function processBatch() {
+                const start = currentBatch * batchSize;
+                const end = Math.min(start + batchSize, elements.length);
+                
+                for (let i = start; i < end; i++) {
+                    const element = elements[i];
+                    const key = element.getAttribute('data-translate');
+                    
+                    if (translations[lang]?.[key]) {
+                        if (element.tagName.toLowerCase() === 'input' || 
+                            element.tagName.toLowerCase() === 'textarea') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            const isTextOnly = element.innerHTML.trim() === element.textContent.trim();
+                            element[isTextOnly ? 'textContent' : 'innerHTML'] = translations[lang][key];
+                        }
+                    }
+                }
+
+                currentBatch++;
+                
+                if (currentBatch * batchSize < elements.length) {
+                    requestAnimationFrame(processBatch);
+                } else {
+                    // Actualizar título después de procesar todas las traducciones
+                    document.title = {
+                        'en': 'POLYLINE - Construction Company',
+                        'pt': 'POLYLINE - Construtora',
+                        'zh': 'POLYLINE - 建筑公司',
+                        'ja': 'POLYLINE - 建設会社',
+                        'it': 'POLYLINE - Società di costruzioni'
+                    }[lang] || 'POLYLINE - Constructora';
+
+                    // Reinicializar animaciones solo si es necesario
+                    if (typeof anime !== 'undefined' && typeof wrapLetters === 'function') {
+                        requestAnimationFrame(() => {
+                            const mainText = document.querySelector('.letters-main');
+                            const subText = document.querySelector('.letters-sub');
+                            
+                            if (mainText) mainText.style.opacity = '1';
+                            if (subText) subText.style.opacity = '1';
+                            
+                            wrapLetters('.letters-main');
+                            wrapLetters('.letters-sub');
+                            
+                            // Usar requestAnimationFrame para las animaciones
+                            requestAnimationFrame(() => {
+                                anime.timeline({
+                                    loop: false,
+                                    easing: 'easeOutExpo'
+                                })
+                                .add({
+                                    targets: '.hero-title .letter',
+                                    translateY: ["1.1em", 0],
+                                    translateX: ["0.55em", 0],
+                                    rotateZ: [180, 0],
+                                    duration: 600,
+                                    delay: anime.stagger(40)
+                                })
+                                .add({
+                                    targets: '.hero-subtitle .letter',
+                                    opacity: [0, 1],
+                                    duration: 800,
+                                    delay: anime.stagger(20),
+                                    offset: '-=400'
+                                });
+                            });
+                        });
+                    }
+                }
+            }
+
+            // Iniciar el procesamiento por lotes
+            requestAnimationFrame(processBatch);
+        }
+
+        // Cerrar el menú de idiomas cuando se hace clic fuera
+        document.addEventListener('click', function(event) {
+            const languageSelector = document.querySelector('.language-selector');
+            const languageOptions = document.getElementById('languageOptions');
+            
+            if (!languageSelector.contains(event.target)) {
+                languageOptions.classList.remove('show');
+            }
+        });
+    </script>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="module" src="/js/property-viewer.js"></script>

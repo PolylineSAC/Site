@@ -263,12 +263,14 @@ body.dark-mode .card-details p {
         transition: background 0.3s, transform 0.3s;
     }
     .tipologia-imagen{
-        width: 90%;
+        display: block;
+        width: 70%;
         margin-bottom: 20px;
         border-radius: 15px;        
         transition: filter 0.3s;
         box-shadow: #666;
     }
+    
     
     
 }

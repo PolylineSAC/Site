@@ -139,16 +139,6 @@
         <button class="mobile-menu-button" aria-label="Menú">
             <div class="hamburger"></div>
         </button>
-        <div id="loading-screen" class="loading-screen">
-            <div class="logo-container">
-                <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
-                <h1 class="company-name">POLYLINE</h1>
-                <p class="slogan">CONSTRUCTORA</p>
-            </div>
-            
-        </div>
-        
-        
         <div class="logo-container">
             <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
             <h1 class="company-name">POLYLINE</h1>
@@ -188,39 +178,40 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="/index.html" class="active">INICIO</a></li>
-                <li><a href="/index.html">PARA TI</a></li>
+                <li><a href="/index.html" class="active" data-translate="Inicio">Inicio</a></li>
+                <li><a href="/index.html" data-translate="Para Tí">Para Tí</a></li>
                 <li class="dropdown">
-                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link">Proyectos</a>
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link" data-translate="Proyectos">Proyectos</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
                         <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
                         <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
                         <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <a href="/Contact/Información.html" id="proyectos-link" data-translate="Contacto">Contacto</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Contact/Información.html">Información</a></li>
-                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
-                        
+                        <li><a href="/Contact/Información.html" data-translate="Información">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html" data-translate="Agenda Una Reunión">Agenda una Reunión con Nosotros</a></li>
                     </ul>
                 </li>
-                <li><a href="/PROYECTOS/cotizar.html">Cotizar Proyecto</a></li>
-                <li id="loginContainer">
-                    <a href="/pages/login.html" class="login-link" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <li><a href="/PROYECTOS/cotizar.html" data-translate="Cotizar Proyecto">Cotizar Proyecto</a></li>
+                <li id="translateContainer" class="translate-container">
+                    <div id="google_translate_element" title="Seleccionar idioma"></div>
+                </li>
+                <li id="loginContainer" class="mobile-login">
+                    <a href="/pages/login.html" class="login-link" id="loginLink">
+                        <i class="fas fa-sign-in-alt"></i> 
+                        <span data-translate="Login">Login</span>
+                    </a>
                     <div id="userProfile" style="display: none;">
-                        <i class="fas fa-user-circle"></i>
-                        <span id="userName"></span>
-                        <div class="user-dropdown">
-                            <a href="/pages/perfil.html"><i class="fas fa-user"></i> Mi Perfil</a>
-                            <a href="/pages/settings.html"><i class="fas fa-cog"></i> Configuración</a>
-                            <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        <div class="profile-header">
+                            <a href="/pages/perfil.html" style="text-decoration: none; color: inherit; ">
+                                <span data-translate="Perfil">Perfil</span>
+                            </a>
                         </div>
                     </div>
-
-                    
                 </li>
             </ul>
         </nav>
@@ -233,7 +224,7 @@
         <!-- Sección de Proyectos -->
         <section id="departamentos" class="departamentos-section">
             <div class="animated-title">
-                <div class="main-title">
+                <div class="main-title" data-translate="PROYECTO BENAVIDES 1">
                     <span class="letter">P</span>
                     <span class="letter">R</span>
                     <span class="letter">O</span>
@@ -260,24 +251,24 @@
             
             <div class="launch-countdown">
                 <div class="countdown-title">
-                    <span class="shine-text">Lanzamiento Mayo 2025</span>
+                    <span class="shine-text" data-translate="Entrega Mayo 2025">Entrega Mayo 2025</span>
                 </div>
                 <div class="countdown" id="countdown">
                     <div class="time-block">
                         <span class="days">000</span>
-                        <span class="label">Días</span>
+                        <span class="label" data-translate="Días">Días</span>
                     </div>
                     <div class="time-block">
                         <span class="hours">00</span>
-                        <span class="label">Horas</span>
+                        <span class="label" data-translate="Horas">Horas</span>
                     </div>
                     <div class="time-block">
                         <span class="minutes">00</span>
-                        <span class="label">Minutos</span>
+                        <span class="label" data-translate="Minutos">Minutos</span>
                     </div>
                     <div class="time-block">
                         <span class="seconds">00</span>
-                        <span class="label">Segundos</span>
+                        <span class="label" data-translate="Segundos">Segundos</span>
                     </div>
                 </div>
             </div>
@@ -287,10 +278,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA101/101.jpg" alt="Departamento 101" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 101 - DUPLEX</h3>
-                        <p>3 Dormitorios, 2 Baños, 113.32 m²</p>
-                        <a href="#" class="btn-details" data-department="101">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 101 - DUPLEX">Departamento 101 - DUPLEX</h3>
+                        <p data-translate="3 Dormitorios, 2 Baños, 113.32 m²">3 Dormitorios, 2 Baños, 113.32 m²</p>
+                        <a href="#" class="btn-details" data-department="101" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 
@@ -379,10 +370,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA201/201.jpg" alt="Departamento 201" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 201</h3>
-                        <p>3 Dormitorios, 2 Baños, 103.81 m²</p>
-                        <a href="#" class="btn-details" data-department="201">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 201">Departamento 201</h3>
+                        <p data-translate="3 Dormitorios, 2 Baños, 103.81 m²">3 Dormitorios, 2 Baños, 103.81 m²</p>
+                        <a href="#" class="btn-details" data-department="201" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 <!-- Layout emergente para detalles -->
@@ -461,10 +452,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA202/202.jpg" alt="Departamento 202" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 202</h3>
-                        <p>2 Dormitorios, 2 Baños, 75.40 m²</p>
-                        <a href="#" class="btn-details" data-department="202">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 202">Departamento 202</h3>
+                        <p data-translate="2 Dormitorios, 2 Baños, 75.40 m²">2 Dormitorios, 2 Baños, 75.40 m²</p>
+                        <a href="#" class="btn-details" data-department="202" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 <!-- Layout emergente para detalles -->
@@ -529,10 +520,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA301/301.jpg" alt="Departamento 301" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 301 - DUPLEX</h3>
-                        <p>3 Dormitorios, 2 Baños, 113.32 m²</p>
-                        <a href="#" class="btn-details" data-department="301">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 301 - DUPLEX">Departamento 301 - DUPLEX</h3>
+                        <p data-translate="3 Dormitorios, 2 Baños, 113.32 m²">3 Dormitorios, 2 Baños, 113.32 m²</p>
+                        <a href="#" class="btn-details" data-department="301" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 <!-- Layout emergente para detalles -->
@@ -605,10 +596,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA303/303.png" alt="Departamento 303" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 303</h3>
-                        <p>2 Dormitorios, (Estudio) 75.40 m²</p>
-                        <a href="#" class="btn-details" data-department="303">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 303">Departamento 303</h3>
+                        <p data-translate="2 Dormitorios, (Estudio) 75.40 m²">2 Dormitorios, (Estudio) 75.40 m²</p>
+                        <a href="#" class="btn-details" data-department="303" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 <!-- Layout emergente para detalles -->
@@ -684,10 +675,10 @@
                 <div class="departamento-card">
                     <img src="/Resource/PBEN1/DEPA601/601.png" alt="Departamento 601" class="departamento-img">
                     <div class="card-details">
-                        <h3>Departamento 601</h3>
-                        <p>3 Dormitorios, 2 Baños, 100 m²</p>
-                        <a href="#" class="btn-details" data-department="601">Ver detalles</a>
-                        <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                        <h3 data-translate="Departamento 601">Departamento 601</h3>
+                        <p data-translate="3 Dormitorios, 2 Baños, 100 m²">3 Dormitorios, 2 Baños, 100 m²</p>
+                        <a href="#" class="btn-details" data-department="601" data-translate="Ver detalles">Ver detalles</a>
+                        <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                     </div>
                 </div>
                 <!-- Layout emergente para detalles -->
@@ -743,10 +734,10 @@
             <div class="departamento-card">
                 <img src="/Resource/PBEN1/DEPA602/602.jpg" alt="Departamento 602" class="departamento-img">
                 <div class="card-details">
-                    <h3>Departamento 602</h3>
-                    <p>3 Dormitorios, 2 Baños, 213.06 m²</p>
-                    <a href="#" class="btn-details" data-department="602">Ver detalles</a>
-                    <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    <h3 data-translate="Departamento 602">Departamento 602</h3>
+                    <p data-translate="3 Dormitorios, 2 Baños, 213.06 m²">3 Dormitorios, 2 Baños, 213.06 m²</p>
+                    <a href="#" class="btn-details" data-department="602" data-translate="Ver detalles">Ver detalles</a>
+                    <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                 </div>
             </div>
             <!-- Layout emergente para detalles -->
@@ -795,10 +786,10 @@
             <div class="departamento-card">
                 <img src="/Resource/PBEN1/DEPA603/603.jpg" alt="Departamento 603" class="departamento-img">
                 <div class="card-details">
-                    <h3>Departamento 603</h3>
-                    <p>3 Dormitorios, 2 Baños, 100 m²</p>
-                    <a href="#" class="btn-details" data-department="603">Ver detalles</a>
-                    <a href="/Payment/pagina-de-pago.html" class="btn-separate">Separar</a>
+                    <h3 data-translate="Departamento 603">Departamento 603</h3>
+                    <p data-translate="3 Dormitorios, 2 Baños, 100 m²">3 Dormitorios, 2 Baños, 100 m²</p>
+                    <a href="#" class="btn-details" data-department="603" data-translate="Ver detalles">Ver detalles</a>
+                    <a href="/Payment/pagina-de-pago.html" class="btn-separate" data-translate="Separar">Separar</a>
                 </div>
             </div>
             <!-- Layout emergente para detalles -->
@@ -846,7 +837,8 @@
         </section>
 
         <!-- Botón de modo oscuro -->
-        <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; right: 30px;"></button>
+    <button id="dark-mode-toggle" class="dark-mode-button" style="position: fixed; bottom: 20px; right: 30px;"></button>
+
     <script type="module" src="js/nav.js"></script>    
     <script src="/scripts.js"></script>
 
@@ -974,7 +966,7 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            document.querySelector('.days').textContent = days.toString().padStart(3, '0');
+            document.querySelector('.days').textContent = days.toString().padStart(3, '');
             document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
             document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
             document.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
@@ -1087,106 +1079,437 @@
     });
 });
 </script>
-  
-<script>
-    // Funciones para el selector de idiomas
-    function toggleLanguageOptions() {
-        const options = document.getElementById('languageOptions');
-        options.style.display = options.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function changeLanguage(lang) {
-        const currentFlag = document.getElementById('currentFlag');
-        const currentLanguage = document.getElementById('currentLanguage');
-        const languageOptions = document.getElementById('languageOptions');
-        
-        currentFlag.src = `/Resource/flags/${lang}.png`;
-        currentLanguage.textContent = {
-            'es': 'Español',
-            'en': 'English',
-            'pt': 'Português',
-            'zh': '中文',
-            'ja': '日本語',
-            'it': 'Italiano'
-        }[lang];
-        
-        languageOptions.style.display = 'none';
-        translatePage(lang);
-    }
-
-    // Objeto con las traducciones
-    const translations = {
-        'en': {
-            'Inicio': 'Home',
-            'Para Tí': 'For You',
-            'Proyectos': 'Projects',
-            'Proyectos en Venta': 'Projects for Sale',
-            'Contacto': 'Contact',
-            'Información': 'Information',
-            'Agenda una Reunión con Nosotros': 'Schedule a Meeting with Us',
-            'Cotizar Proyecto': 'Quote Project'
-        },
-        'pt': {
-            'Inicio': 'Início',
-            'Para Tí': 'Para Você',
-            'Proyectos': 'Projetos',
-            'Proyectos en Venta': 'Projetos à Venda',
-            'Contacto': 'Contato',
-            'Información': 'Informação',
-            'Agenda una Reunión con Nosotros': 'Agende uma Reunião Conosco',
-            'Cotizar Proyecto': 'Cotar Projeto'
-        },
-        'zh': {
-            'Inicio': '首页',
-            'Para Tí': '为您服务',
-            'Proyectos': '项目',
-            'Proyectos en Venta': '在售项目',
-            'Contacto': '联系',
-            'Información': '信息',
-            'Agenda una Reunión con Nosotros': '与我们预约会议',
-            'Cotizar Proyecto': '项目报价'
-        },
-        'ja': {
-            'Inicio': 'ホーム',
-            'Para Tí': 'あなたのために',
-            'Proyectos': 'プロジェクト',
-            'Proyectos en Venta': '販売中のプロジェクト',
-            'Contacto': '連絡先',
-            'Información': '情報',
-            'Agenda una Reunión con Nosotros': '私たちとの会議を予約する',
-            'Cotizar Proyecto': 'プロジェクト見積もり'
-        },
-        'it': {
-            'Inicio': 'Home',
-            'Para Tí': 'Per Te',
-            'Proyectos': 'Progetti',
-            'Proyectos en Venta': 'Progetti in Vendita',
-            'Contacto': 'Contatto',
-            'Información': 'Informazioni',
-            'Agenda una Reunión con Nosotros': 'Programma un Incontro con Noi',
-            'Cotizar Proyecto': 'Preventivo Progetto'
+</body>
+</html>
+    <script>
+        // Funciones para el selector de idiomas
+        function toggleLanguageOptions() {
+            const selector = document.querySelector('.language-selector');
+            const options = document.getElementById('languageOptions');
+            selector.classList.toggle('active');
+            options.classList.toggle('show');
         }
-    };
 
-    function translatePage(lang) {
-        document.querySelectorAll('[data-translate]').forEach(element => {
-            const key = element.getAttribute('data-translate');
-            if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
+        function changeLanguage(lang) {
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLanguage = document.getElementById('currentLanguage');
+            const options = document.getElementById('languageOptions');
+            
+            // Actualizar el botón con el idioma seleccionado
+            currentFlag.src = `/Resource/flags/${lang}.png`;
+            currentLanguage.textContent = {
+                'es': 'Español',
+                'en': 'English',
+                'pt': 'Português',
+                'zh': '中文',
+                'ja': '日本語',
+                'it': 'Italiano'
+            }[lang];
+            
+            // Ocultar las opciones
+            options.classList.remove('show');
+            
+            // Traducir el contenido
+            translatePage(lang);
+        }
+
+        // Objeto con las traducciones
+        const translations = {
+            'en': {
+                'Inicio': 'Home',
+                'Para Tí': 'For You',
+                'Proyectos': 'Projects',
+                'Proyectos en Venta': 'Projects for Sale',
+                'Contacto': 'Contact',
+                'Información': 'Information',
+                'Agenda Una Reunión': 'Schedule a Meeting',
+                'Cotizar Proyecto': 'Quote Project',
+                'BIENVENIDO A POLYLINE': 'WELCOME TO POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Real estate projects created for you.',
+                'Login': 'Login',
+                'Perfil': 'Profile',
+                'Cerrar Sesión': 'Logout',
+                'Edificaciones': 'Single-family and multi-family buildings',
+                'EXCLUSIVOS DEPARTAMENTOS': 'EXCLUSIVE APARTMENTS',
+                'Entrega Mayo 2025': 'Delivery May 2025',
+                'Días': 'Days',
+                'Horas': 'Hours',
+                'Minutos': 'Minutes',
+                'Segundos': 'Seconds',
+                'Departamento': 'Apartment',
+                'Dormitorios': 'Bedrooms',
+                'Baños': 'Bathrooms',
+                'Ver detalles': 'View details',
+                'Separar': 'Reserve',
+                'DUPLEX': 'DUPLEX',
+                
+                'Departamento 101 - DUPLEX': 'Apartment 101 - DUPLEX',
+                '3 Dormitorios, 2 Baños, 113.32 m²': '3 Bedrooms, 2 Bathrooms, 113.32 m²',
+                'Departamento 201': 'Apartment 201',
+                '3 Dormitorios, 2 Baños, 103.81 m²': '3 Bedrooms, 2 Bathrooms, 103.81 m²',
+                'Departamento 202': 'Apartment 202',
+                '2 Dormitorios, 2 Baños, 75.40 m²': '2 Bedrooms, 2 Bathrooms, 75.40 m²',
+                'Departamento 301 - DUPLEX': 'Apartment 301 - DUPLEX',
+                'Departamento 303': 'Apartment 303',
+                '2 Dormitorios, (Estudio) 75.40 m²': '2 Bedrooms, (Study) 75.40 m²',
+                'Departamento 601': 'Apartment 601',
+                '3 Dormitorios, 2 Baños, 100 m²': '3 Bedrooms, 2 Bathrooms, 100 m²',
+                'Departamento 602': 'Apartment 602',
+                '3 Dormitorios, 2 Baños, 213.06 m²': '3 Bedrooms, 2 Bathrooms, 213.06 m²',
+                'Departamento 603': 'Apartment 603',
+                '3 Dormitorios, 2 Baños, 100 m²': '3 Bedrooms, 2 Bathrooms, 100 m²'
+            },
+            'pt': {
+                'Inicio': 'Início',
+                'Para Tí': 'Para Você', 
+                'Proyectos': 'Projetos',
+                'Proyectos en Venta': 'Projetos à Venda',
+                'Contacto': 'Contato',
+                'Información': 'Informações',
+                'Agenda Una Reunión': 'Agendar uma Reunião',
+                'Cotizar Proyecto': 'Orçar Projeto',
+                'BIENVENIDO A POLYLINE': 'BEM-VINDO À POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Projetos imobiliários criados para você.',
+                'Login': 'Entrar',
+                'Perfil': 'Perfil',
+                'Cerrar Sesión': 'Sair',
+                'EXCLUSIVOS DEPARTAMENTOS': 'APARTAMENTOS EXCLUSIVOS',
+                'Entrega Mayo 2025': 'Entrega Maio 2025',
+                'Días': 'Dias',
+                'Horas': 'Horas',
+                'Minutos': 'Minutos', 
+                'Segundos': 'Segundos',
+                'Departamento': 'Apartamento',
+                'Dormitorios': 'Quartos',
+                'Baños': 'Banheiros',
+                'Ver detalles': 'Ver detalhes',
+                'Separar': 'Reservar',
+                'DUPLEX': 'DUPLEX',
+                
+                'Departamento 101 - DUPLEX': 'Apartamento 101 - DUPLEX',
+                '3 Dormitorios, 2 Baños, 113.32 m²': '3 Quartos, 2 Banheiros, 113,32 m²',
+                'Departamento 201': 'Apartamento 201',
+                '3 Dormitorios, 2 Baños, 103.81 m²': '3 Quartos, 2 Banheiros, 103,81 m²',
+                'Departamento 202': 'Apartamento 202',
+                '2 Dormitorios, 2 Baños, 75.40 m²': '2 Quartos, 2 Banheiros, 75,40 m²',
+                'Departamento 301 - DUPLEX': 'Apartamento 301 - DUPLEX',
+                'Departamento 303': 'Apartamento 303',
+                '2 Dormitorios, (Estudio) 75.40 m²': '2 Quartos, (Escritório) 75,40 m²',
+                'Departamento 601': 'Apartamento 601',
+                '3 Dormitorios, 2 Baños, 100 m²': '3 Quartos, 2 Banheiros, 100 m²',
+                'Departamento 602': 'Apartamento 602',
+                '3 Dormitorios, 2 Baños, 213.06 m²': '3 Quartos, 2 Banheiros, 213,06 m²',
+                'Departamento 603': 'Apartamento 603'
+            },
+            'zh': {
+                'Inicio': '首页',
+                'Para Tí': '为您服务',
+                'Proyectos': '项目',
+                'Proyectos en Venta': '在售项目',
+                'Contacto': '联系我们',
+                'Información': '信息',
+                'Agenda Una Reunión': '预约会议',
+                'Cotizar Proyecto': '项目报价',
+                'BIENVENIDO A POLYLINE': '欢迎来到POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': '为您定制的房地产项目',
+                'Login': '登录',
+                'Perfil': '个人中心', 
+                'Cerrar Sesión': '退出登录',
+                'EXCLUSIVOS DEPARTAMENTOS': '精品公寓',
+                'Entrega Mayo 2025': '2025年5月交付',
+                'Días': '天',
+                'Horas': '小时',
+                'Minutos': '分钟',
+                'Segundos': '秒',
+                'Departamento': '公寓',
+                'Dormitorios': '卧室',
+                'Baños': '卫生间',
+                'Ver detalles': '查看详情',
+                'Separar': '预订',
+                'DUPLEX': '复式',
+                
+                'Departamento 101 - DUPLEX': '101号复式公寓',
+                '3 Dormitorios, 2 Baños, 113.32 m²': '3室2卫，113.32平方米',
+                'Departamento 201': '201号公寓',
+                '3 Dormitorios, 2 Baños, 103.81 m²': '3室2卫，103.81平方米',
+                'Departamento 202': '202号公寓',
+                '2 Dormitorios, 2 Baños, 75.40 m²': '2室2卫，75.40平方米',
+                'Departamento 301 - DUPLEX': '301号复式公寓',
+                'Departamento 303': '303号公寓', 
+                '2 Dormitorios, (Estudio) 75.40 m²': '2室（书房），75.40平方米',
+                'Departamento 601': '601号公寓',
+                '3 Dormitorios, 2 Baños, 100 m²': '3室2卫，100平方米',
+                'Departamento 602': '602号公寓',
+                '3 Dormitorios, 2 Baños, 213.06 m²': '3室2卫，213.06平方米',
+                'Departamento 603': '603号公寓'
+            },
+            'ja': {
+                'Inicio': 'ホーム',
+                'Para Tí': 'あなたのために',
+                'Proyectos': 'プロジェクト', 
+                'Proyectos en Venta': '販売中のプロジェクト',
+                'Contacto': 'お問い合わせ',
+                'Información': '情報',
+                'Agenda Una Reunión': '面談予約',
+                'Cotizar Proyecto': '見積もり依頼',
+                'BIENVENIDO A POLYLINE': 'POLYLINEへようこそ',
+                'Proyectos inmobiliarios creados para ti.': 'あなたのための不動産プロジェクト',
+                'Login': 'ログイン',
+                'Perfil': 'プロフィール',
+                'Cerrar Sesión': 'ログアウト',
+                'EXCLUSIVOS DEPARTAMENTOS': '高級マンション',
+                'Entrega Mayo 2025': '2025年5月完成予定',
+                'Días': '日',
+                'Horas': '時間', 
+                'Minutos': '分',
+                'Segundos': '秒',
+                'Departamento': '部屋',
+                'Dormitorios': '寝室',
+                'Baños': '浴室',
+                'Ver detalles': '詳細を見る',
+                'Separar': '予約する',
+                'DUPLEX': 'メゾネット',
+                
+                'Departamento 101 - DUPLEX': '101号室 - メゾネット',
+                '3 Dormitorios, 2 Baños, 113.32 m²': '3LDK、2浴室、113.32㎡',
+                'Departamento 201': '201号室',
+                '3 Dormitorios, 2 Baños, 103.81 m²': '3LDK、2浴室、103.81㎡',
+                'Departamento 202': '202号室',
+                '2 Dormitorios, 2 Baños, 75.40 m²': '2LDK、2浴室、75.40㎡',
+                'Departamento 301 - DUPLEX': '301号室 - メゾネット',
+                'Departamento 303': '303号室',
+                '2 Dormitorios, (Estudio) 75.40 m²': '2LDK＋書斎、75.40㎡',
+                'Departamento 601': '601号室',
+                '3 Dormitorios, 2 Baños, 100 m²': '3LDK、2浴室、100㎡',
+                'Departamento 602': '602号室', 
+                '3 Dormitorios, 2 Baños, 213.06 m²': '3LDK、2浴室、213.06㎡',
+                'Departamento 603': '603号室',
+                '3 Dormitorios, 2 Baños, 100 m²': '3LDK、2浴室、100㎡'
+            },
+            'it': {
+                'Inicio': 'Inizio',
+                'Para Tí': 'Per Te',
+                'Proyectos': 'Progetti',
+                'Proyectos en Venta': 'Progetti in Vendita',
+                'Contacto': 'Contatti',
+                'Información': 'Informazioni',
+                'Agenda Una Reunión': 'Prenota un Appuntamento',
+                'Cotizar Proyecto': 'Preventivo Progetto',
+                'BIENVENIDO A POLYLINE': 'BENVENUTO A POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Progetti immobiliari creati per te.',
+                'Login': 'Accedi',
+                'Perfil': 'Profilo',
+                'Cerrar Sesión': 'Disconnetti',
+                'EXCLUSIVOS DEPARTAMENTOS': 'APPARTAMENTI ESCLUSIVI',
+                'Entrega Mayo 2025': 'Consegna Maggio 2025',
+                'Días': 'Giorni',
+                'Horas': 'Ore',
+                'Minutos': 'Minuti',
+                'Segundos': 'Secondi',
+                'Departamento': 'Appartamento',
+                'Dormitorios': 'Camere da letto',
+                'Baños': 'Bagni',
+                'Ver detalles': 'Vedi dettagli',
+                'Separar': 'Prenota',
+                'DUPLEX': 'DUPLEX',
+                
+                'Departamento 101 - DUPLEX': 'Appartamento 101 - DUPLEX',
+                '3 Dormitorios, 2 Baños, 113.32 m²': '3 Camere, 2 Bagni, 113.32 m²',
+                'Departamento 201': 'Appartamento 201',
+                '3 Dormitorios, 2 Baños, 103.81 m²': '3 Camere, 2 Bagni, 103.81 m²',
+                'Departamento 202': 'Appartamento 202',
+                '2 Dormitorios, 2 Baños, 75.40 m²': '2 Camere, 2 Bagni, 75.40 m²',
+                'Departamento 301 - DUPLEX': 'Appartamento 301 - DUPLEX',
+                'Departamento 303': 'Appartamento 303',
+                '2 Dormitorios, (Estudio) 75.40 m²': '2 Camere, (Studio) 75.40 m²',
+                'Departamento 601': 'Appartamento 601',
+                '3 Dormitorios, 2 Baños, 100 m²': '3 Camere, 2 Bagni, 100 m²',
+                'Departamento 602': 'Appartamento 602',
+                '3 Dormitorios, 2 Baños, 213.06 m²': '3 Camere, 2 Bagni, 213.06 m²',
+                'Departamento 603': 'Appartamento 603'
+            }
+        };
+
+        // Add data-translate attributes to elements
+        document.querySelectorAll('.subtitle').forEach(el => {
+            el.setAttribute('data-translate', 'EXCLUSIVOS DEPARTAMENTOS');
+        });
+
+        document.querySelectorAll('.shine-text').forEach(el => {
+            el.setAttribute('data-translate', 'Entrega Mayo 2025');
+        });
+
+        document.querySelectorAll('.label').forEach(el => {
+            el.setAttribute('data-translate', el.textContent);
+        });
+
+        document.querySelectorAll('.btn-details').forEach(el => {
+            el.setAttribute('data-translate', 'Ver detalles');
+        });
+
+        document.querySelectorAll('.btn-separate').forEach(el => {
+            el.setAttribute('data-translate', 'Separar');
+        });
+
+        function translatePage(lang) {
+            if (lang === 'es') {
+                location.reload();
+                return;
+            }
+
+            // Usar un fragmento de documento para optimizar las manipulaciones del DOM
+            const fragment = document.createDocumentFragment();
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            // Procesar elementos en lotes para evitar bloqueo del navegador
+            const batchSize = 10;
+            let currentBatch = 0;
+
+            function processBatch() {
+                const start = currentBatch * batchSize;
+                const end = Math.min(start + batchSize, elements.length);
+                
+                for (let i = start; i < end; i++) {
+                    const element = elements[i];
+                    const key = element.getAttribute('data-translate');
+                    
+                    if (translations[lang]?.[key]) {
+                        if (element.tagName.toLowerCase() === 'input' || 
+                            element.tagName.toLowerCase() === 'textarea') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            const isTextOnly = element.innerHTML.trim() === element.textContent.trim();
+                            element[isTextOnly ? 'textContent' : 'innerHTML'] = translations[lang][key];
+                        }
+                    }
+                }
+
+                currentBatch++;
+                
+                if (currentBatch * batchSize < elements.length) {
+                    requestAnimationFrame(processBatch);
+                } else {
+                    // Actualizar título después de procesar todas las traducciones
+                    document.title = {
+                        'en': 'POLYLINE - Construction Company',
+                        'pt': 'POLYLINE - Construtora',
+                        'zh': 'POLYLINE - 建筑公司',
+                        'ja': 'POLYLINE - 建設会社',
+                        'it': 'POLYLINE - Società di costruzioni'
+                    }[lang] || 'POLYLINE - Constructora';
+
+                    // Reinicializar animaciones solo si es necesario
+                    if (typeof anime !== 'undefined' && typeof wrapLetters === 'function') {
+                        requestAnimationFrame(() => {
+                            const mainText = document.querySelector('.letters-main');
+                            const subText = document.querySelector('.letters-sub');
+                            
+                            if (mainText) mainText.style.opacity = '1';
+                            if (subText) subText.style.opacity = '1';
+                            
+                            wrapLetters('.letters-main');
+                            wrapLetters('.letters-sub');
+                            
+                            // Usar requestAnimationFrame para las animaciones
+                            requestAnimationFrame(() => {
+                                anime.timeline({
+                                    loop: false,
+                                    easing: 'easeOutExpo'
+                                })
+                                .add({
+                                    targets: '.hero-title .letter',
+                                    translateY: ["1.1em", 0],
+                                    translateX: ["0.55em", 0],
+                                    rotateZ: [180, 0],
+                                    duration: 600,
+                                    delay: anime.stagger(40)
+                                })
+                                .add({
+                                    targets: '.hero-subtitle .letter',
+                                    opacity: [0, 1],
+                                    duration: 800,
+                                    delay: anime.stagger(20),
+                                    offset: '-=400'
+                                });
+                            });
+                        });
+                    }
+                }
+            }
+
+            // Iniciar el procesamiento por lotes
+            requestAnimationFrame(processBatch);
+        }
+
+        // Cerrar el menú de idiomas cuando se hace clic fuera
+        document.addEventListener('click', function(event) {
+            const languageSelector = document.querySelector('.language-selector');
+            const languageOptions = document.getElementById('languageOptions');
+            
+            if (!languageSelector.contains(event.target)) {
+                languageOptions.classList.remove('show');
+            }
+        });
+    </script>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="module" src="/js/property-viewer.js"></script>
+
+<script>
+    function updateTitleLetters(newTitle) {
+        const mainTitle = document.querySelector('.main-title');
+        // Limpiar el título actual
+        mainTitle.innerHTML = '';
+        
+        // Crear nuevos spans para cada letra del nuevo título
+        newTitle.split('').forEach(letter => {
+            const span = document.createElement('span');
+            span.className = 'letter';
+            span.textContent = letter === ' ' ? '\u00A0' : letter; // Usar espacio no rompible para espacios
+            mainTitle.appendChild(span);
+        });
+
+        // Reiniciar la animación
+        anime.timeline({loop: false})
+        .add({
+            targets: '.letter',
+            scale: [0, 1],
+            duration: 1500,
+            elasticity: 600,
+            delay: (el, i) => 70 * (i+1),
+            opacity: {
+                value: 1,
+                duration: 1,
+                delay: (el, i) => 70 * (i+1)
+            },
+            rotate: {
+                value: [-360, 0],
+                duration: 1500,
+                easing: 'easeOutElastic'
             }
         });
     }
 
-    // Cerrar el menú de idiomas cuando se hace clic fuera
-    document.addEventListener('click', function(event) {
-        const languageSelector = document.querySelector('.language-selector');
-        const languageOptions = document.getElementById('languageOptions');
-        
-        if (!languageSelector.contains(event.target)) {
-            languageOptions.style.display = 'none';
+    // Modificar la función translatePage para manejar especialmente el título
+    const originalTranslatePage = translatePage;
+    translatePage = function(lang) {
+        if (lang === 'es') {
+            updateTitleLetters('PROYECTO BENAVIDES 1');
+        } else if (lang === 'en') {
+            updateTitleLetters('BENAVIDES PROJECT 1');
+        } else if (lang === 'pt') {
+            updateTitleLetters('PROJETO BENAVIDES 1'); 
+        } else if (lang === 'zh') {
+            updateTitleLetters('BENAVIDES 1号项目');
+        } else if (lang === 'ja') {
+            updateTitleLetters('ベナビデス1プロジェクト');
+        } else if (lang === 'it') {
+            updateTitleLetters('PROGETTO BENAVIDES 1');
+        } else if (translations[lang]?.['PROYECTO BENAVIDES 1']) {
+            updateTitleLetters(translations[lang]['PROYECTO BENAVIDES 1']);
         }
-    });
+        
+        // Continuar con el resto de las traducciones
+        originalTranslatePage(lang);
+    };
 </script>
-</body>
-    
-</html>

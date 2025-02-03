@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/assistant.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/departamentos.css">
@@ -59,31 +60,39 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="/index.html">INICIO</a></li>
-                <li><a href="/index.html">PARA TI</a></li>
+                <li><a href="index.html" class="active" data-translate="Inicio">Inicio</a></li>
+                <li><a href="/index.html" data-translate="Para Tí">Para Tí</a></li>
                 <li class="dropdown">
-                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link" class="active">Proyectos</a>
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link" data-translate="Proyectos">Proyectos</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/PROYECTOS/proyectos.html">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
                         <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
                         <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
                         <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="/Contact/Información.html" id="proyectos-link">CONTACTO</a>
+                    <a href="/Contact/Información.html" id="proyectos-link" data-translate="Contacto">Contacto</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Contact/Información.html">Información</a></li>
-                        <li><a href="/Contact/Agenda Una Reunión.html">Agenda una Reunión con Nosotros</a></li>
+                        <li><a href="/Contact/Información.html" data-translate="Información">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html" data-translate="Agenda Una Reunión">Agenda una Reunión con Nosotros</a></li>
                     </ul>
                 </li>
-                <li><a href="/PROYECTOS/cotizar.html">Cotizar Proyecto</a></li>
-                <li id="loginContainer">
-                    <a href="/pages/login.html" class="login-link" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <li><a href="/PROYECTOS/cotizar.html" data-translate="Cotizar Proyecto">Cotizar Proyecto</a></li>
+                <li id="translateContainer" class="translate-container">
+                    <div id="google_translate_element" title="Seleccionar idioma"></div>
+                </li>
+                <li id="loginContainer" class="mobile-login">
+                    <a href="/pages/login.html" class="login-link" id="loginLink">
+                        <i class="fas fa-sign-in-alt"></i> 
+                        <span data-translate="Login">Login</span>
+                    </a>
                     <div id="userProfile" style="display: none;">
-                        <img src="/Resource/user.png" alt="User Profile" id="userProfileImg">
-                        <span id="userEmail"></span>
-                        <button id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                        <div class="profile-header">
+                            <a href="/pages/perfil.html" style="text-decoration: none; color: inherit; ">
+                                <span data-translate="Perfil">Perfil</span>
+                            </a>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -97,10 +106,10 @@
         </video>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
             <div class="magic-title-container">
-                <h2 class="hero-title">Proyectos en Venta / Alquiler</h2>
+                <h2 class="hero-title" data-translate="Proyectos en Venta / Alquiler">Proyectos en Venta / Alquiler</h2>
                 
             </div>
-            <p class="hero-subtitle">Conoce nuestros proyectos y encuentra lo mejor para ti</p>
+            <p class="hero-subtitle" data-translate="Conoce nuestros proyectos y encuentra lo mejor para ti">Conoce nuestros proyectos y encuentra lo mejor para ti</p>
         </div>
     </section>
 
@@ -110,43 +119,43 @@
     <div class="projects-container">
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPG1.html'">
             <img src="/Resource/CPG1/proyecto1.jpg" alt="Casa de Playa de Golf 1">
-            <h3 class="project-title">Casa de Playa de Golf 1</h3>
+            <h3 class="project-title" data-translate="Casa de Playa de Golf 1">Casa de Playa de Golf 1</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPG2.html'">
             <img src="/Resource/CPG2/proyecto2.jpg" alt="Casa de Playa de Golf 2">
-            <h3 class="project-title">Casa de Playa de Golf 2</h3>
+            <h3 class="project-title" data-translate="Casa de Playa de Golf 2">Casa de Playa de Golf 2</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPG3.html'">
             <img src="/Resource/CPG3/proyecto3.jpg" alt="Casa de Playa de Golf 3">
-            <h3 class="project-title">Casa de Playa de Golf 3</h3>
+            <h3 class="project-title" data-translate="Casa de Playa de Golf 3">Casa de Playa de Golf 3</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPG4.html'">
             <img src="/Resource/CPG4/proyecto4.jpg" alt="Casa de Playa de Golf 4">
-            <h3 class="project-title">Casa de Playa de Golf 4</h3>
+            <h3 class="project-title" data-translate="Casa de Playa de Golf 4">Casa de Playa de Golf 4</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPG5.html'">
             <img src="/Resource/CPG5/proyecto5.jpg" alt="Casa de Playa de Golf 5">
-            <h3 class="project-title">Casa de Playa de Golf 5</h3>
+            <h3 class="project-title" data-translate="Casa de Playa de Golf 5">Casa de Playa de Golf 5</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPLAG.html'">
             <img src="/Resource/CPLAG/proyectoLa.png" alt="Casa en Playa Lagunas">
-            <h3 class="project-title">Casa en Playa Lagunas</h3>
+            <h3 class="project-title" data-translate="Casa en Playa Lagunas">Casa en Playa Lagunas</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPLAY.html'">
             <img src="/Resource/CPLAY/proyectoPLAY.png" alt="Casa de Playa">
-            <h3 class="project-title">Casa de Playa</h3>
+            <h3 class="project-title" data-translate="Casa de Playa">Casa de Playa</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPM1.html'">
             <img src="/Resource/CPM1/proyecto6.png" alt="Casa de Playa en Mykonos 1">
-            <h3 class="project-title">Casa de Playa en Mykonos 1</h3>
+            <h3 class="project-title" data-translate="Casa de Playa en Mykonos 1">Casa de Playa en Mykonos 1</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CPM2.html'">
             <img src="/Resource/CPM2/proyecto7.png" alt="Casa de Playa en Mykonos 2">
-            <h3 class="project-title">Casa de Playa en Mykonos 2</h3>
+            <h3 class="project-title" data-translate="Casa de Playa en Mykonos 2">Casa de Playa en Mykonos 2</h3>
         </div>
         <div class="project-card" onclick="window.location.href='/PROYECTOS/CSUR.html'">
             <img src="/Resource/CSUR/proyectoSur.png" alt="Casa en Surco">
-            <h3 class="project-title">Casa en Surco</h3>
+            <h3 class="project-title" data-translate="Casa en Surco">Casa en Surco</h3>
         </div>
     </div>
 </section>
@@ -280,106 +289,220 @@
     });
 </script>
 <script type="module" src="js/nav.js"></script>
-    
+</body>
+</html>    
 
-    <script>
-        // Funciones para el selector de idiomas
-        function toggleLanguageOptions() {
-            const options = document.getElementById('languageOptions');
-            options.style.display = options.style.display === 'none' ? 'block' : 'none';
+<script>
+     // Funciones para el selector de idiomas
+     function toggleLanguageOptions() {
+        const selector = document.querySelector('.language-selector');
+        const options = document.getElementById('languageOptions');
+        selector.classList.toggle('active');
+        options.classList.toggle('show');
+    }
+
+    function changeLanguage(lang) {
+        const currentFlag = document.getElementById('currentFlag');
+        const currentLanguage = document.getElementById('currentLanguage');
+        const options = document.getElementById('languageOptions');
+        
+        // Actualizar el botón con el idioma seleccionado
+        currentFlag.src = `/Resource/flags/${lang}.png`;
+        currentLanguage.textContent = {
+            'es': 'Español',
+            'en': 'English',
+            'pt': 'Português',
+            'zh': '中文',
+            'ja': '日本語',
+            'it': 'Italiano'
+        }[lang];
+        
+        // Ocultar las opciones
+        options.classList.remove('show');
+        
+        // Traducir el contenido
+        translatePage(lang);
+    }
+    // Objeto con las traducciones actualizado
+    const translations = {
+        'en': {
+            'Inicio': 'Home',
+            'Para Tí': 'For You',
+            'Proyectos': 'Projects',
+            'Proyectos en Venta': 'Projects for Sale',
+            'Contacto': 'Contact',
+            'Información': 'Information',
+            'Agenda una Reunión con Nosotros': 'Schedule a Meeting with Us',
+            'Cotizar Proyecto': 'Quote Project',
+            'Proyectos en Venta / Alquiler': 'Projects for Sale / Rent',
+            'Conoce nuestros proyectos y encuentra lo mejor para ti': 'Discover our projects and find the best for you',
+            'Casa de Playa de Golf 1': 'Golf Beach House 1',
+            'Casa de Playa de Golf 2': 'Golf Beach House 2',
+            'Casa de Playa de Golf 3': 'Golf Beach House 3',
+            'Casa de Playa de Golf 4': 'Golf Beach House 4',
+            'Casa de Playa de Golf 5': 'Golf Beach House 5',
+            'Casa en Playa Lagunas': 'Lagunas Beach House',
+            'Casa de Playa': 'Beach House',
+            'Casa de Playa en Mykonos 1': 'Mykonos Beach House 1',
+            'Casa de Playa en Mykonos 2': 'Mykonos Beach House 2',
+            'Casa en Surco': 'House in Surco'
+        },
+        'pt': {
+            'Inicio': 'Início',
+            'Para Tí': 'Para Você',
+            'Proyectos': 'Projetos',
+            'Proyectos en Venta': 'Projetos à Venda',
+            'Contacto': 'Contato',
+            'Información': 'Informação',
+            'Agenda una Reunión con Nosotros': 'Agende uma Reunião Conosco',
+            'Cotizar Proyecto': 'Cotar Projeto',
+            'Proyectos en Venta / Alquiler': 'Projetos para Venda / Aluguel',
+            'Conoce nuestros proyectos y encuentra lo mejor para ti': 'Conheça nossos projetos e encontre o melhor para você',
+            'Casa de Playa de Golf 1': 'Casa de Praia de Golf 1',
+            'Casa de Playa de Golf 2': 'Casa de Praia de Golf 2',
+            'Casa de Playa de Golf 3': 'Casa de Praia de Golf 3',
+            'Casa de Playa de Golf 4': 'Casa de Praia de Golf 4',
+            'Casa de Playa de Golf 5': 'Casa de Praia de Golf 5',
+            'Casa en Playa Lagunas': 'Casa na Praia Lagunas',
+            'Casa de Playa': 'Casa de Praia',
+            'Casa de Playa en Mykonos 1': 'Casa de Praia em Mykonos 1',
+            'Casa de Playa en Mykonos 2': 'Casa de Praia em Mykonos 2',
+            'Casa en Surco': 'Casa em Surco'
+        },
+        'zh': {
+            'Inicio': '首页',
+            'Para Tí': '为您服务',
+            'Proyectos': '项目',
+            'Proyectos en Venta': '在售项目',
+            'Contacto': '联系',
+            'Información': '信息',
+            'Agenda una Reunión con Nosotros': '与我们预约会议',
+            'Cotizar Proyecto': '项目报价',
+            'Proyectos en Venta / Alquiler': '出售/出租项目',
+            'Conoce nuestros proyectos y encuentra lo mejor para ti': '了解我们的项目，找到最适合您的选择',
+            'Casa de Playa de Golf 1': '高尔夫海滨别墅1号',
+            'Casa de Playa de Golf 2': '高尔夫海滨别墅2号',
+            'Casa de Playa de Golf 3': '高尔夫海滨别墅3号',
+            'Casa de Playa de Golf 4': '高尔夫海滨别墅4号',
+            'Casa de Playa de Golf 5': '高尔夫海滨别墅5号',
+            'Casa en Playa Lagunas': '泻湖海滨别墅',
+            'Casa de Playa': '海滨别墅',
+            'Casa de Playa en Mykonos 1': '米科诺斯海滨别墅1号',
+            'Casa de Playa en Mykonos 2': '米科诺斯海滨别墅2号',
+            'Casa en Surco': 'Surco区别墅'
+        },
+        'ja': {
+            'Inicio': 'ホーム',
+            'Para Tí': 'あなたのために',
+            'Proyectos': 'プロジェクト',
+            'Proyectos en Venta': '販売中のプロジェクト',
+            'Contacto': '連絡先',
+            'Información': '情報',                'Agenda una Reunión con Nosotros': '私たちとの会議を予約する',
+            'Cotizar Proyecto': 'プロジェクト見積もり',
+            'Proyectos en Venta / Alquiler': '売却/賃貸物件',
+            'Conoce nuestros proyectos y encuentra lo mejor para ti': '私たちのプロジェクトを知り、最適な物件を見つけましょう',
+            'Casa de Playa de Golf 1': 'ゴルフビーチハウス1',
+            'Casa de Playa de Golf 2': 'ゴルフビーチハウス2',
+            'Casa de Playa de Golf 3': 'ゴルフビーチハウス3',
+            'Casa de Playa de Golf 4': 'ゴルフビーチハウス4',
+            'Casa de Playa de Golf 5': 'ゴルフビーチハウス5',
+            'Casa en Playa Lagunas': 'ラグナスビーチハウス',
+            'Casa de Playa': 'ビーチハウス',
+            'Casa de Playa en Mykonos 1': 'ミコノスビーチハウス1',
+            'Casa de Playa en Mykonos 2': 'ミコノスビーチハウス2',
+            'Casa en Surco': 'スルコの家'
+        },
+        'it': {
+            'Inicio': 'Home',
+            'Para Tí': 'Per Te',
+            'Proyectos': 'Progetti',
+            'Proyectos en Venta': 'Progetti in Vendita',
+            'Contacto': 'Contatto',
+            'Información': 'Informazioni',
+            'Agenda una Reunión con Nosotros': 'Programma un Incontro con Noi',
+            'Cotizar Proyecto': 'Preventivo Progetto',
+            'Proyectos en Venta / Alquiler': 'Progetti in Vendita / Affitto',
+            'Conoce nuestros proyectos y encuentra lo mejor para ti': 'Scopri i nostri progetti e trova il meglio per te',
+            'Casa de Playa de Golf 1': 'Casa sulla Spiaggia Golf 1',
+            'Casa de Playa de Golf 2': 'Casa sulla Spiaggia Golf 2',
+            'Casa de Playa de Golf 3': 'Casa sulla Spiaggia Golf 3',
+            'Casa de Playa de Golf 4': 'Casa sulla Spiaggia Golf 4',
+            'Casa de Playa de Golf 5': 'Casa sulla Spiaggia Golf 5',
+            'Casa en Playa Lagunas': 'Casa sulla Spiaggia Lagunas',
+            'Casa de Playa': 'Casa sulla Spiaggia',
+            'Casa de Playa en Mykonos 1': 'Casa sulla Spiaggia a Mykonos 1',
+            'Casa de Playa en Mykonos 2': 'Casa sulla Spiaggia a Mykonos 2',
+            'Casa en Surco': 'Casa a Surco'
+        }
+    };
+
+    // Función para traducir la página
+    function translatePage(lang) {
+        if (lang === 'es') {
+            location.reload();
+            return;
         }
 
-        function changeLanguage(lang) {
-            const currentFlag = document.getElementById('currentFlag');
-            const currentLanguage = document.getElementById('currentLanguage');
-            const languageOptions = document.getElementById('languageOptions');
-            
-            currentFlag.src = `/Resource/flags/${lang}.png`;
-            currentLanguage.textContent = {
-                'es': 'Español',
-                'en': 'English',
-                'pt': 'Português',
-                'zh': '中文',
-                'ja': '日本語',
-                'it': 'Italiano'
-            }[lang];
-            
-            languageOptions.style.display = 'none';
-            translatePage(lang);
-        }
+        if (!translations[lang]) return;
 
-        // Objeto con las traducciones
-        const translations = {
-            'en': {
-                'Inicio': 'Home',
-                'Para Tí': 'For You',
-                'Proyectos': 'Projects',
-                'Proyectos en Venta': 'Projects for Sale',
-                'Contacto': 'Contact',
-                'Información': 'Information',
-                'Agenda una Reunión con Nosotros': 'Schedule a Meeting with Us',
-                'Cotizar Proyecto': 'Quote Project'
-            },
-            'pt': {
-                'Inicio': 'Início',
-                'Para Tí': 'Para Você',
-                'Proyectos': 'Projetos',
-                'Proyectos en Venta': 'Projetos à Venda',
-                'Contacto': 'Contato',
-                'Información': 'Informação',
-                'Agenda una Reunión con Nosotros': 'Agende uma Reunião Conosco',
-                'Cotizar Proyecto': 'Cotar Projeto'
-            },
-            'zh': {
-                'Inicio': '首页',
-                'Para Tí': '为您服务',
-                'Proyectos': '项目',
-                'Proyectos en Venta': '在售项目',
-                'Contacto': '联系',
-                'Información': '信息',
-                'Agenda una Reunión con Nosotros': '与我们预约会议',
-                'Cotizar Proyecto': '项目报价'
-            },
-            'ja': {
-                'Inicio': 'ホーム',
-                'Para Tí': 'あなたのために',
-                'Proyectos': 'プロジェクト',
-                'Proyectos en Venta': '販売中のプロジェクト',
-                'Contacto': '連絡先',
-                'Información': '情報',
-                'Agenda una Reunión con Nosotros': '私たちとの会議を予約する',
-                'Cotizar Proyecto': 'プロジェクト見積もり'
-            },
-            'it': {
-                'Inicio': 'Home',
-                'Para Tí': 'Per Te',
-                'Proyectos': 'Progetti',
-                'Proyectos en Venta': 'Progetti in Vendita',
-                'Contacto': 'Contatto',
-                'Información': 'Informazioni',
-                'Agenda una Reunión con Nosotros': 'Programma un Incontro con Noi',
-                'Cotizar Proyecto': 'Preventivo Progetto'
-            }
-        };
-
-        function translatePage(lang) {
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
+        // Traducir todos los elementos con data-translate
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                // Preservar cualquier HTML interno si existe
+                if (element.children.length > 0) {
+                    const htmlContent = element.innerHTML;
+                    const textNodes = Array.from(element.childNodes).filter(node => node.nodeType === 3);
+                    textNodes.forEach(node => {
+                        const originalText = node.textContent.trim();
+                        if (translations[lang][originalText]) {
+                            node.textContent = translations[lang][originalText];
+                        }
+                    });
+                } else {
                     element.textContent = translations[lang][key];
                 }
-            });
-        }
-
-        // Cerrar el menú de idiomas cuando se hace clic fuera
-        document.addEventListener('click', function(event) {
-            const languageSelector = document.querySelector('.language-selector');
-            const languageOptions = document.getElementById('languageOptions');
-            
-            if (!languageSelector.contains(event.target)) {
-                languageOptions.style.display = 'none';
             }
         });
-    </script>
-</body>
-</html>
+
+        // Actualizar el título de la página
+        document.title = translations[lang]['POLYLINE - Constructora'] || 'POLYLINE - Constructora';
+
+        // Actualizar elementos específicos que podrían necesitar tratamiento especial
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const projectTitles = document.querySelectorAll('.project-title');
+
+        if (heroTitle) {
+            heroTitle.textContent = translations[lang]['Proyectos en Venta / Alquiler'];
+        }
+
+        if (heroSubtitle) {
+            heroSubtitle.textContent = translations[lang]['Conoce nuestros proyectos y encuentra lo mejor para ti'];
+        }
+
+        projectTitles.forEach(title => {
+            const originalText = title.getAttribute('data-translate');
+            if (translations[lang][originalText]) {
+                title.textContent = translations[lang][originalText];
+            }
+        });
+
+        // Forzar actualización del DOM
+        requestAnimationFrame(() => {
+            document.body.style.opacity = '0.99';
+            setTimeout(() => document.body.style.opacity = '1', 0);
+        });
+    }
+
+    // Asegurarse de que las traducciones se apliquen cuando se carga la página
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentLang = document.getElementById('currentLanguage').textContent.toLowerCase();
+        if (currentLang !== 'español') {
+            translatePage(currentLang);
+        }
+    });
+</script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="module" src="/js/property-viewer.js"></script>
+

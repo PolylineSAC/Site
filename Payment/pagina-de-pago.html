@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pago - POLYLINE</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/departamentos.css">
+    <link rel="stylesheet" href="/css/idiomas.css">
+    <link rel="stylesheet" href="/css/pago.css">
+</head>
+<body>
+    <header>
+        <!-- Botón de menú móvil -->
+        <button class="mobile-menu-button" aria-label="Menú">
+            <div class="hamburger"></div>
+        </button>
+        <div class="logo-container">
+            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE" class="logo">
+            <h1 class="company-name">POLYLINE</h1>
+            <p class="slogan">CONSTRUCTORA</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="language-selector">
+                    <button class="language-btn" onclick="toggleLanguageOptions()">
+                        <img src="/Resource/flags/es.png" alt="Español" id="currentFlag">
+                        <span id="currentLanguage">Español</span>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" onclick="changeLanguage('es')">
+                            <img src="/Resource/flags/es.png" alt="Español">
+                            <span>Español</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('en')">
+                            <img src="/Resource/flags/en.png" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('pt')">
+                            <img src="/Resource/flags/pt.png" alt="Português">
+                            <span>Português</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('zh')">
+                            <img src="/Resource/flags/zh.png" alt="中文">
+                            <span>中文</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('ja')">
+                            <img src="/Resource/flags/ja.png" alt="日本語">
+                            <span>日本語</span>
+                        </div>
+                        <div class="language-option" onclick="changeLanguage('it')">
+                            <img src="/Resource/flags/it.png" alt="Italiano">
+                            <span>Italiano</span>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/index.html" class="active" data-translate="Inicio">Inicio</a></li>
+                <li><a href="/index.html" data-translate="Para Tí">Para Tí</a></li>
+                <li class="dropdown">
+                    <a href="/PROYECTOS/proyectos.html" id="proyectos-link" data-translate="Proyectos">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
+                        <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
+                        <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/Contact/Información.html" id="proyectos-link" data-translate="Contacto">Contacto</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Contact/Información.html" data-translate="Información">Información</a></li>
+                        <li><a href="/Contact/Agenda Una Reunión.html" data-translate="Agenda Una Reunión">Agenda una Reunión con Nosotros</a></li>
+                    </ul>
+                </li>
+                <li><a href="/PROYECTOS/cotizar.html" data-translate="Cotizar Proyecto">Cotizar Proyecto</a></li>
+                <li id="translateContainer" class="translate-container">
+                    <div id="google_translate_element" title="Seleccionar idioma"></div>
+                </li>
+                <li id="loginContainer" class="mobile-login">
+                    <a href="/pages/login.html" class="login-link" id="loginLink">
+                        <i class="fas fa-sign-in-alt"></i> 
+                        <span data-translate="Login">Login</span>
+                    </a>
+                    <div id="userProfile" style="display: none;">
+                        <div class="profile-header">
+                            <a href="/pages/perfil.html" style="text-decoration: none; color: inherit; ">
+                                <span data-translate="Perfil">Perfil</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+        
+    <!-- Overlay para el menú móvil -->
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="payment-form">
+            <h2>Seleccione su método de pago</h2>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="transfer">
+                    <div class="payment-method-header">
+                        <img src="/Resource/bcp.png" alt="Transferencia" class="payment-method-icon">
+                        <h3>Transferencia Bancaria</h3>
+                    </div>
+                    <p>Realice una transferencia directa a nuestra cuenta bancaria</p>
+                </div>
+                <div class="payment-method" data-method="yape">
+                    <div class="payment-method-header">
+                        <img src="/Resource/yape.png" alt="Yape" class="payment-method-icon">
+                        <h3>Pago con Yape</h3>
+                    </div>
+                    <p>Pague fácilmente usando Yape</p>
+                </div>
+            </div>
+
+            <div class="payment-details" id="transfer-details">
+                <h3>Detalles de Transferencia</h3>
+                <div class="bank-info">
+                    <p><strong>Banco:</strong> BCP</p>
+                    <p><strong>Cuenta:</strong> 193-2548545-0-24</p>
+                    <p><strong>Titular:</strong> POLYLINE S.A.C</p>
+                    <button class="copy-button" data-copy="193-2548545-0-24">Copiar número de cuenta</button>
+                </div>
+                <form id="transfer-form" class="form-group">
+                    <div class="form-group">
+                        <label>Número de operación</label>
+                        <input type="text" class="operation-input" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label>Monto transferido</label>
+                        <input type="number" step="0.01" required>
+                    </div>
+                    <button type="submit" class="submit-button">Confirmar pago</button>
+                </form>
+            </div>
+
+            <div class="payment-details" id="yape-details">
+                <h3>Pago con Yape</h3>
+                <div class="bank-info">
+                        <p><strong>Propietario:</strong> Arq. Luis Salas - Polyline SAC</p>
+                    <img src="/Resource/yape-qr.png" alt="QR Yape" class="yape-qr">
+                    <p><strong>Número:</strong> +51 999 888 777</p>
+                    <button class="copy-button" data-copy="+51999888777">Copiar número</button>
+                </div>
+                <form id="yape-form">
+                    <div class="form-group">
+                        <label>Número de operación Yape</label>
+                        <input type="text" class="operation-input" readonly required>
+                    </div>
+                    <button type="submit" class="submit-button">Confirmar pago</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Modal de confirmación -->
+        <div class="payment-modal" id="paymentModal">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Cerrar">&times;</button>
+                <div class="loader"></div>
+                <p class="modal-text">Procesando pago...</p>
+                <div class="receipt-details" style="display: none;">
+                    <div class="company-header">
+                        <img src="/Resource/Logo/logo.png" alt="Logo POLYLINE" class="modal-logo">
+                        <div class="company-info">
+                            <h3>POLYLINE S.A.C</h3>
+                            <p>RUC: 20603042521</p>
+                        </div>
+                    </div>
+                    <div class="payment-summary">
+                        <h4>Detalles del Pago</h4>
+                        <p><strong>Fecha:</strong> <span id="paymentDate"></span></p>
+                        <p><strong>Hora:</strong> <span id="paymentTime"></span></p>
+                        <p><strong>Método:</strong> <span id="paymentMethod"></span></p>
+                        <p><strong>N° Operación:</strong> <span id="operationNumber"></span></p>
+                        <p><strong>Monto:</strong> S/ <span id="paymentAmount"></span></p>
+                    </div>
+                    <button id="downloadPdf" class="download-button">
+                        <i class="fas fa-download"></i> Descargar Boleta
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Add jsPDF library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    </main>
+
+    <footer>
+        <!-- Aquí irá el pie de página -->
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/pago.js"></script>
+</body>
+</html>
