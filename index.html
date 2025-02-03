@@ -213,7 +213,8 @@
                         <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
                         <li><a href="/PROYECTOS/PBEN1.html">Proyecto Benavides 1</a></li>
                         <li><a href="/PROYECTOS/PBEN2.html">Proyecto Benavides 2</a></li>
-                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre 1</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html">Proyecto Pueblo Libre Sienna</a></li>
+                        <li><a href="/PROYECTOS/PLIN.html">Proyecto Varsovia Lince</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -237,9 +238,6 @@
                             <a href="/pages/perfil.html" style="text-decoration: none; color: inherit; ">
                                 <span data-translate="Perfil">Perfil</span>
                             </a>
-                        </div>
-                        <div class="user-dropdown">
-                            <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> <span data-translate="Cerrar Sesión">Cerrar Sesión</span></a>
                         </div>
                     </div>
                 </li>
@@ -355,18 +353,8 @@
 
     <div class="separator"></div>
 
-    <section id="para-ti" style="background: url('/Resource/background-para-ti1.jpg') center/cover no-repeat fixed; background-attachment: scroll;">
-        <style>
-            @media screen and (max-width: 768px) {
-                #para-ti {
-                    background-attachment: scroll !important;
-                    min-height: 100vh;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-            }
-        </style>
+    <section id="para-ti" class="parati-img" style="background: url('/Resource/background-para-ti2.jpg') center/cover no-repeat fixed; background-attachment: scroll;">
+        
         <div class="container">
             <h2 class="section-heading" data-translate="Servicios Personalizados para Ti">Servicios Personalizados para Ti</h2>
             <p class="section-description" data-translate="En POLYLINE transformamos tus sueños en realidad.">En POLYLINE, transformamos tus sueños en realidad.</p>
@@ -399,12 +387,13 @@
                 <div class="service-card" data-tilt>
                     <div class="card-content">
                         <h3 data-translate="Pisos">Pisos</h3>
-                        <p data-translate="Elige entre una amplia gama de materiales de alta calidad.">Elige entre una amplia gama de materiales de alta calidad.</p>
+            </div>            <p data-translate="Elige entre una amplia gama de materiales de alta calidad.">Elige entre una amplia gama de materiales de alta calidad.</p>
                     </div>
                 </div>
             </div>
         </div>
-
+    </section>
+    
         <!-- Agregar vanilla-tilt.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
         <script>
@@ -481,11 +470,7 @@
         </section>
     </div>
     <div class="model-container">
-        <div class="loading-3d">
-            <div class="spinner"></div>
-            <p>Cargando modelo 3D...</p>
-        </div>
-        <canvas id="model-canvas"></canvas>
+        <img src="/Resource/bg1.png" alt="Sobre Nosotros" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
     </div>
 </section>
 
@@ -523,109 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(document.querySelector('#nosotros'));
 });
-</script>
-
-<script type="module">
-    import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
-    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js';
-    import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/loaders/GLTFLoader.js';
-
-    // Inicialización del modelo 3D
-    const init3DModel = () => {
-        const container = document.querySelector('.model-container');
-        const canvas = document.getElementById('model-canvas');
-        const loadingElement = document.querySelector('.loading-3d');
-
-        // Configuración básica
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.set(0, 2, 5);
-
-        const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-            alpha: true
-        });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setClearColor(0x000000, 0); // Hacer el fondo completamente transparente
-
-        // Luces
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 5, 5);
-        scene.add(directionalLight);
-
-        // Controles
-        const controls = new OrbitControls(camera, canvas);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 3;
-        controls.maxDistance = 10;
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 2;
-
-        // Cargar el modelo GLTF
-        const loader = new GLTFLoader();
-        loader.load(
-            '/models/house.glb', // URL del modelo de ejemplo
-            (gltf) => {
-                const model = gltf.scene;
-                
-                // Centrar y escalar el modelo
-                const box = new THREE.Box3().setFromObject(model);
-                const center = box.getCenter(new THREE.Vector3());
-                const size = box.getSize(new THREE.Vector3());
-                
-                const maxDim = Math.max(size.x, size.y, size.z);
-                const scale = 5 / maxDim;
-                model.scale.setScalar(scale);
-                
-                model.position.sub(center.multiplyScalar(scale));
-                scene.add(model);
-                
-                // Ocultar pantalla de carga
-                if (loadingElement) {
-                    loadingElement.style.display = 'none';
-                }
-            },
-            // Progreso de carga
-            (xhr) => {
-                const percent = (xhr.loaded / xhr.total * 100);
-                if (loadingElement) {
-                    loadingElement.querySelector('p').textContent = 
-                        `Cargando modelo 3D: ${Math.round(percent)}%`;
-                }
-            },
-            // Error de carga
-            (error) => {
-                console.error('Error cargando el modelo:', error);
-                if (loadingElement) {
-                    loadingElement.innerHTML = '<p>Error al cargar el modelo 3D</p>';
-                }
-            }
-        );
-
-        // Animación
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Manejo de redimensionamiento
-        window.addEventListener('resize', () => {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-    };
-
-    // Iniciar cuando el documento esté listo
-    document.addEventListener('DOMContentLoaded', init3DModel);
 </script>
 
     <title>Botón Animado para Redes Sociales</title>
@@ -757,302 +639,302 @@ document.addEventListener('DOMContentLoaded', () => {
 <script type="module" src="js/nav.js"></script>
 </body>
 </html>
-<script>
-    // Funciones para el selector de idiomas
-    function toggleLanguageOptions() {
-        const selector = document.querySelector('.language-selector');
-        const options = document.getElementById('languageOptions');
-        selector.classList.toggle('active');
-        options.classList.toggle('show');
-    }
-
-    function changeLanguage(lang) {
-        const currentFlag = document.getElementById('currentFlag');
-        const currentLanguage = document.getElementById('currentLanguage');
-        const options = document.getElementById('languageOptions');
-        
-        // Actualizar el botón con el idioma seleccionado
-        currentFlag.src = `/Resource/flags/${lang}.png`;
-        currentLanguage.textContent = {
-            'es': 'Español',
-            'en': 'English',
-            'pt': 'Português',
-            'zh': '中文',
-            'ja': '日本語',
-            'it': 'Italiano'
-        }[lang];
-        
-        // Ocultar las opciones
-        options.classList.remove('show');
-        
-        // Traducir el contenido
-        translatePage(lang);
-    }
-
-    // Objeto con las traducciones
-    const translations = {
-        'en': {
-            'Inicio': 'Home',
-            'Para Tí': 'For You',
-            'Proyectos': 'Projects',
-            'Proyectos en Venta': 'Projects for Sale',
-            'Contacto': 'Contact',
-            'Información': 'Information',
-            'Agenda Una Reunión': 'Schedule a Meeting',
-            'Cotizar Proyecto': 'Quote Project',
-            'BIENVENIDO A POLYLINE': 'WELCOME TO POLYLINE',
-            'Proyectos inmobiliarios creados para ti.': 'Real estate projects created for you.',
-            'Login': 'Login',
-            'Perfil': 'Profile',
-            'Cerrar Sesión': 'Logout',
-            'Servicios Personalizados para Ti': 'Personalized Services',
-            'En POLYLINE transformamos tus sueños en realidad.': 'At POLYLINE, we transform your dreams into reality',
-            'Remodelación Completa': 'Complete Remodeling',
-            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Completely redesign your spaces to fit your needs and lifestyle',
-            'Remodelación de Cocinas': 'Kitchen Remodeling',
-            'Transforma tu cocina en un espacio moderno y funcional.': 'Transform your kitchen into a modern and functional space',
-            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Bathroom Remodeling',
-            'Crea un ambiente': 'Create a relaxing and elegant environment with our custom designs',
-            'Optimiza tus espacios con soluciones creativas y modernas.': 'Interior Design',
-            'Optimiza tus espacios': 'Optimize your spaces with creative and modern solutions',
-            'Pisos': 'Floors',
-            'Elige entre': 'Choose from a wide range of high-quality materials',
-            'Nosotros': 'About Us',
-            'descripcion-empresa': 'Polyline SAC is a construction company that started its activities in March 2002. With 21 years of experience, it has developed projects and constructions such as:',
-            'Habilitaciones Urbanas': 'Urban Developments',
-            'Demolición': 'Demolition of buildings up to 3,500m²',
-            'Edificaciones': 'Single-family and multi-family buildings'
-        },
-        'pt': {
-            'Inicio': 'Início',
-            'Para Tí': 'Para Você',
-            'Proyectos': 'Projetos',
-            'Proyectos en Venta': 'Projetos à Venda',
-            'Contacto': 'Contato',
-            'Información': 'Informação',
-            'Agenda Una Reunión': 'Agende uma Reunião',
-            'Cotizar Proyecto': 'Preventivo Projeto',
-            'BIENVENIDO A POLYLINE': 'BEM-VINDO À POLYLINE',
-            'Proyectos inmobiliarios creados para ti.': 'Projetos imobiliários criados para você.',
-            'Login': 'Login',
-            'Perfil': 'Perfil',
-            'Cerrar Sesión': 'Sair',
-            'Servicios Personalizados para Ti': 'Serviços Personalizados',
-            'En POLYLINE transformamos tus sueños en realidad.': 'Na POLYLINE, transformamos seus sonhos em realidade',
-            'Remodelación Completa': 'Remodelação Completa',
-            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Redesenhe completamente seus espaços para atender suas necessidades e estilo de vida',
-            'Remodelación de Cocinas': 'Remodelação de Cozinhas',
-            'Transforma tu cocina en un espacio moderno y funcional.': 'Transforme sua cozinha em um espaço moderno e funcional',
-            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Remodelação de Banheiros',
-            'Crea un ambiente': 'Crie um ambiente relaxante ed elegante com nossos designs personalizados',
-            'Diseño de Interiores': 'Design de Interiores',
-            'Optimiza tus espacios con soluciones creativas y modernas.': 'Otimize seus espaços com soluções criativas e modernas',
-            'Pisos': 'Pisos',
-            'Elige entre': 'Escolha entre uma ampla gama de materiais de alta qualidade',
-            'Nosotros': 'Sobre Nós',
-            'descripcion-empresa': 'Polyline SAC é uma empresa construtora que iniciou suas atividades em março de 2002. Com 21 anos de experiência, desenvolveu projetos e construções como:',
-            'Habilitaciones Urbanas': 'Desenvolvimentos Urbanos',
-            'Demolición': 'Demolição de edifícios de até 3.500m²',
-            'Edificaciones': 'Edifícios residenciais unifamiliares e multifamiliares'
-        },
-        'zh': {
-            'Inicio': '首页',
-            'Para Tí': '为您服务',
-            'Proyectos': '项目',
-            'Proyectos en Venta': '在售项目',
-            'Contacto': '联系我们',
-            'Información': '信息',
-            'Agenda Una Reunión': '预约会议',
-            'Cotizar Proyecto': '项目报价',
-            'BIENVENIDO A POLYLINE': '欢迎来到 POLYLINE',
-            'Proyectos inmobiliarios creados para ti.': '为您打造的房地产项目',
-            'Login': '登录',
-            'Perfil': '个人资料',
-            'Cerrar Sesión': '退出登录',
-            'Servicios Personalizados para Ti': '个性化服务',
-            'En POLYLINE transformamos tus sueños en realidad.': '在 POLYLINE，我们将您的梦想变为现实',
-            'Remodelación Completa': '全面改造',
-            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': '完全重新设计您的空间，以适应您的需求和生活方式',
-            'Remodelación de Cocinas': '厨房改造',
-            'Transforma tu cocina en un espacio moderno y funcional.': '将您的厨房改造成现代化的实用空间',
-            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '浴室改造',
-            'Crea un ambiente': '通过我们的定制设计创造轻松优雅的环境',
-            'Diseño de Interiores': '室内设计',
-            'Optimiza tus espacios con soluciones creativas y modernas.': '通过创新现代的解决方案优化您的空间',
-            'Pisos': '地板',
-            'Elige entre': '从多种高品质材料中选择',
-            'Nosotros': '关于我们',
-            'descripcion-empresa': 'Polyline SAC 是一家建筑公司，成立于2002年3月。在21年的经验中，我们开发了以下项目和建设：',
-            'Habilitaciones Urbanas': '城市开发',
-            'Demolición': '建筑拆除（最大3,500平方米）',
-            'Edificaciones': '单户和多户住宅建筑'
-        },
-        'ja': {
-            'Inicio': 'ホーム',
-            'Para Tí': 'あなたのために',
-            'Proyectos': 'プロジェクト',
-            'Proyectos en Venta': '販売中のプロジェクト',
-            'Contacto': 'お問い合わせ',
-            'Información': '情報',
-            'Agenda Una Reunión': '会議を予約',
-            'Cotizar Proyecto': 'プロジェクト見積もり',
-            'BIENVENIDO A POLYLINE': 'POLYLINEへようこそ',
-            'Proyectos inmobiliarios creados para ti.': 'あなたのために作られた不動産プロジェクト',
-            'Login': 'ログイン',
-            'Perfil': 'プロフィール',
-            'Cerrar Sesión': 'ログアウト',
-            'Servicios Personalizados para Ti': 'カスタマイズされたサービス',
-            'EEn POLYLINE transformamos tus sueños en realidad.': 'POLYLINEでは、あなたの夢を現実に変えます',
-            'Remodelación Completa': '全面改装',
-            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'あなたのニーズとライフスタイルに合わせて空間を完全にリデザイン',
-            'Remodelación de Cocinas': 'キッチンリフォーム',
-            'Transforma tu cocina en un espacio moderno y funcional.': 'あなたのキッチンを現代的で機能的な空間に変える',
-            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '浴室リフォーム',
-            'Crea un ambiente': '私たちのカスタムデザインで、くつろぎのある優雅な環境を作り出す',
-            'Diseño de Interiores': 'インテリアデザイン',
-            'Optimiza tus espacios': '創造的でモダンなソリューションであなたの空間を最適化',
-            'Pisos': 'フローリング',
-            'Elige entre': '高品質な材料から幅広く選択',
-            'Nosotros': '会社概要',
-            'descripcion-empresa': 'Polyline SACは2002年3月に設立された建設会社です。21年の経験を持ち、以下のようなプロジェクトと建設を手がけてきました：',
-            'Habilitaciones Urbanas': '都市開発',
-            'Demolición': '建物の解体（最大3,500㎡）',
-            'Edificaciones': '一戸建ておよび集合住宅'
-        },
-        'it': {
-            'Inicio': 'Home',
-            'Para Tí': 'Per Te',
-            'Proyectos': 'Progetti',
-            'Proyectos en Venta': 'Progetti in Vendita',
-            'Contacto': 'Contatti',
-            'Información': 'Informazioni',
-            'Agenda Una Reunión': 'Prenota un Incontro',
-            'Cotizar Proyecto': 'Preventivo Progetto',
-            'BIENVENIDO A POLYLINE': 'BENVENUTO A POLYLINE',
-            'Proyectos inmobiliarios creados para ti.': 'Progetti immobiliari creati per te.',
-            'Login': 'Accedi',
-            'Perfil': 'Profilo',
-            'Cerrar Sesión': 'Esci',
-            'Servicios Personalizados para Ti': 'Servizi Personalizzati',
-            'En POLYLINE transformamos tus sueños en realidad.': 'In POLYLINE, trasformiamo i tuoi sogni in realtà',
-            'Remodelación Completa': 'Ristrutturazione Completa',
-            'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Riprogetta completamente i tuoi spazi per adattarli alle tue esigenze e al tuo stile di vita',
-            'Remodelación de Cocinas': 'Ristrutturazione Cucine',
-            'Transforma tu cocina en un espacio moderno e funzionale.': 'Trasforma la tua cucina in uno spazio moderno e funzionale',
-            'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Ristrutturazione Bagni',
-            'Crea un ambiente': 'Crea un ambiente rilassante ed elegante con i nostri design personalizzati',
-            'Diseño de Interiores': 'Design degli Interni',
-            'Optimiza tus espacios': 'Ottimizza i tuoi spazi con soluzioni creative e moderne',
-            'Pisos': 'Pavimenti',
-            'Elige entre': 'Scegli tra una vasta gamma di materiali di alta qualità',
-            'Nosotros': 'Chi Siamo',
-            'descripcion-empresa': 'Polyline SAC è un\'azienda di costruzioni che ha iniziato la sua attività nel marzo 2002. Con 21 anni di esperienza, ha sviluppato progetti e costruzioni come:',
-            'Habilitaciones Urbanas': 'Sviluppi Urbani',
-            'Demolición': 'Demolizione di edifici fino a 3.500m²',
-            'Edificaciones': 'Edifici residenziali unifamiliari e multifamiliari'
-        }
-    };
-
-    function translatePage(lang) {
-        if (lang === 'es') {
-            location.reload();
-            return;
+    <script>
+        // Funciones para el selector de idiomas
+        function toggleLanguageOptions() {
+            const selector = document.querySelector('.language-selector');
+            const options = document.getElementById('languageOptions');
+            selector.classList.toggle('active');
+            options.classList.toggle('show');
         }
 
-        // Usar un fragmento de documento para optimizar las manipulaciones del DOM
-        const fragment = document.createDocumentFragment();
-        const elements = document.querySelectorAll('[data-translate]');
-        
-        // Procesar elementos en lotes para evitar bloqueo del navegador
-        const batchSize = 10;
-        let currentBatch = 0;
-
-        function processBatch() {
-            const start = currentBatch * batchSize;
-            const end = Math.min(start + batchSize, elements.length);
+        function changeLanguage(lang) {
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLanguage = document.getElementById('currentLanguage');
+            const options = document.getElementById('languageOptions');
             
-            for (let i = start; i < end; i++) {
-                const element = elements[i];
-                const key = element.getAttribute('data-translate');
+            // Actualizar el botón con el idioma seleccionado
+            currentFlag.src = `/Resource/flags/${lang}.png`;
+            currentLanguage.textContent = {
+                'es': 'Español',
+                'en': 'English',
+                'pt': 'Português',
+                'zh': '中文',
+                'ja': '日本語',
+                'it': 'Italiano'
+            }[lang];
+            
+            // Ocultar las opciones
+            options.classList.remove('show');
+            
+            // Traducir el contenido
+            translatePage(lang);
+        }
+
+        // Objeto con las traducciones
+        const translations = {
+            'en': {
+                'Inicio': 'Home',
+                'Para Tí': 'For You',
+                'Proyectos': 'Projects',
+                'Proyectos en Venta': 'Projects for Sale',
+                'Contacto': 'Contact',
+                'Información': 'Information',
+                'Agenda Una Reunión': 'Schedule a Meeting',
+                'Cotizar Proyecto': 'Quote Project',
+                'BIENVENIDO A POLYLINE': 'WELCOME TO POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Real estate projects created for you.',
+                'Login': 'Login',
+                'Perfil': 'Profile',
+                'Cerrar Sesión': 'Logout',
+                'Servicios Personalizados para Ti': 'Personalized Services',
+                'En POLYLINE transformamos tus sueños en realidad.': 'At POLYLINE, we transform your dreams into reality',
+                'Remodelación Completa': 'Complete Remodeling',
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Completely redesign your spaces to fit your needs and lifestyle',
+                'Remodelación de Cocinas': 'Kitchen Remodeling',
+                'Transforma tu cocina en un espacio moderno y funcional.': 'Transform your kitchen into a modern and functional space',
+                'Remodelación de Baños': 'Bathroom Remodeling',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Create a relaxing and elegant environment with our custom designs',
+                'Diseño de Interiores': 'Interior Design',
+                'Optimiza tus espacios con soluciones creativas y modernas.': 'Optimize your spaces with creative and modern solutions',
+                'Pisos': 'Floors',
+                'Elige entre una amplia gama de materiales de alta calidad.': 'Choose from a wide range of high-quality materials',
+                'Nosotros': 'About Us',
+                'descripcion-empresa': 'Polyline SAC is a construction company that started its activities in March 2002. With 21 years of experience, it has developed projects and constructions such as:',
+                'Habilitaciones Urbanas': 'Urban Developments',
+                'Demolición': 'Demolition of buildings up to 3,500m²',
+                'Edificaciones': 'Single-family and multi-family buildings'
+            },
+            'pt': {
+                'Inicio': 'Início',
+                'Para Tí': 'Para Você',
+                'Proyectos': 'Projetos',
+                'Proyectos en Venta': 'Projetos à Venda',
+                'Contacto': 'Contato',
+                'Información': 'Informações',
+                'Agenda Una Reunión': 'Agendar uma Reunião',
+                'Cotizar Proyecto': 'Orçar Projeto',
+                'BIENVENIDO A POLYLINE': 'BEM-VINDO À POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Projetos imobiliários criados para você.',
+                'Login': 'Entrar',
+                'Perfil': 'Perfil',
+                'Cerrar Sesión': 'Sair',
+                'Servicios Personalizados para Ti': 'Serviços Personalizados para Você',
+                'En POLYLINE transformamos tus sueños en realidad.': 'Na POLYLINE, transformamos seus sonhos em realidade',
+                'Remodelación Completa': 'Reforma Completa',
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Redesenhe completamente seus espaços para atender suas necessidades e estilo de vida',
+                'Remodelación de Cocinas': 'Reforma de Cozinhas',
+                'Transforma tu cocina en un espacio moderno y funcional.': 'Transforme sua cozinha em um espaço moderno e funcional',
+                'Remodelación de Baños': 'Reforma de Banheiros',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Crie um ambiente relaxante e elegante com nossos designs personalizados',
+                'Diseño de Interiores': 'Design de Interiores',
+                'Optimiza tus espacios con soluciones creativas y modernas.': 'Otimize seus espaços com soluções criativas e modernas',
+                'Pisos': 'Pisos',
+                'Elige entre una amplia gama de materiales de alta calidad.': 'Escolha entre uma ampla gama de materiais de alta qualidade',
+                'Nosotros': 'Sobre Nós',
+                'descripcion-empresa': 'A Polyline SAC é uma empresa construtora que iniciou suas atividades em março de 2002. Com 21 anos de experiência, desenvolveu projetos e construções como:',
+                'Habilitaciones Urbanas': 'Desenvolvimentos Urbanos',
+                'Demolición': 'Demolição de edifícios até 3.500m²',
+                'Edificaciones': 'Edifícios residenciais unifamiliares e multifamiliares'
+            },
+            'zh': {
+                'Inicio': '首页',
+                'Para Tí': '为您服务',
+                'Proyectos': '项目',
+                'Proyectos en Venta': '在售项目', 
+                'Contacto': '联系我们',
+                'Información': '信息',
+                'Agenda Una Reunión': '预约会议',
+                'Cotizar Proyecto': '项目报价',
+                'BIENVENIDO A POLYLINE': '欢迎来到POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': '为您定制的房地产项目',
+                'Login': '登录',
+                'Perfil': '个人中心',
+                'Cerrar Sesión': '退出登录',
+                'Servicios Personalizados para Ti': '个性化服务',
+                'En POLYLINE transformamos tus sueños en realidad.': '在POLYLINE，我们将您的梦想变为现实',
+                'Remodelación Completa': '全面装修',
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': '根据您的需求和生活方式全面重新设计您的空间',
+                'Remodelación de Cocinas': '厨房改造',
+                'Transforma tu cocina en un espacio moderno y funcional.': '将您的厨房改造成现代实用的空间',
+                'Remodelación de Baños': '浴室装修',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '通过我们的定制设计打造舒适优雅的环境',
+                'Diseño de Interiores': '室内设计',
+                'Optimiza tus espacios con soluciones creativas y modernas.': '用创新现代的解决方案优化您的空间',
+                'Pisos': '地板',
+                'Elige entre una amplia gama de materiales de alta calidad.': '从各种高品质材料中选择',
+                'Nosotros': '关于我们',
+                'descripcion-empresa': 'Polyline SAC是一家于2002年3月成立的建筑公司。在21年的经验中，我们完成了以下项目：',
+                'Habilitaciones Urbanas': '城市开发',
+                'Demolición': '建筑拆除（最大3,500平方米）',
+                'Edificaciones': '独栋及多户型住宅'
+            },
+            'ja': {
+                'Inicio': 'ホーム',
+                'Para Tí': 'あなたのために', 
+                'Proyectos': 'プロジェクト',
+                'Proyectos en Venta': '販売中のプロジェクト',
+                'Contacto': 'お問い合わせ',
+                'Información': '情報',
+                'Agenda Una Reunión': '面談予約',
+                'Cotizar Proyecto': '見積もり依頼',
+                'BIENVENIDO A POLYLINE': 'POLYLINEへようこそ',
+                'Proyectos inmobiliarios creados para ti.': 'お客様のための不動産プロジェクト',
+                'Login': 'ログイン',
+                'Perfil': 'プロフィール',
+                'Cerrar Sesión': 'ログアウト',
+                'Servicios Personalizados para Ti': 'パーソナライズドサービス',
+                'En POLYLINE transformamos tus sueños en realidad.': 'POLYLINEは、あなたの夢を実現します',
+                'Remodelación Completa': '全面リフォーム',
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'あなたのニーズとライフスタイルに合わせた空間の完全リデザイン',
+                'Remodelación de Cocinas': 'キッチンリフォーム',
+                'Transforma tu cocina en un espacio moderno y funcional.': 'キッチンをモダンで機能的な空間に改装',
+                'Remodelación de Baños': 'バスルームリフォーム',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'カスタムデザインで快適で上質な空間を創造',
+                'Diseño de Interiores': 'インテリアデザイン',
+                'Optimiza tus espacios con soluciones creativas y modernas.': '創造的でモダンなソリューションで空間を最適化',
+                'Pisos': 'フローリング',
+                'Elige entre una amplia gama de materiales de alta calidad.': '高品質な素材を幅広く取り揃え',
+                'Nosotros': '会社概要',
+                'descripcion-empresa': 'Polyline SACは2002年3月に設立された建設会社です。21年の経験を活かし、以下のようなプロジェクトを手がけてきました：',
+                'Habilitaciones Urbanas': '都市開発',
+                'Demolición': '建物解体（最大3,500㎡）',
+                'Edificaciones': '戸建てとマンションの建設'
+            },
+            'it': {
+                'Inicio': 'Home',
+                'Para Tí': 'Per Te', 
+                'Proyectos': 'Progetti',
+                'Proyectos en Venta': 'Progetti in Vendita',
+                'Contacto': 'Contatti',
+                'Información': 'Informazioni', 
+                'Agenda Una Reunión': 'Prenota un Appuntamento',
+                'Cotizar Proyecto': 'Richiedi un Preventivo',
+                'BIENVENIDO A POLYLINE': 'BENVENUTO A POLYLINE',
+                'Proyectos inmobiliarios creados para ti.': 'Progetti immobiliari creati per te.',
+                'Login': 'Accedi',
+                'Perfil': 'Profilo',
+                'Cerrar Sesión': 'Disconnetti',
+                'Servicios Personalizados para Ti': 'Servizi Personalizzati per Te',
+                'En POLYLINE transformamos tus sueños en realidad.': 'In POLYLINE trasformiamo i tuoi sogni in realtà',
+                'Remodelación Completa': 'Ristrutturazione Completa', 
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Riprogetta completamente i tuoi spazi secondo le tue esigenze e il tuo stile di vita',
+                'Remodelación de Cocinas': 'Ristrutturazione Cucine',
+                'Transforma tu cocina en un espacio moderno y funcional.': 'Trasforma la tua cucina in uno spazio moderno e funzionale',
+                'Remodelación de Baños': 'Ristrutturazione Bagni',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Crea un ambiente rilassante ed elegante con i nostri design personalizzati',
+                'Diseño de Interiores': 'Design d\'Interni',
+                'Optimiza tus espacios con soluciones creativas y modernas.': 'Ottimizza i tuoi spazi con soluzioni creative e moderne',
+                'Pisos': 'Pavimenti',
+                'Elige entre una amplia gama de materiales de alta calidad.': 'Scegli tra un\'ampia gamma di materiali di alta qualità',
+                'Nosotros': 'Chi Siamo',
+                'descripcion-empresa': 'Polyline SAC è un\'azienda di costruzioni che ha iniziato la sua attività nel marzo 2002. Con 21 anni di esperienza, ha sviluppato progetti e costruzioni come:',
+                'Habilitaciones Urbanas': 'Sviluppi Urbani',
+                'Demolición': 'Demolizione di edifici fino a 3.500m²',
+                'Edificaciones': 'Edifici unifamiliari e multifamiliari'
+            }
+        };
+
+        function translatePage(lang) {
+            if (lang === 'es') {
+                location.reload();
+                return;
+            }
+
+            // Usar un fragmento de documento para optimizar las manipulaciones del DOM
+            const fragment = document.createDocumentFragment();
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            // Procesar elementos en lotes para evitar bloqueo del navegador
+            const batchSize = 10;
+            let currentBatch = 0;
+
+            function processBatch() {
+                const start = currentBatch * batchSize;
+                const end = Math.min(start + batchSize, elements.length);
                 
-                if (translations[lang]?.[key]) {
-                    if (element.tagName.toLowerCase() === 'input' || 
-                        element.tagName.toLowerCase() === 'textarea') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        const isTextOnly = element.innerHTML.trim() === element.textContent.trim();
-                        element[isTextOnly ? 'textContent' : 'innerHTML'] = translations[lang][key];
+                for (let i = start; i < end; i++) {
+                    const element = elements[i];
+                    const key = element.getAttribute('data-translate');
+                    
+                    if (translations[lang]?.[key]) {
+                        if (element.tagName.toLowerCase() === 'input' || 
+                            element.tagName.toLowerCase() === 'textarea') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            const isTextOnly = element.innerHTML.trim() === element.textContent.trim();
+                            element[isTextOnly ? 'textContent' : 'innerHTML'] = translations[lang][key];
+                        }
+                    }
+                }
+
+                currentBatch++;
+                
+                if (currentBatch * batchSize < elements.length) {
+                    requestAnimationFrame(processBatch);
+                } else {
+                    // Actualizar título después de procesar todas las traducciones
+                    document.title = {
+                        'en': 'POLYLINE - Construction Company',
+                        'pt': 'POLYLINE - Construtora',
+                        'zh': 'POLYLINE - 建筑公司',
+                        'ja': 'POLYLINE - 建設会社',
+                        'it': 'POLYLINE - Società di costruzioni'
+                    }[lang] || 'POLYLINE - Constructora';
+
+                    // Reinicializar animaciones solo si es necesario
+                    if (typeof anime !== 'undefined' && typeof wrapLetters === 'function') {
+                        requestAnimationFrame(() => {
+                            const mainText = document.querySelector('.letters-main');
+                            const subText = document.querySelector('.letters-sub');
+                            
+                            if (mainText) mainText.style.opacity = '1';
+                            if (subText) subText.style.opacity = '1';
+                            
+                            wrapLetters('.letters-main');
+                            wrapLetters('.letters-sub');
+                            
+                            // Usar requestAnimationFrame para las animaciones
+                            requestAnimationFrame(() => {
+                                anime.timeline({
+                                    loop: false,
+                                    easing: 'easeOutExpo'
+                                })
+                                .add({
+                                    targets: '.hero-title .letter',
+                                    translateY: ["1.1em", 0],
+                                    translateX: ["0.55em", 0],
+                                    rotateZ: [180, 0],
+                                    duration: 600,
+                                    delay: anime.stagger(40)
+                                })
+                                .add({
+                                    targets: '.hero-subtitle .letter',
+                                    opacity: [0, 1],
+                                    duration: 800,
+                                    delay: anime.stagger(20),
+                                    offset: '-=400'
+                                });
+                            });
+                        });
                     }
                 }
             }
 
-            currentBatch++;
+            // Iniciar el procesamiento por lotes
+            requestAnimationFrame(processBatch);
+        }
+
+        // Cerrar el menú de idiomas cuando se hace clic fuera
+        document.addEventListener('click', function(event) {
+            const languageSelector = document.querySelector('.language-selector');
+            const languageOptions = document.getElementById('languageOptions');
             
-            if (currentBatch * batchSize < elements.length) {
-                requestAnimationFrame(processBatch);
-            } else {
-                // Actualizar título después de procesar todas las traducciones
-                document.title = {
-                    'en': 'POLYLINE - Construction Company',
-                    'pt': 'POLYLINE - Construtora',
-                    'zh': 'POLYLINE - 建筑公司',
-                    'ja': 'POLYLINE - 建設会社',
-                    'it': 'POLYLINE - Società di costruzioni'
-                }[lang] || 'POLYLINE - Constructora';
-
-                // Reinicializar animaciones solo si es necesario
-                if (typeof anime !== 'undefined' && typeof wrapLetters === 'function') {
-                    requestAnimationFrame(() => {
-                        const mainText = document.querySelector('.letters-main');
-                        const subText = document.querySelector('.letters-sub');
-                        
-                        if (mainText) mainText.style.opacity = '1';
-                        if (subText) subText.style.opacity = '1';
-                        
-                        wrapLetters('.letters-main');
-                        wrapLetters('.letters-sub');
-                        
-                        // Usar requestAnimationFrame para las animaciones
-                        requestAnimationFrame(() => {
-                            anime.timeline({
-                                loop: false,
-                                easing: 'easeOutExpo'
-                            })
-                            .add({
-                                targets: '.hero-title .letter',
-                                translateY: ["1.1em", 0],
-                                translateX: ["0.55em", 0],
-                                rotateZ: [180, 0],
-                                duration: 600,
-                                delay: anime.stagger(40)
-                            })
-                            .add({
-                                targets: '.hero-subtitle .letter',
-                                opacity: [0, 1],
-                                duration: 800,
-                                delay: anime.stagger(20),
-                                offset: '-=400'
-                            });
-                        });
-                    });
-                }
+            if (!languageSelector.contains(event.target)) {
+                languageOptions.classList.remove('show');
             }
-        }
-
-        // Iniciar el procesamiento por lotes
-        requestAnimationFrame(processBatch);
-    }
-
-    // Cerrar el menú de idiomas cuando se hace clic fuera
-    document.addEventListener('click', function(event) {
-        const languageSelector = document.querySelector('.language-selector');
-        const languageOptions = document.getElementById('languageOptions');
-        
-        if (!languageSelector.contains(event.target)) {
-            languageOptions.classList.remove('show');
-        }
-    });
-</script>
+        });
+    </script>
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script type="module" src="/js/property-viewer.js"></script>

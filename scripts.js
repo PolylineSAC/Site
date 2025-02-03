@@ -32,7 +32,6 @@ function toggleContactOptions() {
 }
 
 
-/*Modo Oscuro*/
 
 
 // Seleccionar el botón de modo oscuro
