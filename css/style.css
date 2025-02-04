@@ -2551,7 +2551,7 @@ body.dark-mode .close-btn {
     }
     #para-ti{
         background: url('/Resource/background-para-ti2.jpg') center/cover no-repeat fixed !important;
-    }
+    }   
     /* Botones de redes sociales */
     .buttons {
         gap: 10px;
@@ -3799,4 +3799,157 @@ body.dark-mode #nosotros {
         background: url('/Resource/background-para-ti3.jpg') center/cover no-repeat fixed !important;
     }
     
+}
+
+/* Ajustes responsivos para la sección de departamentos */
+@media screen and (max-width: 768px) {
+    .animated-title {
+        width: 100%;
+        padding-inline: 10px;
+        word-break: keep-all;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .departamentos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .departamento-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .card-details h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-details p {
+        font-size: 0.9rem;
+    }
+
+    .btn-details,
+    .btn-separate {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Ajustes para el modal */
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        padding: 15px;
+    }
+
+    .video-container {
+        height: auto;
+    }
+
+    .image-carousel {
+        padding: 10px;
+    }
+
+    .carousel-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Ajustes para la sección de tipologías */
+    .tipologias-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tipologia-container {
+        margin: 10px 0;
+    }
+
+    .tipologia-img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .animated-title .main-title .letter {
+        font-size: 2em;
+    }
+
+    .animated-title .subtitle {
+        font-size: 1.2em;
+    }
+}
+
+/* Ajustes específicos para dispositivos muy pequeños */
+@media screen and (max-width: 380px) {
+    .departamento-card {
+        margin: 5px 0;
+    }
+
+    .card-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-details p {
+        font-size: 0.8rem;
+    }
+
+    .btn-details,
+    .btn-separate {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-item {
+        width: 50px;
+        height: 50px;
+    }
+
+    .animated-title .main-title .letter {
+        font-size: 1.5em;
+    }
+
+    .animated-title .subtitle {
+        font-size: 1em;
+    }
+
+    .tipologia-info h3 {
+        font-size: 1rem;
+    }
+
+    .tipologia-info p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ajustes para modo horizontal en móviles */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .modal-content {
+        height: 95vh;
+    }
+
+    .video-container {
+        height: 40vh;
+    }
+
+    .image-carousel {
+        max-height: 20vh;
+    }
+
+    .carousel-item {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Optimizaciones de rendimiento */
+@media (hover: none) {
+    .departamento-card:hover {
+        transform: none;
+    }
+
+    .btn-details:hover,
+    .btn-separate:hover {
+        transform: none;
+    }
 }
