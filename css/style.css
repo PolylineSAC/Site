@@ -3498,10 +3498,13 @@ body.dark-mode #nosotros {
     transform: scale(1.02);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     #nosotros {
         flex-direction: column;
         padding: 2rem 1rem;
+    }
+    #para-ti {
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
     }
 
     #nosotros .content {
@@ -3651,7 +3654,7 @@ body.dark-mode #nosotros {
         padding: 0 10px;
     }
     #para-ti {
-        background: url('/Resource/background-para-ti3.jpg') center/cover no-repeat fixed !important;
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
     }
     /* Sección Nosotros */
     #nosotros {
@@ -3796,7 +3799,7 @@ body.dark-mode #nosotros {
 
     #para-ti {
         padding-top: 30px;
-        background: url('/Resource/background-para-ti3.jpg') center/cover no-repeat fixed !important;
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
     }
     
 }
@@ -3814,6 +3817,9 @@ body.dark-mode #nosotros {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 15px;
+    }
+    #para-ti {
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
     }
 
     .departamento-card {
@@ -3885,7 +3891,9 @@ body.dark-mode #nosotros {
     .departamento-card {
         margin: 5px 0;
     }
-
+    #para-ti {
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
+    }
     .card-details h3 {
         font-size: 1.1rem;
     }
@@ -3931,7 +3939,9 @@ body.dark-mode #nosotros {
     .video-container {
         height: 40vh;
     }
-
+    #para-ti {
+        background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
+    }
     .image-carousel {
         max-height: 20vh;
     }
@@ -3953,3 +3963,192 @@ body.dark-mode #nosotros {
         transform: none;
     }
 }
+
+.referral-section {
+    padding: 80px 20px;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.548), 
+        rgba(192, 192, 192, 0.466)
+    ), url('/Resource/refiere.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Modo oscuro */
+body.dark-mode .referral-section {
+    padding: 80px 20px;
+    background: linear-gradient(
+        rgba(26, 26, 26, 0.13), 
+        rgba(44, 44, 44, 0.151)
+    ), url('/Resource/referir.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: rgb(30, 30, 30);
+    overflow: hidden;
+    position: relative;
+}
+body.dark-mode .referral-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    color: rgb(30, 30, 30);
+    overflow: hidden;
+    position: relative;
+}
+
+.referral-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.referral-title {
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.referral-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    color: #353535;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+body.dark-mode .referral-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    color: #dedede;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.rewards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.reward-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.reward-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.reward-icon {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.reward-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #FFD700;
+}
+
+.reward-card p {
+    color: #292929;
+    line-height: 1.6;
+}
+
+body.dark-mode .reward-card p {
+    color: #dedede;
+    line-height: 1.6;
+}
+
+.referral-cta {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.referral-cta:hover {
+    transform: translateY(-3px);
+}
+
+.star-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    opacity: 0;
+}
+
+.referral-cta:hover .star {
+    animation: shootingStar 0.8s ease-out;
+}
+/*
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shootingStar {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .rewards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reward-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .referral-title {
+        font-size: 2em;
+    }
+}
+*/
+
