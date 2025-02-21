@@ -213,8 +213,8 @@
                         <li><a href="/PROYECTOS/proyectos.html" data-translate="Proyectos en Venta">Proyectos en Venta</a></li>
                         <li><a href="/PROYECTOS/PBEN1.html" data-translate="Proyecto Benavides 1">Proyecto Benavides 1</a></li>
                         <li><a href="/PROYECTOS/PBEN2.html" data-translate="Proyecto Benavides 2">Proyecto Benavides 2</a></li>
-                        <li><a href="/PROYECTOS/PPL1.html" data-translate="Proyecto Pueblo Libre Sienna">Proyecto Pueblo Libre Sienna</a></li>
-                        <li><a href="/PROYECTOS/PLIN.html" data-translate="Proyecto Varsovia Lince">Proyecto Varsovia Lince</a></li>
+                        <li><a href="/PROYECTOS/PPL1.html" data-translate="Proyecto Sienna">Proyecto Sienna</a></li>
+                        <li><a href="/PROYECTOS/PLIN.html" data-translate="Proyecto Varsovia">Proyecto Varsovia </a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -254,153 +254,103 @@
     </audio>
 
     <section id="inicio" style="position: relative; height: 80vh; overflow: hidden;">
-    <!-- Imagen de respaldo mientras carga el video -->
-    <div class="video-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('/Resource/video-placeholder.jpg'); background-size: cover; background-position: center; transition: opacity 0.5s ease;"></div>
-    
-    <!-- Video de fondo optimizado -->
-    <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;" poster="/Resource/video-placeholder.jpg">
-        <source data-src="/Resource/background1.mp4" type="video/mp4">
-    </video>
+        <!-- Video de fondo -->
+        <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transition: opacity 1s ease-in-out;">
+            <source src="/Resource/background1.mp4" type="video/mp4">
+        </video>
+        <!-- Contenido de la sección -->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
+            <h2 class="hero-title">
+                <span class="letter-wrapper">
+                    <span class="letters-main" data-translate="BIENVENIDO A POLYLINE">BIENVENIDO A POLYLINE</span>
+                </span>
+            </h2>
+            <p class="hero-subtitle">
+                <span class="letter-wrapper">
+                    <span class="letters-sub" data-translate="Proyectos inmobiliarios creados para ti.">Proyectos inmobiliarios creados para ti.</span>
+                </span>
+            </p>
+            <a href="/PROYECTOS/proyectos.html" class="cta-button" data-translate="Descubre Nuestros Proyectos">
+                Descubre Nuestros Proyectos
+                <span class="cta-arrow">→</span>
+            </a>
+        </div>
 
-    <!-- Contenido de la sección -->
-    <div class="hero-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
-        <h2 class="hero-title">
-            <span class="letter-wrapper">
-                <span class="letters-main" data-translate="BIENVENIDO A POLYLINE">BIENVENIDO A POLYLINE</span>
-            </span>
-        </h2>
-        <p class="hero-subtitle">
-            <span class="letter-wrapper">
-                <span class="letters-sub" data-translate="Proyectos inmobiliarios creados para ti.">Proyectos inmobiliarios creados para ti.</span>
-            </span>
-        </p>
-        
-        <!-- Nuevo CTA Button -->
-        <a href="/PROYECTOS/proyectos.html" class="cta-button" data-translate="Descubre Nuestros Proyectos">
-            Descubre Nuestros Proyectos
-            <span class="cta-arrow">→</span>
-        </a>
-    </div>
-</section>
-
-<!-- Estilos para el CTA -->
-<style>
-    .cta-button {
-        margin-top: 2rem;
-        padding: 1rem 2rem;
-        background: linear-gradient(45deg, #FFD700, #FFA500);
-        color: #dedede;
-        text-decoration: none;
-        border-radius: 19px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        position: relative;
-        overflow: hidden;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-        background: linear-gradient(45deg, #FFA500, #FFD700);
-    }
-
-    .cta-arrow {
-        transition: transform 0.3s ease;
-    }
-
-    .cta-button:hover .cta-arrow {
-        transform: translateX(5px);
-    }
-
-    .video-placeholder {
-        z-index: -2;
-    }
-</style>
-
-<!-- Script optimizado para la carga del video -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('background-video');
-    const placeholder = document.querySelector('.video-placeholder');
-    
-    // Función para cargar el video
-    function loadVideo() {
-        const source = video.querySelector('source');
-        const videoUrl = source.getAttribute('data-src');
-        source.setAttribute('src', videoUrl);
-        
-        video.load();
-        video.play().then(() => {
-            // Desvanecer el placeholder y mostrar el video
-            requestAnimationFrame(() => {
-                video.style.opacity = '1';
-                placeholder.style.opacity = '0';
-            });
-        }).catch(err => {
-            console.warn('Autoplay failed:', err);
-            // Mantener el placeholder visible si falla el autoplay
-            video.muted = true;
-            video.play();
-        });
-    }
-
-    // Usar Intersection Observer para lazy loading
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                loadVideo();
-                observer.unobserve(entry.target);
+        <script>
+            // Optimización de la animación de letras
+            function wrapLetters(selector) {
+                const textWrapper = document.querySelector(selector);
+                if (!textWrapper) return;
+                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='will-change: transform'>$&</span>");
             }
-        });
-    }, {
-        threshold: 0.1
-    });
 
-    observer.observe(video);
-});
-</script>
+            // Animaciones optimizadas
+            document.addEventListener('DOMContentLoaded', () => {
+                wrapLetters('.letters-main');
+                wrapLetters('.letters-sub');
+
+                anime.timeline({
+                    loop: false,
+                    easing: 'easeOutExpo'
+                })
+                .add({
+                    targets: '.hero-title .letter',
+                    translateY: ["1.1em", 0],
+                    translateX: ["0.55em", 0],
+                    rotateZ: [180, 0],
+                    duration: 600,
+                    delay: anime.stagger(40),
+                    changeBegin: function() {
+                        document.querySelectorAll('.hero-title .letter').forEach(el => {
+                            el.style.opacity = '1';
+                        });
+                    }
+                })
+                .add({
+                    targets: '.hero-subtitle .letter',
+                    opacity: [0, 1],
+                    duration: 800,
+                    delay: anime.stagger(20),
+                    offset: '-=400'
+                });
+            });
+        </script>
+    </section>
 
     <script>
-        // Optimización de la animación de letras
-        function wrapLetters(selector) {
-            const textWrapper = document.querySelector(selector);
-            if (!textWrapper) return;
-            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='will-change: transform'>$&</span>");
+        // Optimización de carga del video
+        const video = document.getElementById('background-video');
+        if (video) {
+            video.setAttribute('playsinline', '');
+            video.setAttribute('preload', 'auto');
+            
+            const playVideo = () => {
+                video.play().catch(() => {
+                    // Fallback silencioso si el autoplay falla
+                    video.muted = true;
+                    video.play();
+                });
+                video.style.opacity = '1';
+            };
+
+            if (video.readyState >= 2) {
+                playVideo();
+            } else {
+                video.addEventListener('loadeddata', playVideo, { once: true });
+            }
         }
 
-        // Animaciones optimizadas
-        document.addEventListener('DOMContentLoaded', () => {
-            wrapLetters('.letters-main');
-            wrapLetters('.letters-sub');
-
-            anime.timeline({
-                loop: false,
-                easing: 'easeOutExpo'
-            })
-            .add({
-                targets: '.hero-title .letter',
-                translateY: ["1.1em", 0],
-                translateX: ["0.55em", 0],
-                rotateZ: [180, 0],
-                duration: 600,
-                delay: anime.stagger(40),
-                changeBegin: function() {
-                    document.querySelectorAll('.hero-title .letter').forEach(el => {
-                        el.style.opacity = '1';
+        // Optimización de la pantalla de carga
+        window.addEventListener('load', function() {
+            requestAnimationFrame(() => {
+                document.body.classList.add('loaded');
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.transform = 'translateY(-100%)';
+                    loadingScreen.addEventListener('transitionend', () => {
+                        loadingScreen.style.display = 'none';
                     });
                 }
-            })
-            .add({
-                targets: '.hero-subtitle .letter',
-                opacity: [0, 1],
-                duration: 800,
-                delay: anime.stagger(20),
-                offset: '-=400'
             });
         });
     </script>
@@ -503,7 +453,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="separator"></div>
 
-    <section id="nosotros" >
+    <section id="referidos" class="referral-section">
+        <div class="referral-container">
+            <h2 class="referral-title" data-translate="Refiere y Gana">Refiere y Gana</h2>
+            <p class="referral-subtitle" data-translate="Comparte tu experiencia POLYLINE y gana increíbles beneficios">
+                Comparte tu experiencia POLYLINE y gana increíbles beneficios
+            </p>
+    
+            <div class="rewards-container">
+                <div class="reward-card" data-aos="flip-left">
+                    <div class="reward-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 data-translate="5% de Descuento">5% de Descuento</h3>
+                    <p data-translate="Por cada cliente referido que concrete una compra">Por cada cliente referido que concrete una compra</p>
+                </div>
+    
+                <div class="reward-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="reward-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 data-translate="Decoración Gratis">Decoración Gratis</h3>
+                    <p data-translate="Asesoría en decoración de interiores sin costo">Asesoría en decoración de interiores sin costo</p>
+                </div>
+    
+                <div class="reward-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="reward-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 data-translate="Remodelación">Remodelación</h3>
+                    <p data-translate="Descuentos especiales en servicios de remodelación">Descuentos especiales en servicios de remodelación</p>
+                </div>
+            </div>
+            
+            <a href="/PROYECTOS/referir.html" class="referral-button" ">
+                <span data-translate="Referir Ahora">Referir Ahora</span>
+            </button>
+            </a>
+        </div>
+    </section>
+    <section id="nosotros">
     <div class="content">
         <h2 data-translate="Nosotros">Nosotros</h2>
         <p data-translate="descripcion-empresa">
@@ -517,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
         <section class="buttons">
             <a href="https://www.facebook.com/PolylineSalas" target="_blank" class="fa fa-facebook"></a>
-            <a href="https://wa.me/51907341122" target="_blank" class="fa fa-whatsapp"></a>
+            <a href="https://wa.link/lkvfnb" target="_blank" class="fa fa-whatsapp"></a>
             <a href="https://www.instagram.com/arquitectosalasperu/" target="_blank" class="fa fa-instagram"></a>
             <a href="https://www.linkedin.com/in/arquitectosalas" target="_blank" class="fa fa-linkedin"></a>
             <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw" target="_blank" class="fa fa-youtube"></a>
@@ -527,82 +516,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <img src="/Resource/background-para-ti1.jpg" alt="Sobre Nosotros" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
     </div>
 </section>
-
-<div class="separator"></div>
-
-<!-- Nueva sección de referidos -->
-<section id="referidos" class="referral-section">
-    <div class="referral-container">
-        <h2 class="referral-title" data-translate="Refiere y Gana">Refiere y Gana</h2>
-        <p class="referral-subtitle" data-translate="referral-description">
-            Comparte tu experiencia POLYLINE y gana increíbles beneficios
-        </p>
-        
-        <div class="rewards-container">
-            <div class="reward-card" data-aos="flip-left">
-                <div class="reward-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <h3 data-translate="Beneficio 1">un Bonus</h3>
-                <p data-translate="benefit-1-description">Por cada cliente referido que concrete una compra</p>
-            </div>
-            
-            <div class="reward-card" data-aos="flip-left" data-aos-delay="200">
-                <div class="reward-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <h3 data-translate="Beneficio 2">Decoración Gratis</h3>
-                <p data-translate="benefit-2-description">Asesoría en decoración de interiores sin costo</p>
-            </div>
-            
-            <div class="reward-card" data-aos="flip-left" data-aos-delay="400">
-                <div class="reward-icon">
-                    <i class="fas fa-paint-roller"></i>
-                </div>
-                <h3 data-translate="Beneficio 3">Remodelación</h3>
-                <p data-translate="benefit-3-description">Descuentos especiales en servicios de remodelación</p>
-            </div>
-        </div>
-
-        <button class="referral-cta" data-translate="Referir Ahora">
-            Referir Ahora
-            <div class="star-container">
-                <i class="fas fa-star star"></i>
-            </div>
-        </button>
-    </div>
-</section>
-
-
-<script>
-// Agregar al script existente
-document.addEventListener('DOMContentLoaded', function() {
-    const rewardCards = document.querySelectorAll('.reward-card');
-    
-    // Animación al hacer hover en las tarjetas
-    rewardCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.querySelector('.reward-icon').style.transform = 'scale(1.2)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.querySelector('.reward-icon').style.transform = 'scale(1)';
-        });
-    });
-
-    // Animación del botón CTA
-    const referralCta = document.querySelector('.referral-cta');
-    referralCta.addEventListener('click', function(e) {
-        const star = document.createElement('i');
-        star.classList.add('fas', 'fa-star', 'star');
-        this.querySelector('.star-container').appendChild(star);
-        
-        setTimeout(() => {
-            star.remove();
-        }, 800);
-    });
-});
-</script>
 
 <script>
 // Animación de la sección Nosotros
@@ -808,6 +721,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Para Tí': 'For You',
                 'Proyectos': 'Projects',
                 'Proyectos en Venta': 'Projects for Sale',
+                'Proyecto Benavides 1': 'Benavides Project 1',
+                'Proyecto Benavides 2': 'Benavides Project 2',
+                'Proyecto Sienna': 'Sienna Project',
+                'Proyecto Varsovia': 'Varsovia Project',
                 'Contacto': 'Contact',
                 'Información': 'Information',
                 'Agenda Una Reunión': 'Schedule a Meeting',
@@ -817,6 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Login': 'Login',
                 'Perfil': 'Profile',
                 'Cerrar Sesión': 'Logout',
+                'Descubre Nuestros Proyectos': 'Discover Our Projects',
                 'Servicios Personalizados para Ti': 'Personalized Services',
                 'En POLYLINE transformamos tus sueños en realidad.': 'At POLYLINE, we transform your dreams into reality',
                 'Remodelación Completa': 'Complete Remodeling',
@@ -833,13 +751,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 'descripcion-empresa': 'Polyline SAC is a construction company that started its activities in March 2002. With 21 years of experience, it has developed projects and constructions such as:',
                 'Habilitaciones Urbanas': 'Urban Developments',
                 'Demolición': 'Demolition of buildings up to 3,500m²',
-                'Edificaciones': 'Single-family and multi-family buildings'
+                'Edificaciones': 'Single-family and multi-family buildings',
+                '5% de Descuento': '5% Discount',
+                'Por cada cliente referido que concrete una compra': 'For each referred customer who makes a purchase',
+                'Decoración Gratis': 'Free Decoration',
+                'Asesoría en decoración de interiores sin costo': 'Interior decoration advice at no cost',
+                'Remodelación': 'Remodeling',
+                'Descuentos especiales en servicios de remodelación': 'Special discounts on remodeling services',
+                'Refiere y Gana': 'Refer and Earn',
+                'Comparte tu experiencia POLYLINE y gana increíbles beneficios': 'Share your POLYLINE experience and earn amazing benefits',
+                'Referir Ahora': 'Refer Now'
             },
             'pt': {
                 'Inicio': 'Início',
                 'Para Tí': 'Para Você',
                 'Proyectos': 'Projetos',
                 'Proyectos en Venta': 'Projetos à Venda',
+                'Proyecto Benavides 1': 'Benavides Projeto 1',
+                'Proyecto Benavides 2': 'Benavides Projeto 2',
+                'Proyecto Sienna': 'Sienna Projeto',
+                'Proyecto Varsovia': 'Varsovia Projeto',
                 'Contacto': 'Contato',
                 'Información': 'Informações',
                 'Agenda Una Reunión': 'Agendar uma Reunião',
@@ -849,29 +780,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Login': 'Entrar',
                 'Perfil': 'Perfil',
                 'Cerrar Sesión': 'Sair',
+                'Descubre Nuestros Proyectos': 'Descubra Nossos Projetos',
                 'Servicios Personalizados para Ti': 'Serviços Personalizados para Você',
                 'En POLYLINE transformamos tus sueños en realidad.': 'Na POLYLINE, transformamos seus sonhos em realidade',
                 'Remodelación Completa': 'Reforma Completa',
                 'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Redesenhe completamente seus espaços para atender suas necessidades e estilo de vida',
                 'Remodelación de Cocinas': 'Reforma de Cozinhas',
-                'Transforma tu cocina en un espaço moderno e funcional.': 'Transforme sua cozinha em um espaço moderno e funcional',
+                'Transforma tu cocina en un espacio moderno y funcional.': 'Transforme sua cozinha em um espaço moderno e funcional',
                 'Remodelación de Baños': 'Reforma de Banheiros',
-                'Crea un ambiente relajante e elegante com nossos designs personalizados.': 'Crie um ambiente relaxante e elegante com nossos designs personalizados',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Crie um ambiente relaxante e elegante com nossos designs personalizados',
                 'Diseño de Interiores': 'Design de Interiores',
-                'Optimiza tus espaços com soluções criativas e modernas.': 'Otimize seus espaços com soluções criativas e modernas',
+                'Optimiza tus espacios con soluciones creativas y modernas.': 'Otimize seus espaços com soluções criativas e modernas',
                 'Pisos': 'Pisos',
-                'Elige entre una ampla gama de materiais de alta qualidade.': 'Escolha entre uma ampla gama de materiais de alta qualidade',
+                'Elige entre una amplia gama de materiales de alta calidad.': 'Escolha entre uma ampla gama de materiais de alta qualidade',
                 'Nosotros': 'Sobre Nós',
                 'descripcion-empresa': 'A Polyline SAC é uma empresa construtora que iniciou suas atividades em março de 2002. Com 21 anos de experiência, desenvolveu projetos e construções como:',
                 'Habilitaciones Urbanas': 'Desenvolvimentos Urbanos',
                 'Demolición': 'Demolição de edifícios até 3.500m²',
-                'Edificaciones': 'Edifícios residenciais unifamiliares e multifamiliares'
+                'Edificaciones': 'Edifícios residenciais unifamiliares e multifamiliares',
+                '5% de Descuento': '5% de Desconto',
+                'Por cada cliente referido que concrete una compra': 'Para cada cliente indicado que realizar uma compra',
+                'Decoración Gratis': 'Decoração Grátis',
+                'Asesoría en decoración de interiores sin costo': 'Consultoria em decoração de interiores sem custo',
+                'Remodelación': 'Reforma',
+                'Descuentos especiales en servicios de remodelación': 'Descontos especiais em serviços de reforma',
+                'Refiere y Gana': 'Indique e Ganhe',
+                'Comparte tu experiencia POLYLINE y gana increíbles beneficios': 'Compartilhe sua experiência POLYLINE e ganhe benefícios incríveis',
+                'Referir Ahora': 'Indicar Agora'
             },
             'zh': {
                 'Inicio': '首页',
                 'Para Tí': '为您服务',
                 'Proyectos': '项目',
                 'Proyectos en Venta': '在售项目', 
+                'Proyecto Benavides 1': '贝纳维德斯项目 1',
+                'Proyecto Benavides 2': '贝纳维德斯项目 2',
+                'Proyecto Sienna': '锡耶纳项目',
+                'Proyecto Varsovia': '华沙项目',
                 'Contacto': '联系我们',
                 'Información': '信息',
                 'Agenda Una Reunión': '预约会议',
@@ -881,12 +826,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Login': '登录',
                 'Perfil': '个人中心',
                 'Cerrar Sesión': '退出登录',
+                'Descubre Nuestros Proyectos': '发现我们的项目',
                 'Servicios Personalizados para Ti': '个性化服务',
                 'En POLYLINE transformamos tus sueños en realidad.': '在POLYLINE，我们将您的梦想变为现实',
                 'Remodelación Completa': '全面装修',
                 'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': '根据您的需求和生活方式全面重新设计您的空间',
                 'Remodelación de Cocinas': '厨房改造',
-                'Transforma tu cocina en一个现代实用的空间': '将您的厨房改造成现代实用的空间',
+                'Transforma tu cocina en un espacio moderno y funcional.': '将您的厨房改造成现代实用的空间',
                 'Remodelación de Baños': '浴室装修',
                 'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': '通过我们的定制设计打造舒适优雅的环境',
                 'Diseño de Interiores': '室内设计',
@@ -897,13 +843,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 'descripcion-empresa': 'Polyline SAC是一家于2002年3月成立的建筑公司。在21年的经验中，我们完成了以下项目：',
                 'Habilitaciones Urbanas': '城市开发',
                 'Demolición': '建筑拆除（最大3,500平方米）',
-                'Edificaciones': '独栋及多户型住宅'
+                'Edificaciones': '独栋及多户型住宅',
+                '5% de Descuento': '5%折扣',
+                'Por cada cliente referido que concrete una compra': '每推荐一位客户完成购买',
+                'Decoración Gratis': '免费装饰',
+                'Asesoría en decoración de interiores sin costo': '免费室内装饰咨询',
+                'Remodelación': '改造',
+                'Descuentos especiales en servicios de remodelación': '改造服务特别折扣',
+                'Refiere y Gana': '推荐并赚取',
+                'Comparte tu experiencia POLYLINE y gana increíbles beneficios': '分享您的POLYLINE体验，赚取惊人福利',
+                'Referir Ahora': '立即推荐'
             },
             'ja': {
                 'Inicio': 'ホーム',
                 'Para Tí': 'あなたのために', 
                 'Proyectos': 'プロジェクト',
                 'Proyectos en Venta': '販売中のプロジェクト',
+                'Proyecto Benavides 1': 'ベナビデス・プロジェクト1',
+                'Proyecto Benavides 2': 'ベナビデス・プロジェクト2',
+                'Proyecto Sienna': 'シエナ・プロジェクト',
+                'Proyecto Varsovia': 'ワルシャワ・プロジェクト',
                 'Contacto': 'お問い合わせ',
                 'Información': '情報',
                 'Agenda Una Reunión': '面談予約',
@@ -913,6 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Login': 'ログイン',
                 'Perfil': 'プロフィール',
                 'Cerrar Sesión': 'ログアウト',
+                'Descubre Nuestros Proyectos': 'プロジェクトを発見',
                 'Servicios Personalizados para Ti': 'パーソナライズドサービス',
                 'En POLYLINE transformamos tus sueños en realidad.': 'POLYLINEは、あなたの夢を実現します',
                 'Remodelación Completa': '全面リフォーム',
@@ -929,13 +889,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 'descripcion-empresa': 'Polyline SACは2002年3月に設立された建設会社です。21年の経験を活かし、以下のようなプロジェクトを手がけてきました：',
                 'Habilitaciones Urbanas': '都市開発',
                 'Demolición': '建物解体（最大3,500㎡）',
-                'Edificaciones': '戸建てとマンションの建設'
+                'Edificaciones': '戸建てとマンションの建設',
+                '5% de Descuento': '5%割引',
+                'Por cada cliente referido que concrete una compra': '紹介した顧客が購入するごとに',
+                'Decoración Gratis': '無料デコレーション',
+                'Asesoría en decoración de interiores sin costo': '無料のインテリアデコレーション相談',
+                'Remodelación': 'リモデリング',
+                'Descuentos especiales en servicios de remodelación': 'リモデリングサービスの特別割引',
+                'Refiere y Gana': '紹介して稼ぐ',
+                'Comparte tu experiencia POLYLINE y gana increíbles beneficios': 'POLYLINEの体験をシェアして、素晴らしい特典を獲得しよう ',
+                'Referir Ahora': '今すぐ紹介'
             },
             'it': {
                 'Inicio': 'Home',
                 'Para Tí': 'Per Te', 
                 'Proyectos': 'Progetti',
                 'Proyectos en Venta': 'Progetti in Vendita',
+                'Proyecto Benavides 1': 'Progetto Benavides 1',
+                'Proyecto Benavides 2': 'Progetto Benavides 2',
+                'Proyecto Sienna': 'Progetto Sienna',
+                'Proyecto Varsovia': 'Progetto Varsovia',
                 'Contacto': 'Contatti',
                 'Información': 'Informazioni', 
                 'Agenda Una Reunión': 'Prenota un Appuntamento',
@@ -945,23 +918,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Login': 'Accedi',
                 'Perfil': 'Profilo',
                 'Cerrar Sesión': 'Disconnetti',
+                'Descubre Nuestros Proyectos': 'Scopri i Nostri Progetti',
                 'Servicios Personalizados para Ti': 'Servizi Personalizzati per Te',
                 'En POLYLINE transformamos tus sueños en realidad.': 'In POLYLINE trasformiamo i tuoi sogni in realtà',
                 'Remodelación Completa': 'Ristrutturazione Completa', 
-                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo di vita.': 'Riprogetta completamente i tuoi spazi secondo le tue esigenze e il tuo stile di vita',
+                'Rediseña completamente tus espacios para ajustarlos a tus necesidades y estilo de vida.': 'Riprogetta completamente i tuoi spazi secondo le tue esigenze e il tuo stile di vita',
                 'Remodelación de Cocinas': 'Ristrutturazione Cucine',
                 'Transforma tu cocina en un espacio moderno y funcional.': 'Trasforma la tua cucina in uno spazio moderno e funzionale',
                 'Remodelación de Baños': 'Ristrutturazione Bagni',
-                'Crea un ambiente rilassante e elegante con i nostri design personalizzati.': 'Crea un ambiente rilassante ed elegante con i nostri design personalizzati',
+                'Crea un ambiente relajante y elegante con nuestros diseños personalizados.': 'Crea un ambiente rilassante ed elegante con i nostri design personalizzati',
                 'Diseño de Interiores': 'Design d\'Interni',
-                'Optimiza tus espacios con soluzioni creative e moderne.': 'Ottimizza i tuoi spazi con soluzioni creative e moderne',
+                'Optimiza tus espacios con soluciones creativas y modernas.': 'Ottimizza i tuoi spazi con soluzioni creative e moderne',
                 'Pisos': 'Pavimenti',
-                'Elige entre una amplia gama di materiali di alta qualità.': 'Scegli tra un\'ampia gamma di materiali di alta qualità',
+                'Elige entre una amplia gama de materiales de alta calidad.': 'Scegli tra un\'ampia gamma di materiali di alta qualità',
                 'Nosotros': 'Chi Siamo',
                 'descripcion-empresa': 'Polyline SAC è un\'azienda di costruzioni che ha iniziato la sua attività nel marzo 2002. Con 21 anni di esperienza, ha sviluppato progetti e costruzioni come:',
                 'Habilitaciones Urbanas': 'Sviluppi Urbani',
                 'Demolición': 'Demolizione di edifici fino a 3.500m²',
-                'Edificaciones': 'Edifici unifamiliari e multifamiliari'
+                'Edificaciones': 'Edifici unifamiliari e multifamiliari',
+                '5% de Descuento': '5% di Sconto',
+                'Por cada cliente referido que concrete una compra': 'Per ogni cliente referenziato che effettua un acquisto',
+                'Decoración Gratis': 'Decorazione Gratuita',
+                'Asesoría en decoración de interiores sin costo': 'Consulenza per la decorazione dinterni gratuita',
+                'Remodelación': ' Ristrutturazione',
+                'Descuentos especiales en servicios de remodelación': 'Sconti speciali sui servizi di ristrutturazione',
+                'Refiere y Gana': 'Segnala e Guadagna',
+                'Comparte tu experiencia POLYLINE y gana increíbles beneficios': 'Condividi la tua esperienza POLYLINE e guadagna fantastici benefici',
+                'Referir Ahora': 'Segnala Ora'
             }
         };
 
