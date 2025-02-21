@@ -16,12 +16,12 @@ class VirtualAssistant {
             {
                 type: 'calendly',
                 text: '📅 Agendar una reunión',
-                url: 'https://calendly.com/polyline/30min'
+                url: '/Contact/Agenda Una Reunión.html'
             },
             {
                 type: 'whatsapp',
                 text: '💬 Chatear por WhatsApp',
-                url: 'https://wa.me/51907341122'
+                url: 'https://wa.link/lkvfnb'
             },
             {
                 type: 'email',
