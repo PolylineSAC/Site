@@ -62,14 +62,6 @@ h1, h2, h3, p {
 }
 
 
-
-
-
-
-
-
-
-
 body {
     
     margin: 0;
@@ -3964,6 +3956,92 @@ body.dark-mode #nosotros {
     }
 }
 
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.carousel-arrow:hover {
+    background: rgb(0, 0, 0);
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+.referral-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #FFD700, #FFD700);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 111px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.referral-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(45deg, #FFD700, #FFD700);
+}
+
+.cta-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #cc8f1d, #FFA500);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 19px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(45deg, #cc9124, #FFA500);
+}
+
+.cta-arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-arrow {
+    transform: translateX(5px);
+}
+
+.video-placeholder {
+    z-index: -2;
+}
 .referral-section {
     padding: 80px 20px;
     background: linear-gradient(
@@ -3984,17 +4062,10 @@ body.dark-mode .referral-section {
     background: linear-gradient(
         rgba(26, 26, 26, 0.13), 
         rgba(44, 44, 44, 0.151)
-    ), url('/Resource/referir.jpg');
+    ), url('/Resource/refiere.jpg'); /* Mantenemos la misma imagen */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: rgb(30, 30, 30);
-    overflow: hidden;
-    position: relative;
-}
-body.dark-mode .referral-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
     color: rgb(30, 30, 30);
     overflow: hidden;
     position: relative;
@@ -4023,6 +4094,7 @@ body.dark-mode .referral-section {
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.2s forwards;
 }
+
 body.dark-mode .referral-subtitle {
     font-size: 1.2em;
     margin-bottom: 50px;
@@ -4040,20 +4112,30 @@ body.dark-mode .referral-subtitle {
 }
 
 .reward-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(199, 199, 199, 0.363);
     padding: 30px;
     border-radius: 15px;
     width: 300px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(50px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    position: relative; /* Added for bullet positioning */
+}
+
+.reward-card::before {
+    content: '•';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #FFD700;
+    font-size: 24px;
+    opacity: 0.8;
 }
 
 .reward-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.419);
 }
-
 .reward-icon {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -4108,47 +4190,3 @@ body.dark-mode .reward-card p {
 .referral-cta:hover .star {
     animation: shootingStar 0.8s ease-out;
 }
-/*
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes shootingStar {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.5);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .rewards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .reward-card {
-        width: 90%;
-        margin-bottom: 20px;
-    }
-
-    .referral-title {
-        font-size: 2em;
-    }
-}
-*/
-
