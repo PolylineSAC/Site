@@ -152,3 +152,87 @@ function copyPaymentCode() {
 }
 
 
+let currentPosition = 0;
+let currentDepartment = '';
+let contentArray = [];
+
+function initializeCarousel(departmentId) {
+    currentDepartment = departmentId;
+    const track = document.querySelector(`#detail-modal-${departmentId} .carousel-track`);
+    const items = track.getElementsByClassName('carousel-item');
+    contentArray = Array.from(items).map(item => {
+        const onclickAttr = item.getAttribute('onclick');
+        const matches = onclickAttr.match(/changeContent\('([^']+)',\s*(true|false)/);
+        return {
+            path: matches[1],
+            isVideo: matches[2] === 'true'
+        };
+    });
+    currentPosition = 0;
+    updateCarouselState();
+    updateContent();
+}
+
+function moveCarousel(direction) {
+    if (!currentDepartment || contentArray.length === 0) return;
+    
+    const items = document.querySelectorAll(`#detail-modal-${currentDepartment} .carousel-item`);
+    const maxPosition = items.length - 1;
+    
+    currentPosition = Math.max(0, Math.min(maxPosition, currentPosition + direction));
+    
+    updateCarouselState();
+    updateContent();
+}
+
+function updateCarouselState() {
+    const items = document.querySelectorAll(`#detail-modal-${currentDepartment} .carousel-item`);
+    items.forEach((item, index) => {
+        if (index === currentPosition) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+function updateContent() {
+    const content = contentArray[currentPosition];
+    const mainContainer = document.querySelector(`#detail-modal-${currentDepartment} #main-content-container`);
+    
+    if (content.isVideo) {
+        const video = document.createElement('video');
+        video.id = 'main-content';
+        video.controls = true;
+        video.autoplay = true;
+        video.innerHTML = `<source src="${content.path}" type="video/mp4">`;
+        mainContainer.innerHTML = '';
+        mainContainer.appendChild(video);
+    } else {
+        const img = document.createElement('img');
+        img.id = 'main-content';
+        img.src = content.path;
+        img.alt = 'Vista principal';
+        mainContainer.innerHTML = '';
+        mainContainer.appendChild(img);
+    }
+}
+
+document.querySelectorAll('.btn-details').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const departmentId = this.getAttribute('data-department');
+        const modal = document.getElementById(`detail-modal-${departmentId}`);
+        modal.classList.remove('hidden');
+        initializeCarousel(departmentId);
+    });
+});
+
+function closeModal(departmentId) {
+    const modal = document.getElementById(`detail-modal-${departmentId}`);
+    modal.classList.add('hidden');
+    currentDepartment = '';
+    contentArray = [];
+}
+
+
