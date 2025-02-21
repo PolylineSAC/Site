@@ -22,11 +22,6 @@ class VirtualAssistant {
                 type: 'whatsapp',
                 text: '💬 Chatear por WhatsApp',
                 url: 'https://wa.link/lkvfnb'
-            },
-            {
-                type: 'email',
-                text: '📧 Enviar un correo',
-                url: 'mailto:contacto@polyline.com'
             }
         ];
         this.isMuted = false;
