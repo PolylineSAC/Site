@@ -135,7 +135,7 @@ body.dark-mode .info-card p {
 }
 
 .team-section {
-    display: flexbox;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 4rem;
