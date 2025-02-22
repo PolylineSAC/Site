@@ -18,12 +18,14 @@
     <link rel="stylesheet" href="/css/assistant.css">
     <link rel="stylesheet" href="/css/idiomas.css">
     <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="/css/property-viewer.css">
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!-- Firebase SDK -->
     <link rel="preload" as="video" href="/Resource/background1.mp4" type="video/mp4">
 <script type="module">
@@ -86,10 +88,6 @@
 
 
 <style>
-    
-
-
-
     /* Animación para el menú desplegable en móvil */
     @media screen and (max-width: 768px) {
         .user-dropdown {
@@ -144,8 +142,6 @@
             font-size: 1em;
             color: white;
         }
-
-        
     }
 </style>
 
@@ -504,13 +500,6 @@
             <li data-translate="Demolición">Demolición de edificaciones de hasta 3,500m² techados</li>
             <li data-translate="Edificaciones">Edificaciones unifamiliares y multifamiliares</li>
         </ul>
-        <section class="buttons">
-            <a href="https://www.facebook.com/PolylineSalas" target="_blank" class="fa fa-facebook"></a>
-            <a href="https://wa.link/lkvfnb" target="_blank" class="fa fa-whatsapp"></a>
-            <a href="https://www.instagram.com/arquitectosalasperu/" target="_blank" class="fa fa-instagram"></a>
-            <a href="https://www.linkedin.com/in/arquitectosalas" target="_blank" class="fa fa-linkedin"></a>
-            <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw" target="_blank" class="fa fa-youtube"></a>
-        </section>
     </div>
     <div class="model-container">
         <img src="/Resource/background-para-ti1.jpg" alt="Sobre Nosotros" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
@@ -578,15 +567,32 @@ document.addEventListener('DOMContentLoaded', () => {
     </script>
 
 
-    <footer class="footer">
-        <div class="footer-logo">
-            <img src="/Resource/Logo/logo.png" alt="Logo de POLYLINE">
-            <h3>POLYLINE <span class="highlight">CONSTRUCTORA</span></h3>
-            <p>Construyendo sueños con pasión y calidad.</p>
-        </div>
 
-        <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
-    </footer>
+
+<footer class="seccion-footer">
+    <div class="contenedor-footer">
+        <div class="bloque-logo">
+            <img src="/Resource/Logo/logo.png" alt="Polyline">
+            <div class="texto-copyright" style="color: black;">
+                <p>&copy; 2025 POLYLINE. Todos los derechos reservados.</p>
+            </div>
+        </div>
+        <div class="bloque-contacto" style="color: black;">
+            <h3>CONTACTOS:</h3>
+            <p>WhatsApp: <a href="https://wa.link/lkvfnb">+51 943 812 536</a></p>
+            <p>Email: <a href="mailto:contacto@polyline.com">contacto@polyline.com</a></p>
+            <p>Dirección: Av. Óscar R. Benavides</p>
+        </div>
+        <div class="bloque-redes" style="color: black;">
+            <h3>SÍGUENOS:</h3>
+            <p><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/PolylineSalas">Facebook</a></p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.link/lkvfnb">WhatsApp</a></p>
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/arquitectosalasperu/">Instagram</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/arquitectosalas">Linkedin</a></p>
+            <p><i class="fab fa-youtube"></i> <a href="https://www.youtube.com/channel/UC9wMT7_zsq7yE0MMCSxiVMw">Youtube</a></p>
+        </div>
+    </div>
+</footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
