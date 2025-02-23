@@ -67,13 +67,6 @@ body.modo-oscuro .seccion-footer {
     text-align: left;
 }
 
-h3 {
-    font-size: 18px;
-    border-bottom: 2px solid black;
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
 
 body.modo-oscuro h3 {
     border-bottom: 2px solid white;
@@ -139,4 +132,27 @@ body.modo-oscuro .btn-modo {
 
 body.modo-oscuro .btn-modo:hover {
     background-color: lightgray;
+}
+
+/* Estilos responsivos para mobile */
+@media screen and (max-width: 768px) {
+    .contenedor-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar elementos */
+    }
+
+    .bloque-logo img {
+        width: 180px; /* Hacer el logo más visible */
+    }
+
+    .bloque-contacto,
+    .bloque-redes {
+        text-align: center;
+    }
+
+    .bloque-contacto p,
+    .bloque-redes p {
+        margin-bottom: 10px;
+    }
 }
