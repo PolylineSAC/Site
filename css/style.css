@@ -2779,6 +2779,7 @@ body.dark-mode .close-btn {
 }
 
 /* Nuevos estilos para el contador mejorado */
+
 .launch-countdown {
     margin-top: 40px;
     position: relative;
@@ -3562,6 +3563,7 @@ body.dark-mode #nosotros {
     border-radius: 0 0 10px 10px;
     font-family: "Times New Roman", Times, serif; /* Fuente específica */
 }
+
 /* Sección de botones de redes sociales */
 .social-buttons {
     display: flex;
