@@ -130,21 +130,24 @@
     height: 300px;
     overflow-y: auto;
     padding: 15px;
+    -webkit-overflow-scrolling: touch; /* Mejorar scroll en iOS */
+    background-color: rgba(255, 255, 255, 0.95); /* Asegurar fondo visible */
 }
 
 .message {
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 12px; /* Aumentar padding */
     border-radius: 10px;
-    max-width: 80%;
-    color: #333 !important;  /* Forzar color de texto */
+    max-width: 85%; /* Aumentar ancho máximo */
+    color: #333 !important;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500; /* Aumentar peso de fuente */
     line-height: 1.4;
     text-align: left;
     transform: translateX(-20px);
     opacity: 0;
     animation: slideIn 0.5s ease forwards;
+    word-wrap: break-word; /* Asegurar que el texto se rompa */
 }
 
 @keyframes slideIn {
@@ -234,29 +237,30 @@
 .option-button {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 15px; /* Aumentar padding vertical */
     border-radius: 20px;
     text-decoration: none;
-    color: white;
+    color: white !important; /* Forzar color blanco */
     font-weight: 500;
     transition: transform 0.2s, box-shadow 0.2s;
+    background: #007bff; /* Color de respaldo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    -webkit-tap-highlight-color: transparent; /* Eliminar highlight en toque */
 }
-
 .option-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 .option-button.calendly {
-    background: linear-gradient(135deg, #00897B, #4CAF50);
+    background: linear-gradient(135deg, #00897B, #4CAF50) !important;
 }
 
 .option-button.whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    background: linear-gradient(135deg, #25D366, #128C7E) !important;
 }
 
 .option-button.email {
-    background: linear-gradient(135deg, #FF5722, #F44336);
+    background: linear-gradient(135deg, #FF5722, #F44336) !important;
 }
 
 .response-options a {
