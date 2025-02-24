@@ -230,10 +230,19 @@ class VirtualAssistant {
         const optionsDiv = document.createElement('div');
         optionsDiv.classList.add('message', 'bot-message', 'options-message');
         
+        // Asegurar que las opciones sean visibles y clicables
+        optionsDiv.style.width = '100%';
+        optionsDiv.style.maxWidth = '100%';
+        optionsDiv.style.margin = '10px 0';
+        
         const optionsHtml = `
             <div class="response-options">
                 ${this.standardOptions.map(option => `
-                    <a href="${option.url}" class="option-button ${option.type}" target="_blank">
+                    <a href="${option.url}" 
+                       class="option-button ${option.type}" 
+                       target="_blank"
+                       onclick="event.stopPropagation();"
+                       style="display: block; margin: 5px 0;">
                         ${option.text}
                     </a>
                 `).join('')}
@@ -242,6 +251,18 @@ class VirtualAssistant {
         
         optionsDiv.innerHTML = optionsHtml;
         messages.appendChild(optionsDiv);
+
+        // Agregar eventos touch específicos
+        const options = optionsDiv.getElementsByTagName('a');
+        Array.from(options).forEach(option => {
+            option.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, false);
+            
+            option.addEventListener('touchend', function(e) {
+                e.stopPropagation();
+            }, false);
+        });
 
         // Leer las opciones disponibles
         const optionsText = "Puedes elegir entre las siguientes opciones: " +
