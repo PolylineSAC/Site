@@ -193,7 +193,6 @@ body.dark-mode .info-card p {
 .team-member:hover .member-info {
     transform: translateY(0);
 }
-
 .stats-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -212,18 +211,18 @@ body.dark-mode .info-card p {
     .stats-container {
         padding: 2rem;
         margin: 2rem;
+        gap: 1rem;
         grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
     .stats-container {
         padding: 1.5rem;
-        margin: 1rem;
-        gap: 1rem;
+        margin: 1.5rem;
     }
 }
+
 body.dark-mode .stats-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -244,6 +243,7 @@ body.dark-mode .stats-container {
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
+
 body.dark-mode .stat-item {
     text-align: center;
     padding: 2rem;
@@ -254,6 +254,12 @@ body.dark-mode .stat-item {
 
 .stat-item:hover {
     transform: translateY(-5px);
+}
+
+@media screen and (max-width: 480px) {
+    .stat-item {
+        padding: 1.5rem;
+    }
 }
 
 .stat-number {
@@ -312,26 +318,23 @@ body.dark-mode .stat-label {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 3em;
-    }
-    
+   
     .hero-subtitle {
-        font-size: 1.4em;
+        font-size: 1.2em;
     }
     
     .info-card {
-        padding: 2rem;
-        margin: 2rem;
+        padding: 1.5rem;
+        margin: 1.5rem;
     }
     
     .stats-container {
-        padding: 2rem;
-        margin: 2rem;
+        padding: 1.5rem;
+        margin: 1.5rem;
     }
     
     .team-section {
-        padding: 2rem;
+        padding: 1.5rem;
     }
 }
 
@@ -339,41 +342,38 @@ body.dark-mode .stat-label {
 
 /* iPhone SE, 5, 5S (320px) */
 @media screen and (max-width: 320px) {
-    .hero-title {
-        font-size: 2em;
-    }
-    
+ 
     .hero-subtitle {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     .hero-content {
-        padding: 1.5rem;
-        transform: translateY(-100px);
+        padding: 1.2rem;
+        transform: translateY(-80px);
     }
 
     .info-card {
-        padding: 1.5rem;
-        margin: 1.5rem;
+        padding: 1.2rem;
+        margin: 1.2rem;
     }
 
     .info-card h2 {
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     .team-section {
-        padding: 1.5rem;
-        gap: 1.5rem;
+        padding: 1.2rem;
+        gap: 1.2rem;
         grid-template-columns: 1fr;
     }
 
     .stats-container {
-        padding: 1.5rem;
+        padding: 1.2rem;
         grid-template-columns: 1fr;
     }
 
     .stat-number {
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
 }
 
@@ -480,7 +480,7 @@ body.dark-mode .stat-label {
     }
 
     .team-member img {
-        height: 250px;
+        height: 200px;
     }
 
     .info-card p {
@@ -503,7 +503,7 @@ body.dark-mode .stat-label {
     }
 
     .team-member img {
-        height: 200px;
+        height: 150px;
     }
 }
 
