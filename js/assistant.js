@@ -225,24 +225,43 @@ class VirtualAssistant {
         messageDiv.style.animationDelay = `${messages.children.length * 0.1}s`;
     }
 
-    // Nuevo método para mostrar opciones
     showOptions(messages) {
         const optionsDiv = document.createElement('div');
         optionsDiv.classList.add('message', 'bot-message', 'options-message');
         
-        // Asegurar que las opciones sean visibles y clicables
-        optionsDiv.style.width = '100%';
-        optionsDiv.style.maxWidth = '100%';
-        optionsDiv.style.margin = '10px 0';
+        // Estilos mejorados para visibilidad en APK
+        optionsDiv.style.cssText = `
+            width: 100%;
+            max-width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        `;
         
         const optionsHtml = `
-            <div class="response-options">
+            <div class="response-options" style="display: flex; flex-direction: column; gap: 8px;">
                 ${this.standardOptions.map(option => `
                     <a href="${option.url}" 
                        class="option-button ${option.type}" 
                        target="_blank"
                        onclick="event.stopPropagation();"
-                       style="display: block; margin: 5px 0;">
+                       style="
+                           display: block;
+                           padding: 10px 15px;
+                           margin: 5px 0;
+                           background-color: #007bff;
+                           color: white !important;
+                           text-decoration: none;
+                           border-radius: 5px;
+                           font-weight: bold;
+                           text-align: center;
+                           -webkit-tap-highlight-color: transparent;
+                           cursor: pointer;
+                           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                       ">
                         ${option.text}
                     </a>
                 `).join('')}
@@ -252,16 +271,23 @@ class VirtualAssistant {
         optionsDiv.innerHTML = optionsHtml;
         messages.appendChild(optionsDiv);
 
-        // Agregar eventos touch específicos
+        // Mejorar el manejo de eventos táctiles
         const options = optionsDiv.getElementsByTagName('a');
         Array.from(options).forEach(option => {
             option.addEventListener('touchstart', function(e) {
                 e.stopPropagation();
-            }, false);
+                this.style.backgroundColor = '#0056b3'; // Feedback visual al tocar
+            }, { passive: true });
             
             option.addEventListener('touchend', function(e) {
                 e.stopPropagation();
-            }, false);
+                this.style.backgroundColor = '#007bff';
+            }, { passive: true });
+
+            // Prevenir el comportamiento por defecto del navegador
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+            }, { passive: false });
         });
 
         // Leer las opciones disponibles
