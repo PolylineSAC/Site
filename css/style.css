@@ -4142,10 +4142,7 @@ body.dark-mode #nosotros {
         font-size: 0.8rem;
     }
 
-    .carousel-item {
-        width: 50px;
-        height: 50px;
-    }
+   
 
     .animated-title .main-title .letter {
         font-size: 1.5em;
@@ -4170,20 +4167,11 @@ body.dark-mode #nosotros {
         height: 95vh;
     }
 
-    .video-container {
-        height: 40vh;
-    }
+  
     #para-ti {
         background: url('/Resource/background-para-ti3.png') center/cover no-repeat fixed !important;
     }
-    .image-carousel {
-        max-height: 20vh;
-    }
 
-    .carousel-item {
-        width: 40px;
-        height: 40px;
-    }
 }
 
 /* Optimizaciones de rendimiento */
@@ -4206,7 +4194,7 @@ body.dark-mode #nosotros {
     background: rgba(0,0,0,0.5);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px; /* Reduced padding */
     cursor: pointer;
     z-index: 10;
     border-radius: 50%;
@@ -4218,12 +4206,13 @@ body.dark-mode #nosotros {
 }
 
 .left-arrow {
-    left: 20px;
+    left: 15px; /* Reduced position */
 }
 
 .right-arrow {
-    right: 20px;
+    right: 15px; /* Reduced position */
 }
+
 
 .referral-button {
     margin-top: 2rem;
