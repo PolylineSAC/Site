@@ -139,20 +139,31 @@ body.modo-oscuro .btn-modo:hover {
     .contenedor-footer {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centrar elementos */
+        align-items: center;
+        gap: 50px; /* Aumentado el espacio entre bloques */
     }
 
     .bloque-logo img {
-        width: 180px; /* Hacer el logo más visible */
+        width: 180px;
+        margin-bottom: 30px; /* Más espacio después del logo */
     }
 
     .bloque-contacto,
     .bloque-redes {
         text-align: center;
+        padding: 25px 0; /* Más padding vertical */
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .bloque-redes i {
+        margin: 0 25px; /* Mucho más espacio entre iconos sociales */
+        font-size: 1.5em; /* Iconos más grandes */
+        padding: 10px; /* Padding alrededor de los iconos */
     }
 
     .bloque-contacto p,
     .bloque-redes p {
-        margin-bottom: 10px;
+        margin-bottom: 20px; /* Más espacio entre párrafos */
+        font-size: 1.1em; /* Texto ligeramente más grande */
     }
 }
