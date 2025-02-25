@@ -1477,7 +1477,7 @@ body.dark-mode .dark-mode-button {
     .dark-mode-button {
         width: 40px;
         height: 40px;
-        right: 70px;
+        right: 330px;
     }
     
     .mode-icon::before {
@@ -3740,7 +3740,7 @@ body.dark-mode #nosotros {
 .social-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
     margin-top: 20px;
 }
 
@@ -3751,7 +3751,6 @@ body.dark-mode #nosotros {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #000; /* Fondo negro */
     color: #fff;
     font-size: 29px;
     text-decoration: none;
@@ -3760,6 +3759,36 @@ body.dark-mode #nosotros {
 
 .social-btn:hover {
     transform: scale(1.2); /* Efecto de agrandamiento */
+}
+
+/* Ajustes para móviles */
+@media screen and (max-width: 768px) {
+    .social-buttons {
+        gap: 2px;
+        margin-top: 15px;
+        right: 10px; /* Added negative margin to move buttons left */
+    }
+
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/* Ajustes para dispositivos muy pequeños */
+@media screen and (max-width: 320px) {
+    .social-buttons {
+        gap: 2px;
+        margin-top: 10px;
+        margin-left: -55px; /* Added negative margin for smaller screens */
+    }
+
+    .social-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
 }
 
 .facebook { background-color: #3b5998; } /* Color de Facebook */
