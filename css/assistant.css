@@ -1,20 +1,21 @@
 .virtual-assistant {
     position: fixed;
     bottom: 20px;
-    right: 90px; /* Cambiado de 180px a 90px para estar más cerca del botón de modo oscuro */
+    right: 90px;
     z-index: 1000;
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre el asistente y el botón */
+    gap: 10px;
 }
+
 
 .assistant-avatar {
     cursor: pointer;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    box-shadow: 5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff;
+   
+    box-shadow: 2px 3px 15px #d1d1d1, -5px -5px 15px #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +49,7 @@
 
 .assistant-avatar i {
     color: #007bff !important;
-    font-size: 28px;
+    font-size: 10px;
     transition: all 0.5s;
 }
 
