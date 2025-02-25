@@ -14,7 +14,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-   
+    background-color: white;
     box-shadow: 2px 3px 15px #d1d1d1, -5px -5px 15px #ffffff;
     display: flex;
     align-items: center;
