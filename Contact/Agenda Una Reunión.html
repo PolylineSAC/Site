@@ -366,16 +366,19 @@
 
     <script>
         // Funciones para el selector de idiomas
-        function toggleLanguageOptions() {
+         function toggleLanguageOptions() {
+            const selector = document.querySelector('.language-selector');
             const options = document.getElementById('languageOptions');
-            options.style.display = options.style.display === 'none' ? 'block' : 'none';
+            selector.classList.toggle('active');
+            options.classList.toggle('show');
         }
 
         function changeLanguage(lang) {
             const currentFlag = document.getElementById('currentFlag');
             const currentLanguage = document.getElementById('currentLanguage');
-            const languageOptions = document.getElementById('languageOptions');
+            const options = document.getElementById('languageOptions');
             
+            // Actualizar el botón con el idioma seleccionado
             currentFlag.src = `/Resource/flags/${lang}.png`;
             currentLanguage.textContent = {
                 'es': 'Español',
@@ -386,10 +389,12 @@
                 'it': 'Italiano'
             }[lang];
             
-            languageOptions.style.display = 'none';
+            // Ocultar las opciones
+            options.classList.remove('show');
+            
+            // Traducir el contenido
             translatePage(lang);
         }
-
         // Objeto con las traducciones
         const translations = {
             'en': {
@@ -560,13 +565,94 @@
             }
         };
 
-        function translatePage(lang) {
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+       function translatePage(lang) {
+            if (lang === 'es') {
+                location.reload();
+                return;
+            }
+
+            // Usar un fragmento de documento para optimizar las manipulaciones del DOM
+            const fragment = document.createDocumentFragment();
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            // Procesar elementos en lotes para evitar bloqueo del navegador
+            const batchSize = 10;
+            let currentBatch = 0;
+
+            function processBatch() {
+                const start = currentBatch * batchSize;
+                const end = Math.min(start + batchSize, elements.length);
+                
+                for (let i = start; i < end; i++) {
+                    const element = elements[i];
+                    const key = element.getAttribute('data-translate');
+                    
+                    if (translations[lang]?.[key]) {
+                        if (element.tagName.toLowerCase() === 'input' || 
+                            element.tagName.toLowerCase() === 'textarea') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            const isTextOnly = element.innerHTML.trim() === element.textContent.trim();
+                            element[isTextOnly ? 'textContent' : 'innerHTML'] = translations[lang][key];
+                        }
+                    }
                 }
-            });
+
+                currentBatch++;
+                
+                if (currentBatch * batchSize < elements.length) {
+                    requestAnimationFrame(processBatch);
+                } else {
+                    // Actualizar título después de procesar todas las traducciones
+                    document.title = {
+                        'en': 'POLYLINE - Construction Company',
+                        'pt': 'POLYLINE - Construtora',
+                        'zh': 'POLYLINE - 建筑公司',
+                        'ja': 'POLYLINE - 建設会社',
+                        'it': 'POLYLINE - Società di costruzioni'
+                    }[lang] || 'POLYLINE - Constructora';
+
+                    // Reinicializar animaciones solo si es necesario
+                    if (typeof anime !== 'undefined' && typeof wrapLetters === 'function') {
+                        requestAnimationFrame(() => {
+                            const mainText = document.querySelector('.letters-main');
+                            const subText = document.querySelector('.letters-sub');
+                            
+                            if (mainText) mainText.style.opacity = '1';
+                            if (subText) subText.style.opacity = '1';
+                            
+                            wrapLetters('.letters-main');
+                            wrapLetters('.letters-sub');
+                            
+                            // Usar requestAnimationFrame para las animaciones
+                            requestAnimationFrame(() => {
+                                anime.timeline({
+                                    loop: false,
+                                    easing: 'easeOutExpo'
+                                })
+                                .add({
+                                    targets: '.hero-title .letter',
+                                    translateY: ["1.1em", 0],
+                                    translateX: ["0.55em", 0],
+                                    rotateZ: [180, 0],
+                                    duration: 600,
+                                    delay: anime.stagger(40)
+                                })
+                                .add({
+                                    targets: '.hero-subtitle .letter',
+                                    opacity: [0, 1],
+                                    duration: 800,
+                                    delay: anime.stagger(20),
+                                    offset: '-=400'
+                                });
+                            });
+                        });
+                    }
+                }
+            }
+
+            // Iniciar el procesamiento por lotes
+            requestAnimationFrame(processBatch);
         }
 
         // Cerrar el menú de idiomas cuando se hace clic fuera
@@ -575,10 +661,11 @@
             const languageOptions = document.getElementById('languageOptions');
             
             if (!languageSelector.contains(event.target)) {
-                languageOptions.style.display = 'none';
+                languageOptions.classList.remove('show');
             }
         });
     </script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
