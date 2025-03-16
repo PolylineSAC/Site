@@ -103,21 +103,24 @@
     <div class="menu-overlay"></div>
     <main>
         <section class="hero-section" style="position: relative; height: 80vh; overflow: hidden;">
+            <!-- Added overlay div -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 0;"></div>
+            
             <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 1; transition: opacity 1s ease-in-out;">
             <source src="/Resource/Equipo/background_Agendar.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
             </video>
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
-                <h2 class="hero-title">
-                    <span class="letter-wrapper">
-                    <span class="letters-main" data-translate="Agenda una Reunión con Nosotros">Agenda una Reunión con Nosotros</span>
-                    </span>
-                </h2>
-                <p class="hero-subtitle">
-                    <span class="letter-wrapper">
-                    <span class="letters-sub" data-translate="Estamos aquí para ayudarte a hacer realidad tus proyectos">Estamos aquí para ayudarte a hacer realidad tus proyectos</span>
-                    </span>
-                </p>
+            <h2 class="hero-title">
+                <span class="letter-wrapper">
+                <span class="letters-main" data-translate="Agenda una Reunión con Nosotros" style="color: white;">Agenda una Reunión con Nosotros</span>
+                </span>
+            </h2>
+            <p class="hero-subtitle">
+                <span class="letter-wrapper">
+                <span class="letters-sub" data-translate="Estamos aquí para ayudarte a hacer realidad tus proyectos">Estamos aquí para ayudarte a hacer realidad tus proyectos</span>
+                </span>
+            </p>
                 <div class="botones-agenda">
                     <a href="#" onclick="mostrarCalendlyYScroll('presencial')" class="boton-agenda">
                         <i class="fas fa-handshake"></i>
