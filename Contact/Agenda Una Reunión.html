@@ -102,26 +102,56 @@
     </header>
     <div class="menu-overlay"></div>
     <main>
-        <section class="hero-section">
-            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-                <source src="/Resource/Equipo/background_Agendar.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
+        <section class="hero-section" style="position: relative; height: 80vh; overflow: hidden;">
+            <video autoplay muted loop playsinline id="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 1; transition: opacity 1s ease-in-out;">
+            <source src="/Resource/Equipo/background_Agendar.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
             </video>
-            <div class="video-overlay"></div>
-            <div class="contenido-agenda">
-                <h2 class="hero-title" data-translate="Agenda una Reunión con Nosotros">Agenda una Reunión con Nosotros</h2>
-                <p class="hero-subtitle" data-translate="Estamos aquí para ayudarte a hacer realidad tus proyectos">Estamos aquí para ayudarte a hacer realidad tus proyectos</p>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: #fff; z-index: 1;">
+                <h2 class="hero-title">
+                    <span class="letter-wrapper">
+                    <span class="letters-main" data-translate="Agenda una Reunión con Nosotros">Agenda una Reunión con Nosotros</span>
+                    </span>
+                </h2>
+                <p class="hero-subtitle">
+                    <span class="letter-wrapper">
+                    <span class="letters-sub" data-translate="Estamos aquí para ayudarte a hacer realidad tus proyectos">Estamos aquí para ayudarte a hacer realidad tus proyectos</span>
+                    </span>
+                </p>
                 <div class="botones-agenda">
-                    <a href="#" onclick="mostrarCalendly('presencial')" class="boton-agenda">
-                        <i class="fas fa-handshake"></i><span data-translate="Reunión Presencial">Reunión Presencial</span>
+                    <a href="#" onclick="mostrarCalendlyYScroll('presencial')" class="boton-agenda">
+                        <i class="fas fa-handshake"></i>
+                        <span data-translate="Reunión Presencial">Reunión Presencial</span>
                     </a>
-                    <a href="#" onclick="mostrarCalendly('remoto')" class="boton-agenda">
-                        <i class="fas fa-video"></i><span data-translate="Reunión Virtual">Reunión Virtual</span>
+                    
+                    <a href="#" onclick="mostrarCalendlyYScroll('remoto')" class="boton-agenda">
+                        <i class="fas fa-video"></i>
+                        <span data-translate="Reunión Virtual">Reunión Virtual</span>
                     </a>
                 </div>
+                <script>
+                function mostrarCalendlyYScroll(tipo) {
+                    // Primero mostrar el calendly 
+                    mostrarCalendly(tipo);
+                    
+                    // Esperar un momento para que se muestre el contenedor
+                    setTimeout(() => {
+                        // Obtener el elemento calendly
+                        const calendlyContainer = document.getElementById(`calendly-${tipo}`);
+                        
+                        // Hacer scroll suave hasta el elemento
+                        calendlyContainer.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
+                </script>
             </div>
-            
         </section>
+
+       
+    <div class="separator"></div>
 
         <section id="calendly-remoto" class="calendly-container">
             <button class="close-button" onclick="cerrarCalendly('remoto')">×</button>
