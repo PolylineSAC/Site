@@ -26,7 +26,7 @@ class VirtualAssistant {
             {
                 type: 'email',
                 text: '📧 Enviar un correo',
-                url: 'mailto:contacto@polyline.com'
+                url: 'mailto:polylinesac@yahoo.com'
             }
         ];
         this.isMuted = false;
